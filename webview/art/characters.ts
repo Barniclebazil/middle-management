@@ -472,7 +472,6 @@ const FOLDER = ['.vvvv', 'vWWWW', 'vW00W', 'vWWWW', 'vvvvv'];
 const MARKER = ['6', '9'];
 const PENCIL = ['5', '5', '9'];
 const ART_PALETTE = ['.www.', 'w7w5w', 'w6wgw', '.www.'];
-const SWEAT = ['X', 'X'];
 // telephone receiver held to the left ear: earpiece at the top, mouthpiece angled to the chin. A cream office handset with a
 // beige edge, so it reads against dark hair as well as fair (a charcoal one vanished into dark hair).
 const RECEIVER = ['.n.', 'nBn', 'nBn', '.Bn', '.Bn', '.nB', '..n'];
@@ -617,15 +616,13 @@ function frameSpecs(pose: Pose, dir: Dir, look: LookDef, food: FoodId = DEFAULT_
         sit({ behind: rel(L_BEHIND_HEAD, L_BEHIND_HEAD, -6), headDy: -1, bodyDy: -1 }),
         sit({ behind: rel(L_BEHIND_HEAD, L_BEHIND_HEAD, -6), headDy: -1, bodyDy: -1, face: 'blink' }),
       ];
-    case 'sitRun': {
-      const sweat: Item = { rows: SWEAT, x: 12, y: 4, over: true, abs: true };
+    case 'sitRun':
       return [
-        sit({ arms: abs(L_POUND, L_SLAM), headDy: 1, items: [sweat] }),
+        sit({ arms: abs(L_POUND, L_SLAM), headDy: 1 }),
         sit({ arms: abs(L_SLAM, L_POUND), headDy: 1 }),
         sit({ arms: abs(L_POUND, L_SLAM), headDy: 1 }),
-        sit({ arms: abs(L_SLAM, L_POUND), headDy: 1, items: [{ ...sweat, y: 5 }] }),
+        sit({ arms: abs(L_SLAM, L_POUND), headDy: 1 }),
       ];
-    }
     case 'sitPhone': {
       const receiver: Item = { rows: RECEIVER, x: BUILDS[look.build].wide ? 0 : 1, y: -7, over: true, abs: false };
       const on = (face: Face): FrameSpec => sit({ arms: abs([], L_REST), top: rel(L_PHONE, null, -6), items: [receiver], face });
