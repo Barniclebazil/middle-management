@@ -2,7 +2,7 @@
   "name": "middle-management",
   "displayName": "Middle Management",
   "description": "Shows your Claude Code agents as staff in a pixel-art paper-company office.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "publisher": "local",
   "license": "MIT",
   "repository": { "type": "git", "url": "https://github.com/Barniclebazil/middle-management.git" },
