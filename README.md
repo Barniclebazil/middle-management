@@ -26,7 +26,7 @@ There are a few more poses; the [user guide](docs/guide.md#what-the-workers-do) 
 
 ![Three workers queue at the manager's door with red exclamation marks while the staff list below says "3 need you"](docs/images/office.png)
 
-The office has a life of its own, too. Desks are handed out by model, so Opus sits near you and Haiku out in the annex. Workers sip coffee faster the harder they think. A cleaner wipes down desks after people leave, a food cart comes round, and two IT support staff wander in to ask whether you've tried turning it off and on again. And if a Fable worker turns up, they take over your office for five minutes while you sulk at the kitchen table. The [user guide](docs/guide.md#office-life-between-tasks) has the details.
+The office has a life of its own, too. Seating goes by seniority: the bigger the model, the closer the desk to yours, which puts Opus right outside your door and Haiku out in the annex. Workers sip coffee faster the harder they think. Beyond that, we'd rather not spoil it. Keep the panel open for an afternoon and see who turns up. A word of advice: if the top model ever walks in, don't get too attached to your office.
 
 ### Made for a strip above your editor
 
