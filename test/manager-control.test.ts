@@ -1,8 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import * as path from 'node:path';
 import { ResumeRefused, assertCanResume, checkResume, controlFor, liveSessionIdsFromDisk } from '../src/manager/control.ts';
 
 const none = new Set<string>();
+
+/** A fake session file's key: the path `liveSessionIdsFromDisk` builds for `<home>/sessions/<name>` (backslashes on Windows). */
+const sessionFile = (name: string): string => path.join('/c', 'sessions', name);
 
 test('temps are never controllable', () => {
   assert.equal(controlFor({ id: 's/a1', kind: 'temp', sessionId: 's' }, new Set(['s']), new Set(['s'])), 'none');
@@ -35,11 +39,11 @@ test('checkResume / assertCanResume allow only free sessions', () => {
 test('liveSessionIdsFromDisk reads only <digits>.json, only live pids, never *.key', () => {
   const read: string[] = [];
   const files: Record<string, string> = {
-    '/c/sessions/100.json': JSON.stringify({ pid: 100, sessionId: 'alive-1' }),
-    '/c/sessions/200.json': JSON.stringify({ pid: 200, sessionId: 'dead-1' }),
-    '/c/sessions/300.json': 'not json',
-    '/c/sessions/400.abcdef.key': 'SECRET',
-    '/c/sessions/500.json': JSON.stringify({ sessionId: 'alive-by-filename' }),
+    [sessionFile('100.json')]: JSON.stringify({ pid: 100, sessionId: 'alive-1' }),
+    [sessionFile('200.json')]: JSON.stringify({ pid: 200, sessionId: 'dead-1' }),
+    [sessionFile('300.json')]: 'not json',
+    [sessionFile('400.abcdef.key')]: 'SECRET',
+    [sessionFile('500.json')]: JSON.stringify({ sessionId: 'alive-by-filename' }),
   };
   const ids = liveSessionIdsFromDisk({
     home: '/c',
@@ -58,14 +62,14 @@ test('liveSessionIdsFromDisk reads only <digits>.json, only live pids, never *.k
 
 test('liveSessionIdsFromDisk ignores the usage probe (entrypoint claude-office-probe) but not other entrypoints', () => {
   const files: Record<string, string> = {
-    '/c/sessions/100.json': JSON.stringify({ pid: 100, sessionId: 'probe-1', entrypoint: 'claude-office-probe' }),
-    '/c/sessions/200.json': JSON.stringify({ pid: 200, sessionId: 'office-1', entrypoint: 'claude-office' }),
-    '/c/sessions/300.json': JSON.stringify({ pid: 300, sessionId: 'vscode-1', entrypoint: 'claude-vscode' }),
-    '/c/sessions/400.json': JSON.stringify({ pid: 400, sessionId: 'plain-1' }),
+    [sessionFile('100.json')]: JSON.stringify({ pid: 100, sessionId: 'probe-1', entrypoint: 'claude-office-probe' }),
+    [sessionFile('200.json')]: JSON.stringify({ pid: 200, sessionId: 'office-1', entrypoint: 'claude-office' }),
+    [sessionFile('300.json')]: JSON.stringify({ pid: 300, sessionId: 'vscode-1', entrypoint: 'claude-vscode' }),
+    [sessionFile('400.json')]: JSON.stringify({ pid: 400, sessionId: 'plain-1' }),
   };
   const ids = liveSessionIdsFromDisk({
     home: '/c',
-    fs: { readdir: () => Object.keys(files).map((f) => f.slice('/c/sessions/'.length)), readFile: (f) => files[f]! },
+    fs: { readdir: () => Object.keys(files).map((f) => path.basename(f)), readFile: (f) => files[f]! },
     isPidAlive: () => true,
   });
   assert.deepEqual([...ids].sort(), ['office-1', 'plain-1', 'vscode-1']);

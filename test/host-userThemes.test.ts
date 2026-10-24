@@ -176,7 +176,10 @@ test('entries marks the current theme by path', async () => {
     assert.deepEqual(cur(join(dir, 'c.theme.json')), []);
     assert.deepEqual(cur(undefined), []);
     assert.deepEqual(cur(''), []);
-    assert.deepEqual(cur(join(dir, 'B.theme.json')), []);
+    // Paths are case-sensitive unless the platform says otherwise (the default follows process.platform, so name it here).
+    const posix = make(dir, { platform: 'linux' }).ut;
+    await posix.rescan();
+    assert.deepEqual(posix.entries(join(dir, 'B.theme.json')).filter((e) => e.current).map((e) => e.id), []);
     const win = make(dir, { platform: 'win32' }).ut;
     await win.rescan();
     assert.deepEqual(win.entries(join(dir, 'A.THEME.JSON')).filter((e) => e.current).map((e) => e.id), ['a.theme.json']);

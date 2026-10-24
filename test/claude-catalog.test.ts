@@ -546,18 +546,22 @@ test('agents scan: caps tools per agent and name length, dedupes, ignores a body
 // --- project folders ---------------------------------------------------------------------------------------------------
 
 test('ancestorDirs: nearest first, stops after home (inclusive) or at the root; relative cwd gives nothing', () => {
-  assert.deepEqual(ancestorDirs('/home/u/a/b', '/home/u'), ['/home/u/a/b', '/home/u/a', '/home/u']);
-  assert.deepEqual(ancestorDirs('/home/u', '/home/u'), ['/home/u']);
-  assert.deepEqual(ancestorDirs('/srv/x/y', '/home/u'), ['/srv/x/y', '/srv/x', '/srv', '/']);
-  assert.deepEqual(ancestorDirs('/', '/home/u'), ['/']);
-  assert.deepEqual(ancestorDirs('rel/path', '/home/u'), []);
-  assert.deepEqual(ancestorDirs('/home/user2/x', '/home/user'), ['/home/user2/x', '/home/user2', '/home', '/']);
+  // Fake POSIX-looking paths go through `abs`, so the expectations hold on Windows too (`/home/u` becomes `D:\\home\\u`).
+  const abs = (p: string): string => path.resolve(p);
+  const root = path.parse(abs('/')).root;
+  assert.deepEqual(ancestorDirs(abs('/home/u/a/b'), abs('/home/u')), [abs('/home/u/a/b'), abs('/home/u/a'), abs('/home/u')]);
+  assert.deepEqual(ancestorDirs(abs('/home/u'), abs('/home/u')), [abs('/home/u')]);
+  assert.deepEqual(ancestorDirs(abs('/srv/x/y'), abs('/home/u')), [abs('/srv/x/y'), abs('/srv/x'), abs('/srv'), root]);
+  assert.deepEqual(ancestorDirs(abs('/'), abs('/home/u')), [root]);
+  assert.deepEqual(ancestorDirs('rel/path', abs('/home/u')), []);
+  assert.deepEqual(ancestorDirs(abs('/home/user2/x'), abs('/home/user')), [abs('/home/user2/x'), abs('/home/user2'), abs('/home'), root]);
 });
 
 test('projectClaudeDirs: the user config dir is not listed as a project dir', () => {
-  assert.deepEqual(projectClaudeDirs('/home/u/p', '/home/u', '/home/u/.claude'), ['/home/u/p/.claude']);
-  assert.deepEqual(projectClaudeDirs('/home/u/p', '/home/u', '/elsewhere/cfg'), ['/home/u/p/.claude', '/home/u/.claude']);
-  assert.deepEqual(projectClaudeDirs('/home/u', '/home/u', '/home/u/.claude'), []);
+  const abs = (p: string): string => path.resolve(p);
+  assert.deepEqual(projectClaudeDirs(abs('/home/u/p'), abs('/home/u'), abs('/home/u/.claude')), [abs('/home/u/p/.claude')]);
+  assert.deepEqual(projectClaudeDirs(abs('/home/u/p'), abs('/home/u'), abs('/elsewhere/cfg')), [abs('/home/u/p/.claude'), abs('/home/u/.claude')]);
+  assert.deepEqual(projectClaudeDirs(abs('/home/u'), abs('/home/u'), abs('/home/u/.claude')), []);
 });
 
 test('project skills are found in parent folders up to home, nearest wins for the same name', async () => {

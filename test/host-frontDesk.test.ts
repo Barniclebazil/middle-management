@@ -21,6 +21,9 @@ const EXTENSION_DIR = path.join(import.meta.dirname, '..');
 const PRESET_DIR = path.join(EXTENSION_DIR, 'media', 'themes');
 const SECRET = 'SeCrEtCoMpAnY';
 
+/** A native path with the home folder shown as `~`, as `shortenHome` writes it: `~` then the platform's separator (`~\x` on Windows). */
+const tilde = (...parts: string[]): string => ['~', ...parts].join(path.sep);
+
 type Msg = HostToWebview;
 type FrontDeskMsg = Extract<Msg, { type: 'frontDesk' }>;
 type DoneMsg = Extract<Msg, { type: 'frontDeskDone' }>;
@@ -159,7 +162,8 @@ async function harness(): Promise<Harness> {
       },
     },
     showSaveDialog: async (opts) => {
-      h.dialogs.push(opts);
+      // `joinPath` in frontDesk.ts joins with '/', which Windows accepts; normalise so the tests compare one separator style.
+      h.dialogs.push({ ...opts, defaultPath: path.normalize(opts.defaultPath) });
       return h.saveAnswers.shift();
     },
     showOpenDialog: async () => h.openAnswers.shift(),
@@ -316,7 +320,7 @@ test('state: a user theme file with its revision, short path and editable flag',
     const s = h.fd.buildState();
     assert.equal(s.source.kind, 'file');
     assert.equal(s.source.label, 'office.json');
-    assert.equal(s.source.path, '~/office.json');
+    assert.equal(s.source.path, tilde('office.json'));
     assert.equal(s.source.rev, revisionOf(THEME_TEXT));
     assert.equal(s.source.exists, true);
     assert.equal(s.source.editable, true);
@@ -403,7 +407,7 @@ test('state: userThemes lists the themes folder with the one in use marked, and 
     const before = h.fd.buildState();
     assert.deepEqual(before.userThemes, []);
     assert.equal(before.userThemesTruncated, false);
-    assert.deepEqual(before.make, { themesFolder: '~/.middle-management/themes', skillFolder: '~/.claude/skills/middle-management-theme', skill: 'unknown' });
+    assert.deepEqual(before.make, { themesFolder: tilde('.middle-management', 'themes'), skillFolder: tilde('.claude', 'skills', 'middle-management-theme'), skill: 'unknown' });
 
     await addUserTheme(h, 'pirate-ship.theme.json');
     await addUserTheme(h, 'bakery.theme.json', { name: 'Corner bakery' });
@@ -503,13 +507,13 @@ test('themeAction openThemesFolder: when the folder cannot be opened the message
     h.folder.answer = false;
     let out = await h.send({ type: 'themeAction', reqId: 'r1', action: 'openThemesFolder' });
     assert.equal(doneOf(out).ok, false);
-    assert.ok(doneOf(out).message?.includes('~/.middle-management/themes'), doneOf(out).message);
+    assert.ok(doneOf(out).message?.includes(tilde('.middle-management', 'themes')), doneOf(out).message);
     assert.ok(!doneOf(out).message?.includes(h.home), 'the home folder is shortened');
 
     h.folder.answer = new Error(`no file manager at ${h.dir}`);
     out = await h.send({ type: 'themeAction', reqId: 'r2', action: 'openThemesFolder' });
     assert.equal(doneOf(out).ok, false);
-    assert.ok(doneOf(out).message?.includes('~/.middle-management/themes'));
+    assert.ok(doneOf(out).message?.includes(tilde('.middle-management', 'themes')));
     assert.ok(!h.logs.join('\n').includes(h.dir), 'the error text (which holds a path) is not logged');
   } finally {
     await cleanup(h);
@@ -1274,7 +1278,7 @@ test('saveThemeAs: Save dialog, new file, user setting switched, replies setting
     assert.equal(h.config['themeFile']?.globalValue, p);
     const s = stateOf(out);
     assert.equal(s.source.kind, 'file');
-    assert.equal(s.source.path, '~/as.json');
+    assert.equal(s.source.path, tilde('as.json'));
     assert.equal(s.source.rev, revisionOf(text));
     assert.equal(s.source.editable, true);
     assert.equal(h.overwrite.asked, 0, 'the dialog already asked');

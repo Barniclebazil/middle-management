@@ -92,12 +92,12 @@ test('resolveThemePath: absolute, home, relative and empty', () => {
   assert.equal(resolveThemePath('/abs/t.json', '/home/u', '/ws'), '/abs/t.json');
   assert.equal(resolveThemePath('~/x.json', '/home/u', '/ws'), '/home/u/x.json');
   assert.equal(resolveThemePath('~', '/home/u', '/ws'), '/home/u');
-  assert.equal(resolveThemePath('x/y.json', '/home/u', '/ws'), '/ws/x/y.json');
-  assert.equal(resolveThemePath('x/y.json', '/home/u', undefined), '/home/u/x/y.json');
-  assert.equal(resolveThemePath('x/y.json', '/home/u', ''), '/home/u/x/y.json');
+  assert.equal(resolveThemePath('x/y.json', '/home/u', '/ws'), join('/ws', 'x', 'y.json'));
+  assert.equal(resolveThemePath('x/y.json', '/home/u', undefined), join('/home/u', 'x', 'y.json'));
+  assert.equal(resolveThemePath('x/y.json', '/home/u', ''), join('/home/u', 'x', 'y.json'));
   assert.equal(resolveThemePath('', '/home/u', '/ws'), '');
   assert.equal(resolveThemePath('   ', '/home/u', '/ws'), '');
-  assert.equal(resolveThemePath(' t.json ', '/home/u', '/ws'), '/ws/t.json');
+  assert.equal(resolveThemePath(' t.json ', '/home/u', '/ws'), join('/ws', 't.json'));
 });
 
 test('loadThemeFile: missing file', async () => {

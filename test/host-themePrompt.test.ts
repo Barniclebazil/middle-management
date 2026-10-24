@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import * as path from 'node:path';
 import { THEME_LIMITS } from '../src/shared/theme.ts';
 import { themePromptPaths, themePromptText } from '../src/host/themePrompt.ts';
 
@@ -38,9 +39,9 @@ test('the numbers match THEME_LIMITS', () => {
 
 test('themePromptPaths joins under the extension folder', () => {
   assert.deepEqual(themePromptPaths('/ext dir'), {
-    schemaPath: '/ext dir/media/theme.schema.json',
-    guidePath: '/ext dir/media/theme-guide.md',
-    examplePath: '/ext dir/media/themes/spaceship.theme.json',
+    schemaPath: path.join('/ext dir', 'media', 'theme.schema.json'),
+    guidePath: path.join('/ext dir', 'media', 'theme-guide.md'),
+    examplePath: path.join('/ext dir', 'media', 'themes', 'spaceship.theme.json'),
   });
 });
 

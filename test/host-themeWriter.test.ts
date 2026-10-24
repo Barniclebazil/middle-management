@@ -294,6 +294,9 @@ test('writeAtomic through a dangling symlink resolves the link folder, not the m
   }
 });
 
+/** Where `writeAtomic` puts the temp file for `/d/t.json`: next to it, joined the platform's way (`\d\.t.json.r1.tmp` on Windows). */
+const tempPath = (suffix: string): string => path.join('/d', `.t.json.${suffix}.tmp`);
+
 test('writeAtomic uses a wx temp file with a random suffix next to the target', async () => {
   const calls: string[] = [];
   const written: string[] = [];
@@ -307,7 +310,7 @@ test('writeAtomic uses a wx temp file with a random suffix next to the target', 
   };
   const r = await writeAtomic('/d/t.json', 'T', deps);
   assert.deepEqual(r, { ok: true, path: '/d/t.json' });
-  assert.deepEqual(calls, ['write /d/.t.json.r1.tmp', 'rename /d/.t.json.r1.tmp -> /d/t.json']);
+  assert.deepEqual(calls, [`write ${tempPath('r1')}`, `rename ${tempPath('r1')} -> /d/t.json`]);
 });
 
 test('writeAtomic retries a taken temp name without deleting the other file', async () => {
@@ -325,7 +328,7 @@ test('writeAtomic retries a taken temp name without deleting the other file', as
   };
   const r = await writeAtomic('/d/t.json', 'T', deps);
   assert.equal(r.ok, true);
-  assert.deepEqual(calls, ['write /d/.t.json.r1.tmp', 'write /d/.t.json.r2.tmp', 'rename /d/.t.json.r2.tmp -> /d/t.json']);
+  assert.deepEqual(calls, [`write ${tempPath('r1')}`, `write ${tempPath('r2')}`, `rename ${tempPath('r2')} -> /d/t.json`]);
   // Always EEXIST: gives up, never unlinks.
   const calls2: string[] = [];
   const always: ThemeWriterDeps = { ...deps, writeFileExclusive: async () => Promise.reject(Object.assign(new Error('exists'), { code: 'EEXIST' })), unlink: async (p) => void calls2.push(p) };
@@ -346,11 +349,11 @@ test('writeAtomic cleans up the temp file when the write or the rename fails', a
   const renameFails = await writeAtomic('/d/t.json', 'T', { ...base, rename: async () => Promise.reject(new Error('EXDEV')) });
   assert.equal(renameFails.ok, false);
   assert.match(renameFails.ok ? '' : renameFails.message, /EXDEV/);
-  assert.deepEqual(unlinked, ['/d/.t.json.x.tmp']);
+  assert.deepEqual(unlinked, [tempPath('x')]);
   unlinked.length = 0;
   const writeFails = await writeAtomic('/d/t.json', 'T', { ...base, writeFileExclusive: async () => Promise.reject(Object.assign(new Error('full'), { code: 'ENOSPC' })) });
   assert.equal(writeFails.ok, false);
-  assert.deepEqual(unlinked, ['/d/.t.json.x.tmp']);
+  assert.deepEqual(unlinked, [tempPath('x')]);
   // An unlink that itself fails does not hide the real error or throw.
   const both = await writeAtomic('/d/t.json', 'T', { ...base, rename: async () => Promise.reject(new Error('boom')), unlink: async () => Promise.reject(new Error('nope')) });
   assert.equal(both.ok, false);

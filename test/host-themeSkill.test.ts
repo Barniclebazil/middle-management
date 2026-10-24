@@ -243,7 +243,7 @@ test('install: refuses a foreign folder, names it, and leaves its files untouche
     await fs.writeFile(path.join(r.dir, 'SKILL.md'), 'mine');
     const res = await r.skill.install();
     assert.equal(res.ok, false);
-    if (!res.ok) assert.ok(res.message.includes('~/skills/middle-management-theme'), res.message);
+    if (!res.ok) assert.ok(res.message.includes(['~', 'skills', 'middle-management-theme'].join(path.sep)), res.message);
     assert.deepEqual(await fs.readdir(r.dir), ['SKILL.md']);
     assert.equal(await fs.readFile(path.join(r.dir, 'SKILL.md'), 'utf8'), 'mine');
   }));

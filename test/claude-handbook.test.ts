@@ -65,8 +65,16 @@ function strictFs(allowHeadFor: (p: string) => boolean, allowWholeFor: (p: strin
   return { fs: f, heads, whole };
 }
 
-/** A tiny in-memory filesystem (files only; directories are implied) for walks that must reach the real filesystem root. */
-function memFs(files: Record<string, string>): ConfigFs {
+/** The platform's absolute form of a POSIX-looking fake path: unchanged on POSIX, `D:\h\u` on Windows (where `/h/u` has no drive). */
+const abs = (p: string): string => path.resolve(p);
+
+/**
+ * A tiny in-memory filesystem (files only; directories are implied) for walks that must reach the real filesystem root.
+ * Keys and lookups go through `abs`, so fakes written as `/h/u/x` match the paths the code builds on Windows too.
+ */
+function memFs(raw: Record<string, string>): ConfigFs {
+  const files: Record<string, string> = {};
+  for (const [k, v] of Object.entries(raw)) files[abs(k)] = v;
   const dirs = new Set<string>();
   for (const p of Object.keys(files)) for (let d = path.dirname(p); !dirs.has(d); d = path.dirname(d)) {
     dirs.add(d);
@@ -76,19 +84,21 @@ function memFs(files: Record<string, string>): ConfigFs {
     throw Object.assign(new Error('ENOENT'), { code: 'ENOENT' });
   };
   return {
-    stat: async (p) => {
+    stat: async (raw) => {
+      const p = abs(raw);
       if (Object.prototype.hasOwnProperty.call(files, p)) return { size: files[p]!.length, isFile: () => true, isDirectory: () => false };
       if (dirs.has(p)) return { size: 0, isFile: () => false, isDirectory: () => true };
       return enoent();
     },
-    readdir: async (p) => {
+    readdir: async (raw) => {
+      const p = abs(raw);
       if (!dirs.has(p)) return enoent();
       const names = new Set<string>();
       for (const k of [...Object.keys(files), ...dirs]) if (k !== p && path.dirname(k) === p) names.add(path.basename(k));
       return [...names];
     },
-    readHead: async (p) => (Object.prototype.hasOwnProperty.call(files, p) ? files[p]! : enoent()),
-    readFile: async (p) => (Object.prototype.hasOwnProperty.call(files, p) ? files[p]! : enoent()),
+    readHead: async (p) => (Object.prototype.hasOwnProperty.call(files, abs(p)) ? files[abs(p)]! : enoent()),
+    readFile: async (p) => (Object.prototype.hasOwnProperty.call(files, abs(p)) ? files[abs(p)]! : enoent()),
   };
 }
 
@@ -201,10 +211,16 @@ test('instruction chain: a cwd outside home walks up to, but not including, the 
     '/h/CLAUDE.md': 'elsewhere, not an ancestor',
   };
   const reg = ids();
-  const out = await readInstructionFiles({ cwd: '/srv/app', home: '/h/u', configDir: '/h/u/.claude', fs: memFs(files), fileIdFor: reg.fileIdFor, platform: 'linux' });
+  const out = await readInstructionFiles({ cwd: abs('/srv/app'), home: abs('/h/u'), configDir: abs('/h/u/.claude'), fs: memFs(files), fileIdFor: reg.fileIdFor, platform: 'linux' });
   assert.deepEqual(
     out.files.map((x) => [x.scope, x.display]),
-    [['managed', '/etc/claude-code/CLAUDE.md'], ['user', '~/.claude/CLAUDE.md'], ['project', '/srv/CLAUDE.md'], ['project', '/srv/app/.claude/CLAUDE.md'], ['local', '/srv/app/CLAUDE.local.md']],
+    [
+      ['managed', path.join('/etc/claude-code', 'CLAUDE.md')],
+      ['user', '~/.claude/CLAUDE.md'],
+      ['project', abs('/srv/CLAUDE.md')],
+      ['project', abs('/srv/app/.claude/CLAUDE.md')],
+      ['local', abs('/srv/app/CLAUDE.local.md')],
+    ],
   );
 });
 
@@ -508,12 +524,12 @@ test('instruction chain: the walk goes past the home folder and leaves out the f
     '/home/u/work/CLAUDE.local.md': 'work local',
     '/home/u/work/app/CLAUDE.md': 'app',
   };
-  const out = await readInstructionFiles({ cwd: '/home/u/work/app', home: '/home/u', configDir: '/home/u/.claude', fs: memFs(files), fileIdFor: ids().fileIdFor, platform: 'linux' });
+  const out = await readInstructionFiles({ cwd: abs('/home/u/work/app'), home: abs('/home/u'), configDir: abs('/home/u/.claude'), fs: memFs(files), fileIdFor: ids().fileIdFor, platform: 'linux' });
   assert.deepEqual(
     out.files.map((x) => [x.scope, x.display]),
-    [['project', '/home/CLAUDE.md'], ['project', '~/CLAUDE.md'], ['local', '~/work/CLAUDE.local.md'], ['project', '~/work/app/CLAUDE.md']],
+    [['project', abs('/home/CLAUDE.md')], ['project', '~/CLAUDE.md'], ['local', '~/work/CLAUDE.local.md'], ['project', '~/work/app/CLAUDE.md']],
   );
-  assert.deepEqual(instructionDirs('/home/u/work'), ['/home', '/home/u', '/home/u/work']);
+  assert.deepEqual(instructionDirs('/home/u/work'), [abs('/home'), abs('/home/u'), abs('/home/u/work')]);
   assert.deepEqual(instructionDirs('/'), []);
   assert.deepEqual(instructionDirs('relative/dir'), []);
 });
@@ -526,7 +542,7 @@ test('instruction chain: managed rules come after the managed CLAUDE.md and befo
     '/etc/claude-code/.claude/rules/notes.txt': 'not a rule',
     '/h/u/.claude/CLAUDE.md': 'u',
   };
-  const out = await readInstructionFiles({ cwd: '/srv/app', home: '/h/u', configDir: '/h/u/.claude', fs: memFs(files), fileIdFor: ids().fileIdFor, platform: 'linux' });
+  const out = await readInstructionFiles({ cwd: abs('/srv/app'), home: abs('/h/u'), configDir: abs('/h/u/.claude'), fs: memFs(files), fileIdFor: ids().fileIdFor, platform: 'linux' });
   assert.deepEqual(
     out.files.map((x) => [x.scope, x.label]),
     [['managed', 'CLAUDE.md'], ['managed', 'rules/b.md'], ['managed', 'rules/sub/a.md'], ['user', 'CLAUDE.md']],
@@ -541,44 +557,44 @@ test('instruction chain: a worktree nested in its main repo skips the main folde
     '/r/main/.claude/rules/x.md': 'main rule',
     '/r/main/CLAUDE.local.md': 'main local',
     '/r/CLAUDE.md': 'above main',
-    '/r/main/.claude/worktrees/wt/.git': 'gitdir: /r/main/.git/worktrees/wt\n',
+    '/r/main/.claude/worktrees/wt/.git': `gitdir: ${abs('/r/main/.git/worktrees/wt')}\n`,
     '/r/main/.claude/worktrees/wt/CLAUDE.md': 'wt project',
     '/r/main/.claude/worktrees/wt/CLAUDE.local.md': 'wt local',
     '/r/main/.claude/worktrees/wt/pkg/CLAUDE.md': 'pkg',
   };
-  const cwd = '/r/main/.claude/worktrees/wt/pkg';
-  const out = await readInstructionFiles({ cwd, home: '/h/u', configDir: '/h/u/.claude', fs: memFs(files), fileIdFor: ids().fileIdFor, platform: 'linux' });
+  const cwd = abs('/r/main/.claude/worktrees/wt/pkg');
+  const out = await readInstructionFiles({ cwd, home: abs('/h/u'), configDir: abs('/h/u/.claude'), fs: memFs(files), fileIdFor: ids().fileIdFor, platform: 'linux' });
   assert.deepEqual(
     out.files.map((x) => [x.scope, x.display]),
     [
-      ['project', '/r/CLAUDE.md'],
-      ['local', '/r/main/CLAUDE.local.md'],
-      ['project', '/r/main/.claude/worktrees/wt/CLAUDE.md'],
-      ['local', '/r/main/.claude/worktrees/wt/CLAUDE.local.md'],
-      ['project', '/r/main/.claude/worktrees/wt/pkg/CLAUDE.md'],
+      ['project', abs('/r/CLAUDE.md')],
+      ['local', abs('/r/main/CLAUDE.local.md')],
+      ['project', abs('/r/main/.claude/worktrees/wt/CLAUDE.md')],
+      ['local', abs('/r/main/.claude/worktrees/wt/CLAUDE.local.md')],
+      ['project', abs('/r/main/.claude/worktrees/wt/pkg/CLAUDE.md')],
     ],
   );
-  assert.deepEqual(await nestedWorktree(memFs(files), cwd), { worktreeRoot: '/r/main/.claude/worktrees/wt', mainRoot: '/r/main' });
+  assert.deepEqual(await nestedWorktree(memFs(files), cwd), { worktreeRoot: abs('/r/main/.claude/worktrees/wt'), mainRoot: abs('/r/main') });
 });
 
 test('instruction chain: a worktree outside its main repo, a plain repo, a submodule and a bad .git file change nothing', async () => {
   const base = { '/r/main/CLAUDE.md': 'main', '/r/main/.git/HEAD': 'x' };
   const cases: Record<string, Record<string, string>> = {
-    outside: { ...base, '/w/wt/.git': 'gitdir: /r/main/.git/worktrees/wt', '/w/wt/CLAUDE.md': 'wt' },
+    outside: { ...base, '/w/wt/.git': `gitdir: ${abs('/r/main/.git/worktrees/wt')}`, '/w/wt/CLAUDE.md': 'wt' },
     plain: { ...base, '/r/main/pkg/CLAUDE.md': 'pkg' },
-    submodule: { ...base, '/r/main/sub/.git': 'gitdir: /r/main/.git/modules/sub', '/r/main/sub/CLAUDE.md': 'sub' },
+    submodule: { ...base, '/r/main/sub/.git': `gitdir: ${abs('/r/main/.git/modules/sub')}`, '/r/main/sub/CLAUDE.md': 'sub' },
     garbage: { ...base, '/r/main/sub/.git': 'not a pointer', '/r/main/sub/CLAUDE.md': 'sub' },
   };
   for (const [name, files] of Object.entries(cases)) {
-    const cwd = name === 'outside' ? '/w/wt' : name === 'plain' ? '/r/main/pkg' : '/r/main/sub';
+    const cwd = abs(name === 'outside' ? '/w/wt' : name === 'plain' ? '/r/main/pkg' : '/r/main/sub');
     assert.equal(await nestedWorktree(memFs(files), cwd), undefined, name);
   }
-  const out = await readInstructionFiles({ cwd: '/r/main/sub', home: '/h/u', configDir: '/h/u/.claude', fs: memFs(cases['submodule']!), fileIdFor: ids().fileIdFor, platform: 'linux' });
-  assert.deepEqual(out.files.map((x) => x.display), ['/r/main/CLAUDE.md', '/r/main/sub/CLAUDE.md']);
+  const out = await readInstructionFiles({ cwd: abs('/r/main/sub'), home: abs('/h/u'), configDir: abs('/h/u/.claude'), fs: memFs(cases['submodule']!), fileIdFor: ids().fileIdFor, platform: 'linux' });
+  assert.deepEqual(out.files.map((x) => x.display), [abs('/r/main/CLAUDE.md'), abs('/r/main/sub/CLAUDE.md')]);
 });
 
 test('instruction chain: a worktree .git file is read with a small cap, and nothing else is opened', async () => {
-  const files = { '/m/.git/HEAD': 'x', '/m/wts/a/.git': 'gitdir: /m/.git/worktrees/a\n' + 'z'.repeat(5000), '/m/wts/a/CLAUDE.md': 'a' };
+  const files = { '/m/.git/HEAD': 'x', '/m/wts/a/.git': `gitdir: ${abs('/m/.git/worktrees/a')}\n` + 'z'.repeat(5000), '/m/wts/a/CLAUDE.md': 'a' };
   const heads: Array<[string, number]> = [];
   const inner = memFs(files);
   const spy: ConfigFs = {
@@ -589,6 +605,6 @@ test('instruction chain: a worktree .git file is read with a small cap, and noth
     },
     readFile: () => Promise.reject(new Error('no whole-file reads')),
   };
-  assert.deepEqual(await nestedWorktree(spy, '/m/wts/a'), { worktreeRoot: '/m/wts/a', mainRoot: '/m' });
-  assert.deepEqual(heads, [['/m/wts/a/.git', 1024]]);
+  assert.deepEqual(await nestedWorktree(spy, abs('/m/wts/a')), { worktreeRoot: abs('/m/wts/a'), mainRoot: abs('/m') });
+  assert.deepEqual(heads, [[abs('/m/wts/a/.git'), 1024]]);
 });

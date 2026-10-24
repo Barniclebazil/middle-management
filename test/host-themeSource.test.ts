@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { join } from 'node:path';
+import { join, sep } from 'node:path';
 import { PRESETS, findPreset, presetSetting, resolveThemeSource, shortenHome } from '../src/host/themeSource.ts';
 
 const HOME = '/home/u';
@@ -33,7 +33,7 @@ test('preset:example resolves to a path inside the preset folder', () => {
   const r = resolveThemeSource('preset:example', HOME, WS, PRESET_DIR);
   assert.equal(r.kind, 'preset');
   assert.equal(r.kind === 'preset' ? r.presetId : '', 'example');
-  assert.equal(r.path, '/ext/media/themes/example.theme.json');
+  assert.equal(r.path, join(PRESET_DIR, 'example.theme.json'));
   assert.equal(r.label, 'Example office');
   assert.equal(r.displayPath, 'preset:example');
   assert.equal(resolveThemeSource('  preset:example  ', HOME, WS, PRESET_DIR).kind, 'preset');
@@ -76,13 +76,15 @@ test('file settings: absolute, ~ and relative paths', () => {
   assert.equal(home.label, 'mine.json');
 
   const rel = resolveThemeSource('themes/x.json', HOME, WS, PRESET_DIR);
-  assert.equal(rel.path, '/ws/themes/x.json');
-  assert.equal(rel.displayPath, '/ws/themes/x.json');
+  assert.equal(rel.path, join(WS, 'themes', 'x.json'));
+  assert.equal(rel.displayPath, join(WS, 'themes', 'x.json'));
 
-  const noBase = resolveThemeSource('x.json', HOME, undefined, PRESET_DIR);
-  assert.equal(noBase.path, '/home/u/x.json');
-  assert.equal(noBase.displayPath, '~/x.json');
-  assert.equal(resolveThemeSource('x.json', HOME, '', PRESET_DIR).path, '/home/u/x.json');
+  // Joined under home, so the separators follow the platform: use a home written the platform's way (`\home\u` on Windows).
+  const nativeHome = join('/home', 'u');
+  const noBase = resolveThemeSource('x.json', nativeHome, undefined, PRESET_DIR);
+  assert.equal(noBase.path, join(nativeHome, 'x.json'));
+  assert.equal(noBase.displayPath, '~' + sep + 'x.json');
+  assert.equal(resolveThemeSource('x.json', nativeHome, '', PRESET_DIR).path, join(nativeHome, 'x.json'));
 });
 
 test('shortenHome: home itself, siblings with the same prefix, trailing slash, Windows-style paths', () => {

@@ -255,7 +255,7 @@ test('readMcpConfig honours CLAUDE_CONFIG_DIR for .claude.json and settings.json
     env: { CLAUDE_CONFIG_DIR: '/data/alt' },
     home: HOME,
     managedDir: MANAGED,
-    fs: memFs({ '/data/alt/.claude.json': { mcpServers: { alt: stdio('a') } }, '/data/alt/settings.json': { enabledMcpjsonServers: ['x'] }, [CLAUDE_JSON]: { mcpServers: { wrong: stdio('w') } } }),
+    fs: memFs({ [path.join('/data/alt', '.claude.json')]: { mcpServers: { alt: stdio('a') } }, [path.join('/data/alt', 'settings.json')]: { enabledMcpjsonServers: ['x'] }, [CLAUDE_JSON]: { mcpServers: { wrong: stdio('w') } } }),
   });
   assert.deepEqual(snap.entries.map((e) => e.name), ['alt']);
   assert.deepEqual(snap.approval.enabled, ['x']);
@@ -497,5 +497,7 @@ test('PROJECT_CLAUDE_DIR lives in paths.ts as a plain project-relative folder na
   assert.equal(path.isAbsolute(paths.PROJECT_CLAUDE_DIR), false);
   const catalog = await import('../src/claude/catalog.ts');
   assert.equal('PROJECT_CLAUDE_DIR' in catalog, false, 'catalog.ts no longer defines its own copy');
-  assert.equal(catalog.projectClaudeDirs('/work/proj', '/home/u', '/home/u/.claude')[0], '/work/proj/.claude');
+  // Resolved first, so the folders carry the same drive on Windows as the `.claude` they are compared with.
+  const proj = path.resolve('/work/proj');
+  assert.equal(catalog.projectClaudeDirs(proj, path.resolve('/home/u'), path.resolve('/home/u/.claude'))[0], path.join(proj, '.claude'));
 });

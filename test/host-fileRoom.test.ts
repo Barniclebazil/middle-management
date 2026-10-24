@@ -420,7 +420,7 @@ function makeFifo(p: string): boolean {
   }
 }
 
-test('a FIFO is refused, not read, and is listed as other', { timeout: 10_000 }, async (t) => {
+test('a FIFO is refused, not read, and is listed as other', { timeout: 10_000, skip: process.platform === 'win32' && 'Windows has no FIFOs (the mkfifo from Git for Windows makes something else)' }, async (t) => {
   const s = await setup();
   if (!makeFifo(path.join(s.root, 'pipe'))) return t.skip('mkfifo is not available');
   assert.deepEqual(await s.room.readFile(s.rootId, 'pipe'), { ok: false, error: 'notFile' });
