@@ -4,9 +4,7 @@
 
 A VS Code and VSCodium extension that turns your running Claude Code agents into staff at a pixel-art paper company. You're the Regional Manager, watching from the glass-walled office while your agents type, rummage, wait at the copier and knock on your door when they need you.
 
-![The Middle Management office: the IT support pair reboot a worker's computer while the manager watches from the glass office](docs/images/office.gif)
-
-> Middle Management is an independent project and is not affiliated with or endorsed by Anthropic. "Claude" and "Claude Code" are Anthropic's names, used only to say what the extension works with. The office and its characters are original.
+![A busy Middle Management office: about twenty workers type at their desks, rummage in the filing cabinets, plan at the whiteboard and walk in from the lift with file names in their speech bubbles, while the manager watches from the glass office](docs/images/office.gif)
 
 ## What it does
 
