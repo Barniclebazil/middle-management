@@ -1,0 +1,10 @@
+node_modules
+dist
+*.vsix
+*.map
+plan.html
+dev/out/
+.directory
+plan.md
+.claude/
+*.bak*

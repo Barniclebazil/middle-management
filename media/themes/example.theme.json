@@ -1,0 +1,324 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "Example office",
+  "description": "Pennywhistle Paper, Harbour Branch: made-up staff, a receptionist and a seaside colour scheme of teal, slate and sand.",
+  "company": "Pennywhistle Paper",
+  "branch": "Harbour Branch",
+  "titles": {
+    "manager": "Branch Manager",
+    "receptionist": "Receptionist",
+    "cleaner": "Cleaner",
+    "temp": "Temp",
+    "vendor": "Sandwich Trolley",
+    "itSupport": "IT Support"
+  },
+  "manager": {
+    "name": "Alex Mercer",
+    "look": {
+      "head": "boss",
+      "skin": "olive",
+      "build": "normal",
+      "outfit": "suit",
+      "hair": "#2b1d1a",
+      "shirt": "#f1efe6",
+      "outer": "#2f3b52",
+      "tie": "#8c2d3c"
+    },
+    "lines": [
+      "Let's circle back on that before the all-hands.",
+      "Is this a priority or a nice-to-have?",
+      "I need that on my desk by end of day, ideally yesterday.",
+      "Great work. Can we make it feel more strategic?",
+      "Let's take this offline and put it in the deck.",
+      "My door is always open, but my calendar is not."
+    ]
+  },
+  "receptionist": {
+    "name": "Odette Marsh",
+    "look": {
+      "head": "headset",
+      "skin": "warm",
+      "build": "normal",
+      "outfit": "blouse",
+      "hair": "#4a2c4f",
+      "shirt": "#e9f1ef",
+      "accent": "#2f6f73",
+      "shortSleeves": true
+    },
+    "lines": [
+      "Good morning, Pennywhistle Paper. How may I redirect you?",
+      "Take a seat. Someone will be with you in a moment, or an hour.",
+      "The visitor pen is out of ink, but it has a lovely weight.",
+      "I will put you through. It might ring for a while.",
+      "Harbour Branch parcels go on the left. The left is the right shelf."
+    ]
+  },
+  "colors": {
+    "wall": "#cfe3e0",
+    "trim": "#f4efe4",
+    "ceiling": "#f6f7f4",
+    "carpet": "#3f5f73",
+    "lobbyFloor": "#d9cdb4",
+    "kitchenFloor": "#c9d8d3",
+    "conferenceFloor": "#5a7186",
+    "managerFloor": "#7a5c45",
+    "rug": "#9c3d4a",
+    "rugBorder": "#e3c27a",
+    "deskChairs": "#2f6f73",
+    "signPlate": "#1f3a4d",
+    "signText": "#f1e6c8",
+    "signBranch": "#8fc1c9",
+    "desks": "#dccba6",
+    "deskPanels": "#7d959a",
+    "wood": "#b98a5a",
+    "darkWood": "#452c20",
+    "metal": "#a3afb3",
+    "computers": "#e3dfd0",
+    "screens": "#1b282e",
+    "plants": "#4c8a5a",
+    "plantPots": "#25505c",
+    "glass": "#c6e5e8",
+    "glassFrames": "#6f878c",
+    "blinds": "#f1ece0",
+    "windowFrames": "#f4efe4",
+    "sky": "#a6cfe2",
+    "skyline": "#6d8795",
+    "ceilingLights": "#f6faf6",
+    "outside": "#1e2a33"
+  },
+  "smallTalk": [
+    [
+      "Did you see the new stapler in the kitchen?",
+      "It is very heavy. I think it is a status symbol."
+    ],
+    [
+      "Is the lift working today?",
+      "Only if you ask it nicely and do not look at the stairs."
+    ],
+    [
+      "Anyone want a biscuit from the tin?",
+      "Only the ones with the chocolate. The others are for the meeting."
+    ],
+    [
+      "The printer is making that noise again.",
+      "It is not broken, it is just thinking about its life choices."
+    ],
+    [
+      "Have you tried the new coffee machine?",
+      "It asks me how I feel every morning. I have no answer yet."
+    ],
+    [
+      "Whose umbrella is by the window?",
+      "I think it has been there since the spring offsite."
+    ],
+    [
+      "Is the meeting room booked for three?",
+      "It is, but only for a meeting about booking meeting rooms."
+    ],
+    [
+      "Did the plant on the windowsill survive the weekend?",
+      "Barely. It has a new name now: Quarterly Review."
+    ]
+  ],
+  "staff": [
+    {
+      "name": "Dana Whitcombe",
+      "role": "Head of Snacks",
+      "look": {
+        "head": "assistant",
+        "skin": "fair",
+        "build": "normal",
+        "outfit": "cardigan",
+        "hair": "#b5651d",
+        "shirt": "#e8d5b7",
+        "outer": "#8a6d4f"
+      },
+      "lines": [
+        "The biscuit budget is confidential, so please stop asking.",
+        "Who ate the last of the oat bars? I am not angry, just disappointed.",
+        "Fruit is also a snack. I checked."
+      ]
+    },
+    {
+      "name": "Marta Quill",
+      "role": "Printer Whisperer",
+      "look": {
+        "head": "prankster",
+        "skin": "rosy",
+        "build": "tall",
+        "outfit": "looseTie",
+        "hair": "#3a3a3a",
+        "tie": "#4b7f52",
+        "glasses": "#222222",
+        "belt": true
+      },
+      "lines": [
+        "Turn it off and on again. That is the whole secret.",
+        "It only jams when it senses fear.",
+        "I have named the scanner. Its name is Gerald."
+      ],
+      "pin": {
+        "project": "my-app"
+      }
+    },
+    {
+      "name": "Bert Lindqvist",
+      "role": "Chief Stapler Officer",
+      "look": {
+        "head": "crossword",
+        "skin": "warm",
+        "build": "big",
+        "outfit": "vest",
+        "hair": "#777777",
+        "hairHighlight": "#aaaaaa",
+        "eye": "#334455",
+        "outer": "#556b2f",
+        "shirt": "#ffffff"
+      },
+      "lines": [
+        "Staples are a finite resource. Use them wisely.",
+        "Four-across is seven letters, and I will not discuss it."
+      ]
+    },
+    {
+      "name": "Hana Oduya",
+      "role": "Director of Meeting Rooms",
+      "look": {
+        "head": "receptionist",
+        "skin": "deep",
+        "build": "small",
+        "outfit": "blouse",
+        "hair": "#1b1b1b",
+        "shirt": "#c94f6d",
+        "accent": "#f2c94c",
+        "bow": "#f2c94c",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Room 3 is booked, but Room 4 has a lovely view of the car park.",
+        "Please vacate the small room before the big room needs it.",
+        "Your calendar invite said optional. It was not optional.",
+        "I can fit you in at 4:15, or possibly 4:20."
+      ]
+    },
+    {
+      "name": "Gus Ferreira",
+      "role": "Senior Coffee Escalations Lead",
+      "look": {
+        "head": "cat",
+        "skin": "brown",
+        "build": "normal",
+        "outfit": "polo",
+        "shirt": "#2e86ab",
+        "collar": "#ffffff",
+        "accent": "#ffffff",
+        "accent2": "#2e86ab",
+        "shoes": "#101010",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Decaf is not coffee. I will hear no arguments.",
+        "The machine has been escalated to the machine's manager.",
+        "Oat milk is a lifestyle, and I respect it."
+      ]
+    },
+    {
+      "name": "Noor Haddad",
+      "role": "Lead Calendar Archaeologist",
+      "look": {
+        "head": "chili",
+        "skin": "olive",
+        "build": "normal",
+        "outfit": "openCardigan",
+        "sleeve": "#7d5ba6",
+        "collar": "#f4f0ff",
+        "skirt": true,
+        "legs": "#333333"
+      },
+      "lines": [
+        "I found a recurring meeting from 2019. Nobody has been since.",
+        "This invite has three reschedules and a mystery attendee.",
+        "Let me dig through the old threads and find out who started this."
+      ]
+    },
+    {
+      "name": "Teo Brannigan",
+      "role": "Keeper of the Spare Keys",
+      "look": {
+        "head": "knitting",
+        "skin": "fair",
+        "build": "small",
+        "outfit": "buttonCardigan",
+        "hair": "#c47b2a",
+        "facialHair": "#c47b2a",
+        "glasses": "#101010"
+      },
+      "lines": [
+        "The stationery cupboard key is on the hook behind the other hook.",
+        "I knitted a tea cosy for the printer. It refuses to comment."
+      ],
+      "pin": {
+        "title": "docs"
+      }
+    },
+    {
+      "name": "Iris Kowalczyk",
+      "role": "Chief of Thumbs-Up Reviews",
+      "look": {
+        "head": "hr",
+        "skin": "rosy",
+        "build": "tall",
+        "outfit": "suit",
+        "hair": "#222222",
+        "eye": "#2d5a27",
+        "shirt": "#ffffff",
+        "outer": "#1f1f1f",
+        "tie": "#c0392b",
+        "accent": "#c0392b",
+        "pants": "#2b2b2b",
+        "belt": true,
+        "beltColor": "#333333"
+      },
+      "lines": [
+        "Let's keep this conversation friendly and fully documented.",
+        "I have reviewed your thumbs-up and found it lacking in enthusiasm."
+      ]
+    }
+  ],
+  "temps": [
+    {
+      "name": "Rory Fenwick",
+      "look": {
+        "head": "short",
+        "skin": "warm",
+        "build": "normal",
+        "outfit": "shirtTie",
+        "hair": "#5a3825",
+        "shirt": "#f5f5f0",
+        "tie": "#2f4858"
+      }
+    },
+    {
+      "name": "Sami Lark",
+      "look": {
+        "head": "ponytail",
+        "skin": "olive",
+        "build": "normal",
+        "outfit": "floral",
+        "hair": "#8b1e3f",
+        "shortSleeves": true
+      }
+    },
+    {
+      "name": "Ines Kallas",
+      "look": {
+        "head": "curly",
+        "skin": "deep",
+        "build": "small",
+        "outfit": "plain",
+        "hair": "#101010",
+        "shirt": "#6ca0dc"
+      }
+    }
+  ]
+}

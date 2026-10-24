@@ -1,0 +1,20 @@
+{
+  "pid": 1003,
+  "sessionId": "aaaa0001-0000-4000-8000-000000000001",
+  "cwd": "/home/user/demo-project",
+  "startedAt": 1792000000000,
+  "version": "2.1.283",
+  "peerProtocol": 1,
+  "peerFeatures": [
+    "notify_idle",
+    "reply_across_default_dirs"
+  ],
+  "kind": "interactive",
+  "entrypoint": "claude-vscode",
+  "name": "Walkthrough of every tool",
+  "nameSource": "auto",
+  "nameSince": 1792000000000,
+  "status": "idle",
+  "updatedAt": 1792000600000,
+  "statusUpdatedAt": 1792000600000
+}

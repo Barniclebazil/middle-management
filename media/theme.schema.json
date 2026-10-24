@@ -1,0 +1,917 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Barniclebazil/middle-management/media/theme.schema.json",
+  "title": "Middle Management theme",
+  "description": "A theme file for the Middle Management office view. Everything is optional. Unknown top-level keys are ignored; inside colors, titles and lines, unknown keys are dropped.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional link to this schema file, so that editors can check the theme as you type."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40,
+      "description": "The theme's own name, shown in Front desk > Theme > Your offices."
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 160,
+      "description": "A short note about the theme, shown under its name in Front desk > Theme > Your offices."
+    },
+    "company": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "The company name shown in the office, which overrides the company setting when present."
+    },
+    "branch": {
+      "type": "string",
+      "maxLength": 40,
+      "description": "The branch or site name shown in the office, which overrides the branch setting when present."
+    },
+    "lineMode": {
+      "type": "string",
+      "enum": [
+        "add",
+        "replace"
+      ],
+      "description": "How the theme's lines meet the built-in ones. add (the default) puts them in with the built-in lines. replace swaps out the built-in lines, but only in the pools the theme fills: manager.lines, receptionist.lines, smallTalk and each pool in lines. A pool the theme leaves empty keeps its built-in lines. smallTalk follows this setting too."
+    },
+    "lines": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Extra or replacement lines for the other in-world pools, one property per pool. Each description says who says it and when. Unknown pool names are dropped.",
+      "properties": {
+        "bossVisit": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager: visiting a worker's desk. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "bossSnack": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager: at the food trolley, justifying what he picked. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "bossSnoop": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager: looking over a working agent's shoulder. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "bossSulkStart": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager: as a Fable agent takes over his office. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "bossSulk": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager: muttering while he sulks outside his office. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "bossSulkEnd": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager: as the spell ends and he gets his office back. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "deskBumped": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by a worker: when a better-ranked model takes their desk. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "deskMoveUp": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by a worker: when moving to a better desk. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "chatReplies": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by a worker: answering a colleague's own theme line during water-cooler chat. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "receptionPhone": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the receptionist: when a call comes in at the front desk. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "receptionGreeting": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the receptionist: when a new worker steps out of the elevator. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "receptionIdle": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the receptionist: idle remarks while she works the front desk. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "receptionAttending": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the receptionist: when the Front desk panel is open and she looks up from her work. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "cleanerMutters": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the cleaner: muttering while wiping a vacated desk, emptying bins or doing the kitchen counter. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "cartCalls": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the food trolley vendor: calling out while pushing the trolley and while it is parked. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itFix": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT fixer: the opening line of every fix. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itVerdicts": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT fixer: once the worker's monitor has rebooted. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itGiveUps": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT fixer: when the worker gets up and leaves halfway through the fix. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itSneers": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT critic: sneering at what the AI worker has on screen once it comes back. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itComebacks": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the AI worker being fixed: answering back after its monitor has been rebooted. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itFixerMutters": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT fixer: muttering while walking round the office. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itCriticMutters": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT critic: muttering while walking round the office. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itTalkReplies": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by an idle AI worker, the receptionist or the manager: a puzzled reply to either IT opener in small talk. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One line."
+          }
+        },
+        "itFixerTalk": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT fixer, then the listener: small talk: an awkward opener, then a reply that doubles down. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Each pair is an opener and a reply. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "One pair: the opener, then the reply.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[ -~]*$",
+              "description": "One line."
+            }
+          }
+        },
+        "itCriticTalk": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the IT critic, then the listener: small talk: fumbled chat read off a crib card, then a reply that doubles down. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Each pair is an opener and a reply. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "One pair: the opener, then the reply.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[ -~]*$",
+              "description": "One line."
+            }
+          }
+        }
+      }
+    },
+    "titles": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Renames the job titles shown on tooltips and the roster. Unknown keys are dropped.",
+      "properties": {
+        "manager": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Job title for the manager. Built-in: \"Regional Manager\"."
+        },
+        "receptionist": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Job title for the receptionist. Built-in: \"Receptionist\"."
+        },
+        "cleaner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Job title for the cleaner. Built-in: \"Cleaner\"."
+        },
+        "temp": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Job title for temporary staff. Built-in: \"Temp\"."
+        },
+        "vendor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Job title for the food cart vendor. Built-in: \"Food cart\"."
+        },
+        "itSupport": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Job title for the IT pair. Built-in: \"IT support\"."
+        }
+      }
+    },
+    "manager": {
+      "type": "object",
+      "description": "The manager who sits at the head of the office.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "The manager's name, shown in the office and tooltips."
+        },
+        "look": {
+          "$ref": "#/definitions/look",
+          "description": "How the manager is drawn."
+        },
+        "lines": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Things the manager says, added to the built-in boss-isms (or replacing them with lineMode replace). Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One thing the manager says."
+          }
+        }
+      }
+    },
+    "receptionist": {
+      "type": "object",
+      "description": "The receptionist at the front desk, who is always in the office.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "The receptionist's name, shown in tooltips."
+        },
+        "look": {
+          "$ref": "#/definitions/look",
+          "description": "How the receptionist is drawn."
+        },
+        "lines": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Things the receptionist says, added to her built-in phone, greeting and idle lines (or replacing them with lineMode replace). Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One thing the receptionist says."
+          }
+        }
+      }
+    },
+    "cleaner": {
+      "$ref": "#/definitions/person",
+      "description": "The cleaner, who wipes empty desks, the kitchen and the bins."
+    },
+    "vendor": {
+      "$ref": "#/definitions/person",
+      "description": "The food cart vendor, who pushes the trolley round."
+    },
+    "itFixer": {
+      "$ref": "#/definitions/person",
+      "description": "The IT fixer, who reboots workers' monitors. Their lines go in lines."
+    },
+    "itCritic": {
+      "$ref": "#/definitions/person",
+      "description": "The IT critic, who sneers at what the AI workers make. Their lines go in lines."
+    },
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Overrides for the office's rooms, furniture, windows and sign, as #rrggbb. The shades of each (highlights, edges) are worked out from your colour. Unknown keys are dropped.",
+      "properties": {
+        "wall": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the office walls. Built-in #d9c9a4."
+        },
+        "trim": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the skirting boards and trim. Built-in #5f5040."
+        },
+        "ceiling": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the ceiling tiles. Built-in #e4e0d4."
+        },
+        "carpet": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the open-plan carpet. Built-in #66748a."
+        },
+        "lobbyFloor": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the lobby floor. Built-in #bfb196."
+        },
+        "kitchenFloor": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the kitchen floor. Built-in #ddd5bf."
+        },
+        "conferenceFloor": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the conference room floor. Built-in #5f6c7f."
+        },
+        "managerFloor": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the manager's office floor. Built-in #7a6d5b."
+        },
+        "annexFloor": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the annex floor. Built-in #6d7488."
+        },
+        "rug": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the rug. Built-in #7d3b37."
+        },
+        "rugBorder": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the rug's border. Built-in #b88a4b."
+        },
+        "deskChairs": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the desk chairs. Built-in #2f7b83."
+        },
+        "kitchenChairs": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the kitchen chairs. Built-in #c9773b."
+        },
+        "managerChair": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the manager's chair. Built-in #2b2830."
+        },
+        "signPlate": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the plate of the sign above the lobby. Built-in #2d3d57."
+        },
+        "signText": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the company name lettering on the sign (keep it well apart from signPlate). Built-in #fff4d0."
+        },
+        "signBranch": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the branch name on the sign. Built-in #b9b7a6."
+        },
+        "desks": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the staff desk tops. Built-in #c2ab84."
+        },
+        "deskPanels": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the panels between desks. Built-in #8d939b."
+        },
+        "wood": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of cupboards and counters. Built-in #b0804c."
+        },
+        "darkWood": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of dark wood such as the manager's desk and furniture. Built-in #6f4528."
+        },
+        "metal": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of metal parts such as filing cabinets and the trolley. Built-in #9aa2ab."
+        },
+        "computers": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of computers and the copier. Built-in #d8cfb4."
+        },
+        "screens": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of switched-off screens. Built-in #1f2a2c."
+        },
+        "plants": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of plant leaves. Built-in #4f8a3c."
+        },
+        "plantPots": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of plant pots. Built-in #b5643c."
+        },
+        "glass": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the glass walls. Built-in #bfe0ee."
+        },
+        "glassFrames": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the frames of the glass walls. Built-in #8f9aa3."
+        },
+        "blinds": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the window blinds. Built-in #ebe6da."
+        },
+        "windowFrames": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the window frames. Built-in #f0ede4."
+        },
+        "sky": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the sky seen through the windows. Built-in #9fc3db."
+        },
+        "skyline": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the city skyline seen through the windows. Built-in #7e8f9e."
+        },
+        "ceilingLights": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the ceiling light panels. Built-in #f7fbff."
+        },
+        "outside": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Colour of the area outside the building. Built-in #2a2430."
+        }
+      }
+    },
+    "smallTalk": {
+      "type": "array",
+      "maxItems": 200,
+      "description": "Pairs of lines that two people chat about at the water cooler, added to the built-in pairs (or replacing them with lineMode replace). No pair repeats until all have been used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "One pair of lines: the first is said by one person, the second is the reply.",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[ -~]*$",
+          "description": "One line of small talk."
+        }
+      }
+    },
+    "staff": {
+      "type": "array",
+      "maxItems": 8,
+      "description": "Up to eight staff members, filling the desks in order.",
+      "items": {
+        "$ref": "#/definitions/staffMember"
+      }
+    },
+    "temps": {
+      "type": "array",
+      "maxItems": 6,
+      "description": "Up to six temporary staff, used for extra sessions once the desks are full.",
+      "items": {
+        "$ref": "#/definitions/temp"
+      }
+    }
+  },
+  "definitions": {
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$",
+      "description": "A colour written as # followed by six hex digits, like #6e4b2c."
+    },
+    "look": {
+      "type": "object",
+      "description": "How one person is drawn. Every field is optional, and any missing field uses the default for that person.",
+      "properties": {
+        "head": {
+          "type": "string",
+          "enum": [
+            "boss",
+            "assistant",
+            "prankster",
+            "receptionist",
+            "crossword",
+            "cat",
+            "chili",
+            "knitting",
+            "hr",
+            "short",
+            "spiky",
+            "ponytail",
+            "curly",
+            "bob",
+            "headset"
+          ],
+          "description": "The head style, which sets the face, hair shape and head accessories."
+        },
+        "build": {
+          "type": "string",
+          "enum": [
+            "normal",
+            "tall",
+            "small",
+            "big"
+          ],
+          "description": "The body size, from normal to tall, small or big."
+        },
+        "outfit": {
+          "type": "string",
+          "enum": [
+            "suit",
+            "shirtTie",
+            "looseTie",
+            "cardigan",
+            "buttonCardigan",
+            "vest",
+            "floral",
+            "openCardigan",
+            "plain",
+            "polo",
+            "blouse"
+          ],
+          "description": "The clothes worn on the upper body, such as a suit, a cardigan or a polo shirt."
+        },
+        "skin": {
+          "type": "string",
+          "enum": [
+            "fair",
+            "rosy",
+            "warm",
+            "olive",
+            "brown",
+            "deep"
+          ],
+          "description": "The skin tone, from fair to deep."
+        },
+        "hair": {
+          "$ref": "#/definitions/color",
+          "description": "Hair colour, like #6e4b2c."
+        },
+        "hairHighlight": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the highlights in the hair, like #d9a441."
+        },
+        "eye": {
+          "$ref": "#/definitions/color",
+          "description": "Eye colour, like #2d5a27."
+        },
+        "shirt": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the shirt or top underneath the outfit, like #f1efe6."
+        },
+        "outer": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the outer layer, such as a jacket or cardigan, like #2f3b52."
+        },
+        "sleeve": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the sleeves, like #7d5ba6."
+        },
+        "tie": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the tie, like #8c2d3c."
+        },
+        "collar": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the collar, like #ffffff."
+        },
+        "accent": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the small trim details on the outfit, like #f2c94c."
+        },
+        "accent2": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of a second set of trim details, like #2e86ab."
+        },
+        "pants": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the trousers, like #2b2b2b."
+        },
+        "legs": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the legs when wearing a skirt or shorts, like #333333."
+        },
+        "shoes": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the shoes, like #101010."
+        },
+        "glasses": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the glasses frames, like #222222."
+        },
+        "facialHair": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of any facial hair, like #c47b2a."
+        },
+        "bow": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of a bow, like #f2c94c."
+        },
+        "beltColor": {
+          "$ref": "#/definitions/color",
+          "description": "Colour of the belt, like #333333."
+        },
+        "skirt": {
+          "type": "boolean",
+          "description": "Whether the person wears a skirt instead of trousers."
+        },
+        "shortSleeves": {
+          "type": "boolean",
+          "description": "Whether the person wears short sleeves."
+        },
+        "belt": {
+          "type": "boolean",
+          "description": "Whether the person wears a belt."
+        }
+      }
+    },
+    "staffMember": {
+      "type": "object",
+      "description": "One staff member at a desk.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "The person's name, shown in the office and tooltips."
+        },
+        "role": {
+          "type": "string",
+          "maxLength": 60,
+          "description": "The person's job title, shown after their name, like Head of Snacks."
+        },
+        "look": {
+          "$ref": "#/definitions/look",
+          "description": "How the person is drawn."
+        },
+        "lines": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Things the person says. They open a water-cooler chat at most once every 40 minutes per person, with a generic reply from the other person; at other times the small-talk pairs are used. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[ -~]*$",
+            "description": "One thing the person says."
+          }
+        },
+        "pin": {
+          "type": "object",
+          "description": "Gives this person the desk for sessions that match the given project or title.",
+          "properties": {
+            "project": {
+              "type": "string",
+              "maxLength": 200,
+              "description": "Part of a project name. A session whose project name contains this text, ignoring case, is seated at this desk."
+            },
+            "title": {
+              "type": "string",
+              "maxLength": 200,
+              "description": "Part of a session title. A session whose title contains this text, ignoring case, is seated at this desk."
+            }
+          }
+        }
+      }
+    },
+    "temp": {
+      "type": "object",
+      "description": "One temporary staff member, used for extra sessions.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "The temp's name, shown in the office and tooltips."
+        },
+        "look": {
+          "$ref": "#/definitions/look",
+          "description": "How the temp is drawn."
+        }
+      }
+    },
+    "person": {
+      "type": "object",
+      "description": "A side character: a name and a look. Every field is optional.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "The person's name, shown in tooltips."
+        },
+        "look": {
+          "$ref": "#/definitions/look",
+          "description": "How the person is drawn."
+        }
+      }
+    }
+  }
+}

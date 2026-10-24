@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle Management case tab playground</title>
+</head>
+<body>
+<!--
+  A case tab with a mock host. Build with `npm run build` (dist/case.js) and `npm run build:dev` (dev/out/caseTabHarness.js).
+  Params: ?state=idle|working|permission|plan|question|error|gone|loaderror|lost|free|elsewhere|temp &theme=dark|light|hc
+          &freeze=1 (a still frame) &lag=<ms> &stray=0   (see dev/caseTabHarness.ts)
+-->
+<script src="out/caseTabHarness.js"></script>
+<script src="../dist/case.js"></script>
+</body>
+</html>

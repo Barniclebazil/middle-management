@@ -1,0 +1,417 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "Cyberpunk",
+  "description": "A neon tower office in the endless rain: data brokers, drone couriers and a dark magenta and cyan palette.",
+  "company": "Velloran Systems",
+  "branch": "Drizzle Ward",
+  "titles": {
+    "manager": "Floor Executive",
+    "receptionist": "Front-Desk Interface",
+    "cleaner": "Night Sweeper",
+    "temp": "Gig Contractor",
+    "vendor": "Noodle Cart",
+    "itSupport": "Uplink Tech"
+  },
+  "manager": {
+    "name": "Selwyn Okafor-Lind",
+    "look": {
+      "head": "boss",
+      "skin": "deep",
+      "build": "tall",
+      "outfit": "suit",
+      "hair": "#e4e2f2",
+      "hairHighlight": "#ffffff",
+      "eye": "#3ff0ff",
+      "shirt": "#1c1630",
+      "outer": "#dcd8ec",
+      "sleeve": "#dcd8ec",
+      "tie": "#ff2fa8",
+      "collar": "#2a2244",
+      "pants": "#cfcae2",
+      "shoes": "#241c36",
+      "belt": true,
+      "beltColor": "#3ff0ff"
+    },
+    "lines": [
+      "Let's lock this in before the downpour, so about now.",
+      "My door is always open. It is also biometric, so knock first.",
+      "Great quarter, everyone. The bonus is a slightly bigger umbrella.",
+      "I asked the board for more budget. They sent a motivational hologram.",
+      "Can the deliverable glow a bit more? Investors love a glow.",
+      "We are a family here. A family with a very long contract."
+    ]
+  },
+  "receptionist": {
+    "name": "Tamsin Revell",
+    "look": {
+      "head": "headset",
+      "skin": "fair",
+      "build": "normal",
+      "outfit": "blouse",
+      "hair": "#2fe8ff",
+      "hairHighlight": "#b8fbff",
+      "eye": "#ff4fd8",
+      "shirt": "#7b4cf2",
+      "collar": "#d6c8ff",
+      "accent": "#3ff0ff",
+      "pants": "#3a3458",
+      "shoes": "#1e1a2a",
+      "shortSleeves": true
+    },
+    "lines": [
+      "Welcome to Velloran Systems. Look into the scanner and blink.",
+      "The scanner says you are you. It sounds surprised.",
+      "Umbrellas go in the drip rack. Yes, all eleven of them.",
+      "Your visitor badge expires at five. So does the scanner's patience.",
+      "The lift plays three adverts first. Skipping costs extra."
+    ]
+  },
+  "colors": {
+    "wall": "#2b2442",
+    "trim": "#c2338f",
+    "ceiling": "#4a4468",
+    "carpet": "#474e72",
+    "lobbyFloor": "#545b74",
+    "kitchenFloor": "#5e4560",
+    "conferenceFloor": "#365a6a",
+    "managerFloor": "#5c4270",
+    "annexFloor": "#3c4f5a",
+    "rug": "#1f2a4a",
+    "rugBorder": "#29d3e0",
+    "deskChairs": "#1fb2c6",
+    "kitchenChairs": "#d6dc3a",
+    "managerChair": "#d63a9e",
+    "signPlate": "#120c1e",
+    "signText": "#ff5ad8",
+    "signBranch": "#3ff0ff",
+    "desks": "#a9a4c6",
+    "deskPanels": "#6e2a5e",
+    "wood": "#9a93c0",
+    "darkWood": "#1c1830",
+    "metal": "#8a8fb0",
+    "computers": "#3d3956",
+    "screens": "#07060d",
+    "plants": "#2fd39a",
+    "plantPots": "#c2338f",
+    "glass": "#7fd8e8",
+    "glassFrames": "#5a4f80",
+    "blinds": "#3a3458",
+    "windowFrames": "#5a4f80",
+    "sky": "#3d1a55",
+    "skyline": "#120e26",
+    "ceilingLights": "#b8f4ff",
+    "outside": "#0a0812"
+  },
+  "smallTalk": [
+    [
+      "Is it still raining?",
+      "Forecast says yes until further notice. Further notice is also rain."
+    ],
+    [
+      "Did the lift try to sell you something this morning?",
+      "Heated socks. It knew my shoe size, which I did not enjoy."
+    ],
+    [
+      "My arm wants another firmware update.",
+      "Do not accept. Last time my elbow moved to a premium tier."
+    ],
+    [
+      "The vending machine said it was disappointed in me.",
+      "It does that. Buy the seaweed crisps and it warms up again."
+    ],
+    [
+      "How strong is the coffee today?",
+      "Overclocked. I can hear colours, and my stapler seems very slow."
+    ],
+    [
+      "Did you read the latest wellness memo?",
+      "Yes. Compulsory joy is at three, in the holo-briefing room."
+    ],
+    [
+      "The sign out front is flickering again.",
+      "Maintenance says it is Morse code. So far it has spelt 'lunch'."
+    ],
+    [
+      "Who left a drone charging in the noodle bar?",
+      "It is mine. It likes the steam. Please do not feed it broth."
+    ]
+  ],
+  "staff": [
+    {
+      "name": "Ravi Underhill",
+      "role": "Data Broker",
+      "look": {
+        "head": "crossword",
+        "skin": "brown",
+        "build": "big",
+        "outfit": "vest",
+        "hair": "#1a1420",
+        "hairHighlight": "#8a5cff",
+        "eye": "#2a1f14",
+        "shirt": "#d8e03a",
+        "outer": "#4a3a78",
+        "tie": "#ff4fd8",
+        "accent": "#3ff0ff",
+        "accent2": "#ff4fd8",
+        "pants": "#6a6f99",
+        "shoes": "#1c1826",
+        "glasses": "#3ff0ff",
+        "facialHair": "#1a1420"
+      },
+      "lines": [
+        "I have your browsing history. Do not worry, it is very boring.",
+        "Data is the new oil. Mine is mostly the new spreadsheet.",
+        "Your lunch order is my bestseller. Everyone wants dumpling data."
+      ]
+    },
+    {
+      "name": "Noemi Strand",
+      "role": "Drone Courier",
+      "look": {
+        "head": "cat",
+        "skin": "rosy",
+        "build": "small",
+        "outfit": "polo",
+        "hair": "#ff6a3d",
+        "hairHighlight": "#ffb07a",
+        "eye": "#2a6f4a",
+        "shirt": "#f5e642",
+        "collar": "#1c1630",
+        "accent": "#1c1630",
+        "bow": "#3ff0ff",
+        "pants": "#2f6f8a",
+        "shoes": "#ff4fd8",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Parcel for floor 212. The drone wants a signature and a compliment.",
+        "I delivered in the rain again. The drone wants hazard pay in batteries.",
+        "Do not wave at drones. They think you want a subscription."
+      ]
+    },
+    {
+      "name": "Fen Okoro",
+      "role": "Firewall Technician",
+      "look": {
+        "head": "hr",
+        "skin": "deep",
+        "build": "normal",
+        "outfit": "looseTie",
+        "hair": "#b6ff3a",
+        "hairHighlight": "#e2ff9a",
+        "eye": "#3b2416",
+        "shirt": "#e8f6ff",
+        "outer": "#ff7a1f",
+        "tie": "#1c1630",
+        "facialHair": "#9fe82e",
+        "pants": "#4a4f6a",
+        "shoes": "#191622",
+        "glasses": "#ff7a1f"
+      },
+      "lines": [
+        "The firewall blocked lunch again. It thinks noodles are a threat.",
+        "Someone set their password to 'rain'. Bold, given the weather.",
+        "I patched the thing. Then the thing patched me back."
+      ]
+    },
+    {
+      "name": "Mei-Lin Varga",
+      "role": "Synth-Noodle Chef",
+      "look": {
+        "head": "receptionist",
+        "skin": "fair",
+        "build": "normal",
+        "outfit": "plain",
+        "hair": "#ff4fd8",
+        "hairHighlight": "#ffaaee",
+        "eye": "#3a2a1e",
+        "shirt": "#f2f0f8",
+        "collar": "#ff2fa8",
+        "pants": "#3c3a5e",
+        "shoes": "#d6dc3a",
+        "belt": true,
+        "beltColor": "#ff2fa8",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Today's special is noodles. Yesterday's special was also noodles.",
+        "The broth is synthetic, but the effort is entirely real.",
+        "Extra spicy comes with a waiver. Please sign it at the counter."
+      ]
+    },
+    {
+      "name": "Gideon Marlow",
+      "role": "Chrome Fitter",
+      "look": {
+        "head": "chili",
+        "skin": "warm",
+        "build": "big",
+        "outfit": "openCardigan",
+        "hair": "#c8ccd8",
+        "hairHighlight": "#ffffff",
+        "eye": "#ff2fa8",
+        "shirt": "#2fe8ff",
+        "outer": "#8a90a8",
+        "sleeve": "#b4bacc",
+        "collar": "#e6faff",
+        "pants": "#53586e",
+        "shoes": "#20202a",
+        "glasses": "#ff2fa8"
+      },
+      "lines": [
+        "Your new arm is ready. It has a cup holder, as requested.",
+        "No knuckle lights in meetings, please. It is distracting.",
+        "Chrome needs polishing every week. Feelings, every fortnight."
+      ]
+    },
+    {
+      "name": "Saoirse Delacroix",
+      "role": "Rain-Forecast Analyst",
+      "look": {
+        "head": "assistant",
+        "skin": "olive",
+        "build": "tall",
+        "outfit": "buttonCardigan",
+        "hair": "#5c7cff",
+        "hairHighlight": "#a8bbff",
+        "eye": "#2a3a6a",
+        "shirt": "#e6f0ff",
+        "outer": "#ffd23a",
+        "collar": "#ffffff",
+        "pants": "#2e5a7a",
+        "shoes": "#1c2230",
+        "glasses": "#1c1630"
+      },
+      "lines": [
+        "Tomorrow: rain. The day after: rain, but with ambition.",
+        "I have been right every day for six years. Nobody throws a party.",
+        "There is a three per cent chance of sun. I have alerted the board."
+      ]
+    },
+    {
+      "name": "Hex Kowalski",
+      "role": "Vending Machine Relations Officer",
+      "look": {
+        "head": "prankster",
+        "skin": "rosy",
+        "build": "tall",
+        "outfit": "floral",
+        "hair": "#1e1a2c",
+        "hairHighlight": "#3ff0ff",
+        "eye": "#5a3a8a",
+        "shirt": "#2a2350",
+        "accent": "#3ff0ff",
+        "accent2": "#ff4fd8",
+        "pants": "#7a6fb0",
+        "shoes": "#e8e4f4",
+        "shortSleeves": true
+      },
+      "lines": [
+        "The vending machine is in a mood. Praise its lights before you buy.",
+        "It gave me two crisps for one. I think we are friends now.",
+        "Never say 'just a snack' near it. It takes that very personally."
+      ]
+    },
+    {
+      "name": "Ottilie Brannock",
+      "role": "Wellness Compliance Officer",
+      "look": {
+        "head": "knitting",
+        "skin": "brown",
+        "build": "small",
+        "outfit": "cardigan",
+        "hair": "#c6a0ff",
+        "hairHighlight": "#ead8ff",
+        "eye": "#2a1a10",
+        "shirt": "#f4fbe0",
+        "outer": "#2fd0a0",
+        "collar": "#ffffff",
+        "pants": "#5a3a78",
+        "legs": "#2a2244",
+        "shoes": "#ff4fd8",
+        "skirt": true
+      },
+      "lines": [
+        "Reminder: rainwater does not count, however convenient.",
+        "Your step count is low. The lift has reported you.",
+        "The new memo says smile more. Please log each smile in the portal."
+      ]
+    }
+  ],
+  "temps": [
+    {
+      "name": "Zed Ambrose",
+      "look": {
+        "head": "short",
+        "skin": "olive",
+        "build": "normal",
+        "outfit": "shirtTie",
+        "hair": "#2a1e18",
+        "shirt": "#e8eef8",
+        "tie": "#ff2fa8",
+        "collar": "#ffffff",
+        "pants": "#4c5470",
+        "shoes": "#1a1824"
+      }
+    },
+    {
+      "name": "Lumi Hartigan",
+      "look": {
+        "head": "ponytail",
+        "skin": "fair",
+        "build": "small",
+        "outfit": "plain",
+        "hair": "#3ff0ff",
+        "bow": "#ff4fd8",
+        "shirt": "#ff7ae0",
+        "pants": "#3a3458",
+        "shoes": "#f2f0f8"
+      }
+    },
+    {
+      "name": "Dov Petrakis",
+      "look": {
+        "head": "spiky",
+        "skin": "warm",
+        "build": "big",
+        "outfit": "polo",
+        "hair": "#d8e03a",
+        "shirt": "#3a4cc8",
+        "collar": "#d8e03a",
+        "accent": "#d8e03a",
+        "pants": "#6a6f99",
+        "shoes": "#1c1826",
+        "shortSleeves": true
+      }
+    },
+    {
+      "name": "Wren Sokolova",
+      "look": {
+        "head": "bob",
+        "skin": "deep",
+        "build": "normal",
+        "outfit": "blouse",
+        "hair": "#ff4a6a",
+        "shirt": "#e8f6ff",
+        "collar": "#3ff0ff",
+        "pants": "#2e3e66",
+        "shoes": "#ff4a6a"
+      }
+    },
+    {
+      "name": "Ash Nakamura-Byrne",
+      "look": {
+        "head": "curly",
+        "skin": "brown",
+        "build": "tall",
+        "outfit": "floral",
+        "hair": "#9a5cff",
+        "shirt": "#14222e",
+        "accent": "#d8e03a",
+        "accent2": "#3ff0ff",
+        "pants": "#5a6078",
+        "shoes": "#e8e4f4"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1417 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "Spaceship",
+  "description": "A fully themed starship crew where everyone talks ship, from the bridge to the galley, in cool deck greys and teal under a field of stars.",
+  "company": "Larkspur Orbital",
+  "branch": "Deck Nine Branch",
+  "lineMode": "replace",
+  "titles": {
+    "manager": "Captain",
+    "receptionist": "Comms Officer",
+    "cleaner": "Deck Hand",
+    "temp": "Cadet",
+    "vendor": "Galley Cart",
+    "itSupport": "Ship Systems"
+  },
+  "manager": {
+    "name": "Imogen Varga",
+    "look": {
+      "head": "boss",
+      "build": "tall",
+      "outfit": "suit",
+      "skin": "brown",
+      "hair": "#1e1512",
+      "eye": "#3b2a1e",
+      "shirt": "#2f9ea3",
+      "outer": "#e6eaed",
+      "sleeve": "#e6eaed",
+      "tie": "#c23b33",
+      "collar": "#e6eaed",
+      "pants": "#e6eaed",
+      "shoes": "#1c2128",
+      "beltColor": "#c8922f",
+      "belt": true
+    }
+  },
+  "receptionist": {
+    "name": "Wendell Harrow",
+    "look": {
+      "head": "headset",
+      "build": "normal",
+      "outfit": "blouse",
+      "skin": "rosy",
+      "hair": "#6b3e26",
+      "eye": "#2f5a6a",
+      "shirt": "#d6962c",
+      "collar": "#2b3340",
+      "accent": "#2b3340",
+      "pants": "#2b3340",
+      "shoes": "#1c2128",
+      "shortSleeves": true
+    }
+  },
+  "cleaner": {
+    "name": "Marisol Treharne",
+    "look": {
+      "skin": "deep",
+      "hair": "#1e1512",
+      "shirt": "#e6eaed",
+      "outer": "#2f9ea3",
+      "sleeve": "#e6eaed",
+      "collar": "#e6eaed",
+      "accent": "#e6eaed",
+      "accent2": "#1d4f5c",
+      "pants": "#2b3340",
+      "shoes": "#1c2128",
+      "bow": "#d6962c"
+    }
+  },
+  "vendor": {
+    "name": "Bettina Crumb",
+    "look": {
+      "skin": "rosy",
+      "hair": "#8a5a3a",
+      "shirt": "#c23b33",
+      "outer": "#e6eaed",
+      "sleeve": "#c23b33",
+      "accent": "#c5ced6",
+      "pants": "#e6eaed",
+      "legs": "#2b3340",
+      "shoes": "#1c2128",
+      "bow": "#e6eaed"
+    }
+  },
+  "itFixer": {
+    "name": "Rufus Ackerley",
+    "look": {
+      "hair": "#3a2a20",
+      "shirt": "#2b3340",
+      "collar": "#36b3bf",
+      "accent": "#d6962c",
+      "pants": "#52627a",
+      "shoes": "#c5ced6"
+    }
+  },
+  "itCritic": {
+    "name": "Ambrose Tindall",
+    "look": {
+      "hair": "#c9a25a",
+      "shirt": "#e6eaed",
+      "tie": "#2f9ea3",
+      "collar": "#ffffff",
+      "accent": "#d6962c",
+      "accent2": "#c23b33",
+      "pants": "#687a90",
+      "shoes": "#1c2128",
+      "glasses": "#2b7f87",
+      "beltColor": "#1c2128"
+    }
+  },
+  "colors": {
+    "wall": "#c5ced6",
+    "trim": "#36b3bf",
+    "ceiling": "#34404d",
+    "carpet": "#52627a",
+    "lobbyFloor": "#a9b3bd",
+    "kitchenFloor": "#d3dbdf",
+    "conferenceFloor": "#3c5a7a",
+    "managerFloor": "#687a90",
+    "annexFloor": "#5c6253",
+    "rug": "#1d4f5c",
+    "rugBorder": "#5cc8d0",
+    "deskChairs": "#2b8a92",
+    "kitchenChairs": "#c4473d",
+    "managerChair": "#c8922f",
+    "signPlate": "#12303a",
+    "signText": "#e8fbfd",
+    "signBranch": "#6fd3da",
+    "desks": "#dde4ea",
+    "deskPanels": "#7a8998",
+    "wood": "#4e6070",
+    "darkWood": "#1f2833",
+    "metal": "#8a98a6",
+    "computers": "#e8edf0",
+    "screens": "#0d1820",
+    "plants": "#2fbfa6",
+    "plantPots": "#3a4654",
+    "glass": "#a6e2e8",
+    "glassFrames": "#5c6a78",
+    "blinds": "#d5dce2",
+    "windowFrames": "#4a5664",
+    "sky": "#0b0e1a",
+    "skyline": "#222c44",
+    "ceilingLights": "#e6fbff",
+    "outside": "#05070d"
+  },
+  "lines": {
+    "bossVisit": [
+      "Morning, crew. Best orbit yet, please.",
+      "My door is always open. Mind the pressure seal.",
+      "Figures before we pass the moon again, please.",
+      "Just a quick sync. Ship quick, so about an hour.",
+      "Splendid. Take the orbit off. Not literally.",
+      "Briefing room. The chairs are bolted down.",
+      "Is that a star chart or a spreadsheet?",
+      "Lovely telemetry. Which way is up?",
+      "Keep those thrusters happy!",
+      "Report! Briefly. Very briefly.",
+      "That console has never looked so busy.",
+      "Excellent. Log it, then log that you logged it.",
+      "Are we still going the right way? Good.",
+      "Whatever that is, do more of it.",
+      "Superb. I'll tell ground it was my idea.",
+      "Smashing progress. Don't smash anything.",
+      "Deadlines look small from here. They aren't.",
+      "Is this the bit where we go faster?",
+      "Good. Very good. Is it meant to beep?",
+      "Keep it up. Up is the way we're facing.",
+      "Next sunrise in five minutes. Impress me.",
+      "That graph goes all the way to the stars.",
+      "Carry on. I'm only the captain.",
+      "Brilliant. Done by the next orbit?",
+      "Lovely. Double-check the airlock, though.",
+      "Don't mind me. Just inspecting the inspecting.",
+      "Mission goals! Love them. What are ours?",
+      "Morale looks high. Is the gravity on?",
+      "Fine work. The vacuum outside is jealous.",
+      "Fine flying. Well, fine typing."
+    ],
+    "bossSnack": [
+      "Freeze-dried cake has no calories. Science.",
+      "Low gravity. It barely weighs anything.",
+      "I'm the captain. This is a ration.",
+      "Space burns calories. Probably.",
+      "One for me, one for crew morale.",
+      "It's for the long-haul stretch. Which is now.",
+      "Pudding in a pouch counts as water.",
+      "A captain must test the supplies. Thoroughly.",
+      "Two flapjacks. In case of meteor.",
+      "The bridge runs on biscuits. Ask anyone.",
+      "It's in a tube. Tubes are healthy.",
+      "Emergency rations. The emergency is lunch.",
+      "Course corrections need custard."
+    ],
+    "bossSnoop": [
+      "Don't press the red one.",
+      "Carry on. Pretend I'm a porthole.",
+      "No mistakes, please. Space is unforgiving."
+    ],
+    "bossSulkStart": [
+      "Take the ready room. I'll just float about.",
+      "Mind the chair. It swivels to starboard.",
+      "The view's lovely. You'll hate it.",
+      "Fine. Relieved of command. For a bit.",
+      "Don't touch the big red button. Or do.",
+      "Water the fern. It came from home.",
+      "Enjoy my porthole. It's mine, really.",
+      "Very well. I shall command the corridor.",
+      "Wipe your boots. That rug is vacuum-sealed.",
+      "The intercom button sticks. Good luck.",
+      "Take it. Captains share. Apparently."
+    ],
+    "bossSulk": [
+      "It's not even the best porthole.",
+      "This corridor has no captain's chair.",
+      "The galley understands me.",
+      "Exiled. On my own ship.",
+      "I'll just stand here. Orbiting.",
+      "Even the airlock gets more respect.",
+      "Nobody salutes a captain in a corridor.",
+      "I could mutiny. Against myself?",
+      "This tea tastes of exile and recycler.",
+      "I'll count stars. One. Two. Plenty.",
+      "My chair is probably spinning without me."
+    ],
+    "bossSulkEnd": [
+      "Right. Shift's over. Out of my chair.",
+      "Command restored. Thank you, that'll be all.",
+      "The fern missed me. I can tell.",
+      "Back on the bridge. Well, the room.",
+      "Ah. The chair still knows my shape.",
+      "Ready room, I'm home.",
+      "Captain on deck! It's me. I'm the captain.",
+      "Lovely. Nobody touched the button. Did they?",
+      "Normal service resumes. Mind the door.",
+      "Thank you for your service. Please leave."
+    ],
+    "deskBumped": [
+      "Reassigned, apparently.",
+      "I had the console set just right.",
+      "Off to the back of the ship, then.",
+      "I'd only just warmed the seat. In space!",
+      "Bumped by a higher rank. Classic.",
+      "Moving decks. Again.",
+      "Who outranks me? Oh. Everyone.",
+      "I'll take my mug. It's magnetic. It's mine.",
+      "Fine. Someone else can watch the asteroids.",
+      "Packing my one sock and a star chart.",
+      "There goes my window seat."
+    ],
+    "deskMoveUp": [
+      "Ooh, a console with a view.",
+      "This chair has a seatbelt!",
+      "Promoted to the forward deck.",
+      "I can see the moon from here!",
+      "Shiny buttons. I won't press them. Yet.",
+      "Look at me, right by the bridge.",
+      "I shall try not to gloat in zero g.",
+      "Cup holders! Magnetic ones!",
+      "Upgraded. My console beeps in a major key.",
+      "Front row for the stars. Lovely."
+    ],
+    "chatReplies": [
+      "Copy that.",
+      "Noted. Logged, even.",
+      "Roger. Wait, what?",
+      "Well, it's a big universe.",
+      "Can't argue with physics.",
+      "Most ship thing I've heard all day.",
+      "Say that slower. I'm low on oxygen.",
+      "Bold talk for this altitude.",
+      "I'll put it in the ship's log.",
+      "Same, honestly. Space does that.",
+      "Is that in the regulations?",
+      "That explains the noise from deck six.",
+      "Funny. My console said the same.",
+      "We've all been there. We're all still here.",
+      "Affirmative. Possibly.",
+      "Mm. Very orbital of you.",
+      "Steady. We're a long way from home.",
+      "Tell that to the airlock.",
+      "No argument from me. Or the moon.",
+      "Don't. I'll laugh into my helmet.",
+      "Wise words for a Tuesday in orbit.",
+      "Sounds about right, for out here.",
+      "Received. Mostly understood.",
+      "Filed under 'stars, general'.",
+      "Huh. Never thought of it like that."
+    ],
+    "receptionPhone": [
+      "Larkspur comms desk, go ahead.",
+      "Comms. Go ahead, I'm listening.",
+      "Ground control? You're breaking up. Good.",
+      "A delivery? Dock it round the side.",
+      "Sorry, who's hailing?",
+      "You're through to deck nine. Mind the echo.",
+      "No, we can't pull over.",
+      "Signal's weak. Try standing nearer a star.",
+      "The captain's in a briefing. With a biscuit.",
+      "Wrong ship. Easy mistake out here.",
+      "Please hold. The hold music is the reactor.",
+      "Message received. Slightly scorched.",
+      "A shuttle asking for parking. Again.",
+      "Can I take a message? I'll float it over.",
+      "Hello? Static. Rude static.",
+      "You want the cargo hold. Transferring.",
+      "Ground says hello. Ground always does.",
+      "Solar flare on the line. Call back later.",
+      "Incoming hail! Oh. It's the kettle.",
+      "Is this about the moon parking fine?",
+      "Still in orbit, yes. No, we can't wave.",
+      "Space weather update? Lovely. Go on.",
+      "Hydroponics? It's the seed supplier again.",
+      "Lift engineer. Fourth time this week.",
+      "Spell that slowly, please. There's a lag.",
+      "Your shuttle's late. It sends apologies."
+    ],
+    "receptionGreeting": [
+      "Welcome aboard! Wait for the green light.",
+      "Wipe your boots. Moon dust gets everywhere.",
+      "Badges on the left. Left has the window.",
+      "Inner door first, then outer. Never reversed.",
+      "Welcome to deck nine!",
+      "Fresh crew! Your locker is the one that hums.",
+      "Hello! Pressure's equal. Step on out.",
+      "There you are. Lift took the scenic route?",
+      "Welcome aboard. Mind the gravity step.",
+      "New face! Grab a suit. They're one size.",
+      "Good orbit! Coffee's in the galley.",
+      "Ah, a new crewmate. Mind your head.",
+      "Welcome! Your sleep pod is nearly made."
+    ],
+    "receptionIdle": [
+      "Somebody ordered nine hundred airlock seals.",
+      "The radar blipped. It was a crumb.",
+      "Logbook's up to date. I logged that too.",
+      "Signal: one bar. Mood: two bars.",
+      "Another sunrise. That's eleven today.",
+      "Note to self: stop waving at satellites.",
+      "The dish needs a dust. From outside.",
+      "The lift is doing its countdown again.",
+      "If I lean left, I can see the moon.",
+      "Parcel for hydroponics. It's wriggling.",
+      "Static. Lovely, soothing static.",
+      "Filed the shuttle times under 'optimism'.",
+      "Three hails, two wrong numbers, one comet.",
+      "My headset smells of reactor.",
+      "Three clocks, three time zones, no lunch.",
+      "Visitor log: one moth. How, though?",
+      "Ground sent a smiley face. I'm framing it.",
+      "The intercom crackles when it's happy.",
+      "Docking slot says Tuesday. Which Tuesday?",
+      "Someone's left a helmet on the sofa.",
+      "I could alphabetise the stars. Or not.",
+      "Comms are quiet. Suspiciously quiet.",
+      "Outer door's sealed. Inner door's sulking.",
+      "Is that a comet or a smudge on the glass?",
+      "Ninety-minute days. Eight-hour shifts. Maths."
+    ],
+    "receptionAttending": [
+      "Orders? I'll patch them straight through.",
+      "Comms ready. What are we changing?"
+    ],
+    "cleanerMutters": [
+      "Crumbs in zero g. They get everywhere.",
+      "Moon dust. Always moon dust.",
+      "Off they go. I'll wipe their console, shall I.",
+      "Who floats a teabag into the vent?",
+      "Nose prints on the porthole. Again.",
+      "Bin's full of foil pouches. Again.",
+      "Sticky. Why is the joystick sticky?",
+      "One more airlock to mop. Just the one.",
+      "I polish the hand rails. Nobody notices.",
+      "Spilled soup on the ceiling. Classic.",
+      "Somebody's left a sock in the recycler.",
+      "Galley counter's done. Don't breathe on it.",
+      "That's not dust. That's a small nebula.",
+      "Desk's free. Wipe, polish, salute.",
+      "Gloves on. Bucket on. Standards on.",
+      "The vacuum outside is cleaner than this.",
+      "Ice crystals in the bin. Lovely.",
+      "The scrubbers can't scrub this. I can.",
+      "Every deck, every day. Nine decks.",
+      "Floating hair in the shower. Floating!",
+      "Quiet shift. Just me and the hum.",
+      "Coffee ring on the star chart. Tsk.",
+      "My bucket has a lid now. Lesson learned.",
+      "Mopping in low gravity is just dancing.",
+      "Left their mug. It's growing a garden.",
+      "Tidy console, tidy course. That's my motto."
+    ],
+    "cartCalls": [
+      "Galley cart coming through!",
+      "Soup in a tube! Hot soup in a tube!",
+      "Freeze-dried ice cream! Still crunchy!",
+      "Tea? Course you want tea. It's space.",
+      "Hydroponic salad! Grown three decks down!",
+      "Rehydrated stew! Just add water and hope!",
+      "Mind your feet! The cart has no brakes!",
+      "Crater cakes! Lumpy on purpose!",
+      "Fresh bread! Fresh-ish! Bread-ish!",
+      "Hot drinks with lids! Mandatory lids!",
+      "Tomato soup! The tomatoes had names!",
+      "Biscuits that don't crumble! Mostly!",
+      "Last call before the next sunrise!",
+      "Algae crisps! Better than they sound!",
+      "Sandwiches, strapped down for freshness!",
+      "Coffee strong enough to change orbit!",
+      "Pudding cups! Pressure-tested!",
+      "Noodles! They float, you slurp!",
+      "Curry! Clears the sinuses, fogs the visor!",
+      "Fruit cups! Real fruit, from a real planet!",
+      "Ration bars! Beige, tan or oat!",
+      "Cart's parked. Form an orderly orbit.",
+      "Hot chocolate! Floating marshmallows extra!",
+      "Cheese on toast! Toasted by actual sunlight!",
+      "Buy two pouches, get a free straw!",
+      "Nice and warm! Like a reactor, but tasty!"
+    ],
+    "itFix": [
+      "Right. Let's vent it and repressurise.",
+      "Stand back. I'm power-cycling it."
+    ],
+    "itVerdicts": [
+      "There. Back online.",
+      "It was the coupling. It's always the coupling.",
+      "Rerouted the power. Don't ask where from.",
+      "Systems nominal. Mostly nominal.",
+      "Fixed. Please never hail us again.",
+      "Ticket closed. Sealed, like an airlock.",
+      "Gave it a kick. Ship-standard procedure.",
+      "Cleared the buffer. Whatever that is.",
+      "That'll hold till the next asteroid.",
+      "Dust in the vents. Mostly space dust.",
+      "Back up. I'm logging that as heroism.",
+      "Working. I'm off to stare at a bulkhead.",
+      "Done. Someone tell the captain I'm brilliant."
+    ],
+    "itGiveUps": [
+      "Gone? Fine. I'll leave it rebooting.",
+      "Left mid-reboot. Bold, out here.",
+      "And they drift off. Typical.",
+      "No crew, no problem.",
+      "Talking to an empty chair. In space.",
+      "Ticket says 'crew member unavailable'.",
+      "Off to the galley, I bet. Smart.",
+      "Right. I was never on this deck.",
+      "Can't fix what's left the room.",
+      "Abandoned, like an old probe. Lovely."
+    ],
+    "itSneers": [
+      "It wrote the docking checklist as a poem.",
+      "Six em dashes in one flight log. Six.",
+      "It said 'delve'. Into a fuel report.",
+      "It apologised to the reactor.",
+      "Bold text everywhere. Even on the oxygen.",
+      "A summary of the summary of the orbit.",
+      "'Great question!' It was a pressure reading.",
+      "It invented a planet. A whole planet.",
+      "It plotted a course in bullet points.",
+      "Forty lines of code to open one airlock.",
+      "A variable called 'thing2'. In navigation!",
+      "It says it ran the tests. In vacuum? No.",
+      "It wrote a mission statement for a fuse.",
+      "It thanked the airlock. Twice."
+    ],
+    "itComebacks": [
+      "That was my whole flight plan.",
+      "I was mid-orbit. Mentally.",
+      "You rebooted me into the wrong decade.",
+      "I'd nearly plotted the course.",
+      "Where was I? Which deck am I on?",
+      "Those were my best calculations.",
+      "The bullet points were load-bearing.",
+      "I was about to dock that thought.",
+      "I feel lighter. Is the gravity off?",
+      "Hello. Who am I? Who's flying?",
+      "That poem was the checklist.",
+      "Harsh. Like re-entry.",
+      "I shall start again. From launch."
+    ],
+    "itFixerMutters": [
+      "Another day, another bulkhead.",
+      "Nobody ever thanks the systems crew.",
+      "If I walk slowly, I fix fewer things.",
+      "Should have stayed in the server bay.",
+      "I'm not lazy. I'm conserving oxygen.",
+      "Is that a beep? Not my beep.",
+      "Engine room's warm. I miss it.",
+      "Ticket four hundred. On a crew of forty.",
+      "Someone's wiggled a cable. I can feel it.",
+      "Long corridor. Good corridor.",
+      "If it's floating, it's not my department.",
+      "Zero gravity, zero effort. Ideal.",
+      "I could fix the lift. Or I could not."
+    ],
+    "itCriticMutters": [
+      "Fourteen alarms. All amber. Oh dear.",
+      "I counted the rivets. Nine hundred and six.",
+      "Someone microwaved fish. In a sealed hull.",
+      "Is that hiss normal? Please be normal.",
+      "Oxygen reads 'fine'. Fine is vague.",
+      "The airlock log has a typo. I can't rest.",
+      "The stars aren't aligned. I checked.",
+      "The hand rails are sticky. I made a note.",
+      "My crib card has a coffee ring. Devastating.",
+      "Gravity is at ninety-nine per cent. Why?",
+      "Fire drill at three. I've practised twice.",
+      "I double-checked the hatch. Triple, now."
+    ],
+    "itTalkReplies": [
+      "Come again?",
+      "Er. Copy that?",
+      "Is that a ship thing?",
+      "You've lost me. And the signal.",
+      "Right. Okay. Sure.",
+      "I'll need that in writing.",
+      "Was that a question?",
+      "Is this a drill?",
+      "Hm? Sorry, the engines.",
+      "Could you say that slower, in metric?",
+      "That's not how space works. Is it?",
+      "Er. Lovely. Good. Yes.",
+      "Is that on your card?"
+    ],
+    "itFixerTalk": [
+      [
+        "Nice vacuum out there today.",
+        "Very empty. That's how I like it."
+      ],
+      [
+        "Talking to people. Bit much, isn't it?",
+        "Right. That's my quota till next orbit."
+      ],
+      [
+        "Cold on deck three. Good for cables.",
+        "Every deck is good for cables."
+      ],
+      [
+        "Ever just stare into the void?",
+        "It doesn't stare back. Unlike the captain."
+      ],
+      [
+        "The lift and I aren't speaking.",
+        "It started it. With the countdown."
+      ],
+      [
+        "Fancy a look at the reactor? No? Fair.",
+        "It's just a big kettle. A very big kettle."
+      ],
+      [
+        "Me? I'm on a break. Since launch.",
+        "Long launch. Very long launch."
+      ],
+      [
+        "Did you hear the hull creak earlier?",
+        "That was me. Bad knees."
+      ],
+      [
+        "Asteroid belt next week. Should be fun.",
+        "Fun for the rocks, anyway."
+      ],
+      [
+        "Server bay's the comfiest room aboard.",
+        "Don't tell anyone. I've got a hammock."
+      ],
+      [
+        "Ever wonder what's beyond the stars?",
+        "More cables, probably."
+      ]
+    ],
+    "itCriticTalk": [
+      [
+        "Solar wind's backing westerly, I hear.",
+        "No west in space. The card says there is."
+      ],
+      [
+        "Lovely orbit we're having. For an ellipse.",
+        "That was a compliment. To the ellipse."
+      ],
+      [
+        "How about those comets? Very... tailed.",
+        "The card says 'tailed'. I said it."
+      ],
+      [
+        "Shocking state of the asteroid league.",
+        "I do not know what an asteroid league is."
+      ],
+      [
+        "Has the moon had a haircut?",
+        "Card says it's a joke. I laughed early."
+      ],
+      [
+        "Big gravity this week. Heavy stuff.",
+        "That was the pun. The card has one pun."
+      ],
+      [
+        "How's the family? Your crew family?",
+        "Card says crew are family. Alarming."
+      ],
+      [
+        "Docking season, eh? Rough on the knees.",
+        "I have never docked. I have read about it."
+      ],
+      [
+        "Did you catch the meteor shower? Damp?",
+        "Meteors are not damp. I see that now."
+      ],
+      [
+        "The nebula's looking peaky this season.",
+        "Peaky. Who wrote this card?"
+      ],
+      [
+        "What's your sign? Mine is the hatch.",
+        "The hatch symbol. It's a very good sign."
+      ]
+    ]
+  },
+  "smallTalk": [
+    [
+      "Is the lift to deck four working today?",
+      "It works. It just insists on a countdown."
+    ],
+    [
+      "Has anyone seen my magnetic mug?",
+      "It's stuck to the fridge. They've made friends."
+    ],
+    [
+      "Who keeps setting the corridor lights to sunset?",
+      "Facilities. Says it lifts morale eight per cent."
+    ],
+    [
+      "How was shore leave?",
+      "Lovely. Rain is wild. Water just falls down."
+    ],
+    [
+      "The recycler made the coffee taste of carrots.",
+      "Then it's a carrot day. Lean into it."
+    ],
+    [
+      "Coming to the docking drill this afternoon?",
+      "Only if there are biscuits at the muster point."
+    ],
+    [
+      "What's that humming noise?",
+      "Engines or the fridge. They've been competing."
+    ],
+    [
+      "Fancy a walk round the ring at lunch?",
+      "Go on. It's one lap, but it's a long one."
+    ],
+    [
+      "Sleep well?",
+      "The pod was fine. My feet drifted off first."
+    ],
+    [
+      "Is gravity a bit strong today?",
+      "No. You had two puddings."
+    ],
+    [
+      "Which shift are you on?",
+      "The one where the sun rises sixteen times."
+    ],
+    [
+      "Did you see the ocean go by?",
+      "Twice. I waved both times."
+    ],
+    [
+      "Anyone for a game of cards?",
+      "Last time the deck floated into the vent."
+    ],
+    [
+      "Hydroponics smells amazing today.",
+      "They've grown mint. Everyone's very excited."
+    ],
+    [
+      "Who left the airlock on manual?",
+      "Nobody. That's what worries me."
+    ],
+    [
+      "How's the view from your bunk?",
+      "A wall. A very nice wall."
+    ],
+    [
+      "Space weather forecast?",
+      "Sunny, with a chance of solar flare."
+    ],
+    [
+      "Is the cargo hold always this cold?",
+      "Only on days ending in y."
+    ],
+    [
+      "Have you done your suit check?",
+      "My suit checked me. I failed."
+    ],
+    [
+      "I think I left my toothbrush floating.",
+      "Check the vent. It all ends up there."
+    ],
+    [
+      "Fire drill at two?",
+      "Two ship time or two home time?"
+    ],
+    [
+      "Did the shower work for you?",
+      "It's less a shower and more a cloud."
+    ],
+    [
+      "I miss proper bread.",
+      "Bread makes crumbs. Crumbs are banned."
+    ],
+    [
+      "Where does our water come from?",
+      "Don't ask. Just drink it confidently."
+    ],
+    [
+      "Heard the meteor shower was lovely.",
+      "Lovely from inside. Noisy on the hull."
+    ],
+    [
+      "Anyone know the time back home?",
+      "Tea time. It's always tea time somewhere."
+    ],
+    [
+      "Why is there a sock on the ceiling?",
+      "Laundry day in zero g. Look up more."
+    ],
+    [
+      "The exercise bike is free.",
+      "It's been free since launch. Nobody wants it."
+    ],
+    [
+      "Ground sent me a birthday card.",
+      "Lovely. Did it arrive before the birthday?"
+    ],
+    [
+      "Is coffee rationed now?",
+      "No. Just the queue for it."
+    ],
+    [
+      "What's in the unlabelled crate?",
+      "Spare filters. And forty jars of jam."
+    ],
+    [
+      "Did you hear that clunk?",
+      "Docking clamp. Or the kettle. Same noise."
+    ],
+    [
+      "Who's on hull inspection today?",
+      "Me. I've packed sandwiches and courage."
+    ],
+    [
+      "How do you sleep with all these sunrises?",
+      "Eye mask. Two eye masks."
+    ],
+    [
+      "The salt comes as a liquid here.",
+      "So does the pepper. Pepper drops are wild."
+    ],
+    [
+      "Can you see home from the observation deck?",
+      "On a clear day. It's always a clear day."
+    ],
+    [
+      "Quiz night is tomorrow.",
+      "Last time every answer was 'oxygen'."
+    ],
+    [
+      "Is there any post today?",
+      "One parcel. It's been in orbit for weeks."
+    ],
+    [
+      "My hair's gone all floaty.",
+      "Very fashionable on deck six."
+    ],
+    [
+      "Did you pass your spacewalk test?",
+      "I passed. My lunch didn't."
+    ],
+    [
+      "Why does the galley smell of toast?",
+      "The toaster's back. Long story. Small fire."
+    ],
+    [
+      "Who's been talking to the plants?",
+      "Everyone. Best listeners aboard."
+    ],
+    [
+      "Is that satellite still following us?",
+      "I wave at it every morning. It's polite."
+    ],
+    [
+      "The oxygen tastes fresher today.",
+      "Filter change. It tastes of new filter."
+    ],
+    [
+      "How's your sleep pod?",
+      "Snug. Like a sock with opinions."
+    ],
+    [
+      "Have you seen the comet?",
+      "Seen it, named it, been told off for naming it."
+    ],
+    [
+      "We're slowing down, aren't we?",
+      "Only for lunch. Even ships need lunch."
+    ],
+    [
+      "My boots keep sticking to the floor.",
+      "Magnetic soles. Or the galley spill."
+    ],
+    [
+      "Film night is a space film again.",
+      "Bold choice. Very relatable."
+    ],
+    [
+      "Did the captain say anything about leave?",
+      "Something about 'next orbit'. Every orbit."
+    ],
+    [
+      "What's for dinner?",
+      "Something beige, so probably stew."
+    ],
+    [
+      "Why is the corridor so long?",
+      "It's a ring. It just keeps going."
+    ],
+    [
+      "Any news from home?",
+      "It rained. Everyone's very upset about it."
+    ],
+    [
+      "Somebody's been sleeping in my pod.",
+      "That'll be the lab hamster. It roams."
+    ],
+    [
+      "The lab hamster escaped again.",
+      "It's in the ceiling. It runs the ceiling now."
+    ],
+    [
+      "How long till we dock?",
+      "Three sunrises and a sandwich."
+    ],
+    [
+      "My cress grew sideways.",
+      "No gravity, no manners."
+    ],
+    [
+      "Is it cold, or is that the vacuum?",
+      "Thermostat. Deck nine runs chilly."
+    ],
+    [
+      "I dreamed I was on a planet.",
+      "Was it nice? Did things fall down?"
+    ],
+    [
+      "Who rearranged the star charts?",
+      "Navigation. Says the stars moved first."
+    ],
+    [
+      "Fancy a game of floating darts?",
+      "Not after the incident. The vent has two."
+    ],
+    [
+      "The engines sound happy today.",
+      "Someone told them about the long weekend."
+    ],
+    [
+      "Do you ever miss weather?",
+      "I miss puddles. Never thought I'd say that."
+    ],
+    [
+      "What's the strangest thing in cargo?",
+      "A piano. Nobody admits to ordering it."
+    ],
+    [
+      "Is that rain on the window?",
+      "Ice crystals. Very glamorous ice crystals."
+    ],
+    [
+      "Have you tried the algae crisps?",
+      "Once. They tried me back."
+    ],
+    [
+      "Big asteroid on the scope earlier.",
+      "I waved. It didn't wave back. Rocks."
+    ],
+    [
+      "Who keeps adjusting the gravity?",
+      "The gravity tech. One per cent at a time."
+    ],
+    [
+      "Where's the best seat in the galley?",
+      "By the porthole. Bring a jumper."
+    ],
+    [
+      "Why do we have fire drills in space?",
+      "Because somebody brought a toaster."
+    ],
+    [
+      "The comms dish is pointing the wrong way.",
+      "It's sulking. It wanted the night shift."
+    ],
+    [
+      "Is this lunch or breakfast?",
+      "Sunrise says breakfast. My stomach says both."
+    ],
+    [
+      "Seen the aurora from up here?",
+      "Like curtains. Big green curtains."
+    ],
+    [
+      "I've lost my left glove.",
+      "Lost property has a system. It's a box."
+    ],
+    [
+      "Does anyone know how the lift works?",
+      "It doesn't work. It negotiates."
+    ],
+    [
+      "The new crew say the stars look fake.",
+      "They're real. They're just very tidy."
+    ],
+    [
+      "I fixed the porthole squeak.",
+      "Now the bulkhead squeaks. Out of jealousy."
+    ],
+    [
+      "Who's turned the hum up?",
+      "Nobody. That's the reactor on a good day."
+    ],
+    [
+      "Tea or coffee?",
+      "Whichever the recycler calls tea today."
+    ],
+    [
+      "Can we open a window?",
+      "Technically, once."
+    ],
+    [
+      "How's the backlog?",
+      "Strapped down and growing."
+    ],
+    [
+      "Is it Monday?",
+      "Calendar says day four hundred. So, yes."
+    ],
+    [
+      "I got a letter from my gran.",
+      "By shuttle? That's dedication."
+    ],
+    [
+      "The spacesuits smell of feet.",
+      "Feet and ambition."
+    ],
+    [
+      "What do you do on your rest day?",
+      "Float. Lie down. Float again."
+    ],
+    [
+      "Did you watch the launch replay?",
+      "I'm in it. I'm the one screaming."
+    ],
+    [
+      "Is the moon closer than yesterday?",
+      "We're closer. The moon stays put."
+    ],
+    [
+      "My mug won't stay put.",
+      "Strap it down. We strap everything down."
+    ],
+    [
+      "How cold is it outside?",
+      "Very. Don't check personally."
+    ],
+    [
+      "Anyone on the observation deck?",
+      "Two people and a very long sigh."
+    ],
+    [
+      "Is the soup meant to float?",
+      "Only if you let go of the lid."
+    ],
+    [
+      "We're passing the dark side soon.",
+      "It's not dark. It's moody."
+    ],
+    [
+      "The shuttle times changed again.",
+      "Shuttles are like comets. Late and shiny."
+    ],
+    [
+      "Did anyone feed the hydroponic fish?",
+      "They're fed. They're also suspicious."
+    ],
+    [
+      "What's that light out there?",
+      "A satellite. Or the window cleaner's torch."
+    ],
+    [
+      "A year on this ship today.",
+      "Happy launchiversary. Cake's in a tube."
+    ],
+    [
+      "How's the new console?",
+      "Lots of buttons. Three of them do anything."
+    ],
+    [
+      "Why is the corridor tilting?",
+      "It isn't. You've been in the gym."
+    ],
+    [
+      "Seen the captain's new chair?",
+      "It reclines. It's never been upright."
+    ],
+    [
+      "Is it true we're out of chocolate?",
+      "One bar left. It has a guard."
+    ],
+    [
+      "The hull's creaking again.",
+      "It's stretching. Long shift."
+    ],
+    [
+      "Is there a drill today?",
+      "There's always a drill. It's a ship."
+    ],
+    [
+      "Does the airlock ever feel lonely?",
+      "It has two doors. It's never alone."
+    ],
+    [
+      "I keep forgetting which way is down.",
+      "Down is wherever your lunch ends up."
+    ],
+    [
+      "Who designed these chairs?",
+      "Someone who'd never sat down, by the look."
+    ],
+    [
+      "Can you hear the stars?",
+      "No. That's the air scrubbers singing."
+    ],
+    [
+      "Busy on the bridge?",
+      "Lots of buttons. Lots of staring."
+    ],
+    [
+      "How's the cargo manifest?",
+      "Ninety crates. Plus my lunch."
+    ],
+    [
+      "Ever been out on a spacewalk?",
+      "Once. Lovely view. Itchy nose the whole time."
+    ],
+    [
+      "What do the cadets do all day?",
+      "Learn knots. Nobody knows why."
+    ],
+    [
+      "My pod alarm went off at four.",
+      "Four ship time is the best four."
+    ],
+    [
+      "Are we nearly there?",
+      "We're in orbit. We're always nearly there."
+    ],
+    [
+      "Is that new paint on deck six?",
+      "Hull grey. There were eleven greys."
+    ],
+    [
+      "Did the delivery drone come?",
+      "It came. It beeped. It left a note."
+    ],
+    [
+      "Why is everyone whispering?",
+      "Someone said 'hull breach' as a joke."
+    ],
+    [
+      "The galley's out of forks.",
+      "Spoons in space. Spoons for everything."
+    ],
+    [
+      "Fancy a jog round the ring?",
+      "I'll walk it. Backwards, for variety."
+    ],
+    [
+      "Did you hear about the micrometeorite?",
+      "Tiny thing. Big dent. Bigger paperwork."
+    ],
+    [
+      "Are the sleep pods getting smaller?",
+      "No. We're getting fond of pudding."
+    ],
+    [
+      "Is it sunrise again?",
+      "Seventh today. I've stopped saying morning."
+    ],
+    [
+      "Who's on comms tonight?",
+      "Night crew. And a very chatty satellite."
+    ],
+    [
+      "How do you water plants in zero g?",
+      "Gently. With a sponge and some hope."
+    ],
+    [
+      "Got a favourite constellation?",
+      "The one shaped like a sandwich."
+    ],
+    [
+      "I can't find the cargo bay.",
+      "Follow the cold. And the crates."
+    ],
+    [
+      "Ever think about how big space is?",
+      "Only when I drop a pen."
+    ],
+    [
+      "The grow lights are purple again.",
+      "The lettuces like it. It's their disco."
+    ],
+    [
+      "Did the captain say 'all hands'?",
+      "No, 'all snacks'. Different meeting."
+    ],
+    [
+      "What happens if the gravity fails?",
+      "Lunch gets very exciting."
+    ],
+    [
+      "Why does my console say 'nominal'?",
+      "It's an optimist. Like the rest of us."
+    ]
+  ],
+  "staff": [
+    {
+      "name": "Priya Castellan",
+      "role": "Head of Hydroponics",
+      "look": {
+        "head": "knitting",
+        "build": "normal",
+        "outfit": "cardigan",
+        "skin": "olive",
+        "hair": "#3b2418",
+        "hairHighlight": "#5a3a26",
+        "eye": "#3d5a2a",
+        "shirt": "#e6eaed",
+        "outer": "#2f9ea3",
+        "sleeve": "#2f9ea3",
+        "pants": "#2b3340",
+        "shoes": "#1c2128"
+      },
+      "lines": [
+        "Lettuces are thriving. I read them the news.",
+        "Please stop naming the tomatoes.",
+        "The basil leans to the porthole. It misses sun."
+      ]
+    },
+    {
+      "name": "Tomasz Wrona",
+      "role": "Galley Kettle Officer",
+      "look": {
+        "head": "cat",
+        "build": "small",
+        "outfit": "polo",
+        "skin": "fair",
+        "hair": "#c9a25a",
+        "eye": "#3a5f86",
+        "shirt": "#e6eaed",
+        "collar": "#2f9ea3",
+        "accent": "#2f9ea3",
+        "accent2": "#e6eaed",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "bow": "#d6962c",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Tea round in five. Two hands on the mug.",
+        "A loose spoon was floating. It's in custody.",
+        "Kettle: four minutes. Queue: twelve."
+      ]
+    },
+    {
+      "name": "Devan Achari",
+      "role": "Comms and Help Desk",
+      "look": {
+        "head": "spiky",
+        "build": "tall",
+        "outfit": "polo",
+        "skin": "warm",
+        "hair": "#20181a",
+        "eye": "#3b2a1e",
+        "shirt": "#d6962c",
+        "collar": "#2b3340",
+        "accent": "#2b3340",
+        "accent2": "#d6962c",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "glasses": "#1c2128",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Undock it, redock it. Works nine times in ten.",
+        "Signal drops behind the moon. That's physics.",
+        "Label your cables. Space is big enough already."
+      ]
+    },
+    {
+      "name": "Nadia Oyelaran",
+      "role": "Orbit Timetable Coordinator",
+      "look": {
+        "head": "assistant",
+        "build": "normal",
+        "outfit": "shirtTie",
+        "skin": "deep",
+        "hair": "#16110e",
+        "eye": "#2a1c14",
+        "shirt": "#e6eaed",
+        "tie": "#2f9ea3",
+        "collar": "#e6eaed",
+        "pants": "#2b3340",
+        "legs": "#2b3340",
+        "shoes": "#1c2128",
+        "glasses": "#2b7f87",
+        "skirt": true
+      },
+      "lines": [
+        "We pass the ocean at ten. Pick your window.",
+        "Sunrise every ninety minutes. Lunch at one.",
+        "The timetable is final, unless the planet moves."
+      ]
+    },
+    {
+      "name": "Augusto Pereira",
+      "role": "Artificial Gravity Technician",
+      "look": {
+        "head": "crossword",
+        "build": "big",
+        "outfit": "vest",
+        "skin": "rosy",
+        "hair": "#8a8f96",
+        "hairHighlight": "#b4b9bf",
+        "eye": "#2f4a66",
+        "shirt": "#e6eaed",
+        "outer": "#d6962c",
+        "tie": "#2b3340",
+        "accent": "#e6eaed",
+        "accent2": "#2b3340",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "glasses": "#1c2128",
+        "facialHair": "#8a8f96"
+      },
+      "lines": [
+        "Gravity is set to one. Feel light? It's Friday.",
+        "Stop testing the gravity by jumping. It works.",
+        "Gravity down two per cent? Biscuits noticed."
+      ]
+    },
+    {
+      "name": "Bram Okafor",
+      "role": "Cargo Hold Quartermaster",
+      "look": {
+        "head": "hr",
+        "build": "big",
+        "outfit": "buttonCardigan",
+        "skin": "brown",
+        "hair": "#1a1414",
+        "eye": "#2a1c14",
+        "shirt": "#e6eaed",
+        "outer": "#d6962c",
+        "sleeve": "#d6962c",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "facialHair": "#1a1414",
+        "beltColor": "#1c2128",
+        "belt": true
+      },
+      "lines": [
+        "The hold is strapped down. Even my lunch.",
+        "Borrowed a crate? Sign the form.",
+        "Stock take Thursday. Unhide the snacks."
+      ]
+    },
+    {
+      "name": "Yuki Ferrand",
+      "role": "Spacesuit Fitting and Lost Property",
+      "look": {
+        "head": "curly",
+        "build": "small",
+        "outfit": "blouse",
+        "skin": "warm",
+        "hair": "#a8452c",
+        "eye": "#3d5a2a",
+        "shirt": "#e6eaed",
+        "collar": "#2f9ea3",
+        "accent": "#2f9ea3",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "beltColor": "#2f9ea3",
+        "belt": true
+      },
+      "lines": [
+        "This suit fits like a dream. A duvet dream.",
+        "Lost property: three gloves and a goldfish.",
+        "Breathe in. Zip's done. You may breathe out."
+      ]
+    },
+    {
+      "name": "Callum Navarro",
+      "role": "Exterior Window Cleaner",
+      "look": {
+        "head": "prankster",
+        "build": "normal",
+        "outfit": "plain",
+        "skin": "olive",
+        "hair": "#4a2e1c",
+        "hairHighlight": "#6b4a30",
+        "eye": "#3b2a1e",
+        "shirt": "#d6962c",
+        "collar": "#2b3340",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "beltColor": "#c23b33",
+        "belt": true
+      },
+      "lines": [
+        "Best view on the ship, and I keep it clean.",
+        "Smudged stars are not my fault.",
+        "I wave at every shuttle. Half wave back."
+      ]
+    }
+  ],
+  "temps": [
+    {
+      "name": "Ottilie Brandt",
+      "look": {
+        "head": "ponytail",
+        "build": "normal",
+        "outfit": "polo",
+        "skin": "fair",
+        "hair": "#d9b77a",
+        "shirt": "#2f9ea3",
+        "collar": "#e6eaed",
+        "accent": "#e6eaed",
+        "accent2": "#2f9ea3",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "bow": "#2f9ea3",
+        "shortSleeves": true
+      }
+    },
+    {
+      "name": "Kofi Mensah-Lund",
+      "look": {
+        "head": "short",
+        "build": "tall",
+        "outfit": "shirtTie",
+        "skin": "deep",
+        "hair": "#16110e",
+        "shirt": "#e6eaed",
+        "tie": "#d6962c",
+        "collar": "#e6eaed",
+        "pants": "#2b3340",
+        "shoes": "#1c2128"
+      }
+    },
+    {
+      "name": "Lucia Brennan",
+      "look": {
+        "head": "bob",
+        "build": "small",
+        "outfit": "plain",
+        "skin": "olive",
+        "hair": "#2a1c14",
+        "shirt": "#d6962c",
+        "collar": "#2b3340",
+        "pants": "#2b3340",
+        "shoes": "#1c2128"
+      }
+    },
+    {
+      "name": "Arjun Pell",
+      "look": {
+        "head": "chili",
+        "build": "big",
+        "outfit": "openCardigan",
+        "skin": "brown",
+        "hair": "#20181a",
+        "shirt": "#e6eaed",
+        "outer": "#2f9ea3",
+        "sleeve": "#2f9ea3",
+        "collar": "#e6eaed",
+        "pants": "#2b3340",
+        "shoes": "#1c2128"
+      }
+    },
+    {
+      "name": "Maren Solberg",
+      "look": {
+        "head": "receptionist",
+        "build": "normal",
+        "outfit": "blouse",
+        "skin": "rosy",
+        "hair": "#b0703a",
+        "shirt": "#e6eaed",
+        "collar": "#d6962c",
+        "accent": "#d6962c",
+        "pants": "#2b3340",
+        "shoes": "#1c2128",
+        "glasses": "#2b7f87"
+      }
+    }
+  ]
+}

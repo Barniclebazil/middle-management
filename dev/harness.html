@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle Management harness</title>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #1b1b1f; }
+  canvas#office { display: block; width: 100vw; height: 100vh; }
+  /* &strip=: the page in a fixed-size frame, as in a panel moved to the top of the window. */
+  .strip-frame { position: absolute; left: 0; top: 0; border: 0; outline: 1px solid #555; transform-origin: 0 0; background: #181818; }
+  .strip-note { position: absolute; left: 8px; bottom: 8px; font: 12px system-ui, sans-serif; color: #9d9d9d; }
+</style>
+</head>
+<body>
+<script>
+// `?strip=1` (2000x400) or `?strip=<w>x<h>`: show the harness in a frame of that size (the frame loads this page without the
+// parameter), scaled down to fit the window. Without it, load the mock host and the webview as usual.
+(function () {
+  var params = new URLSearchParams(location.search);
+  var strip = params.get('strip');
+  // `?mode=view`: the host would render <body data-office-mode="view">; the webview reads it once at boot.
+  if (params.get('mode') === 'view') document.body.dataset.officeMode = 'view';
+  if (!strip) {
+    document.write('<canvas id="office"></canvas><script src="out/harness.js"><\/script><script src="../dist/webview.js"><\/script>');
+    return;
+  }
+  var m = /^(\d{3,4})x(\d{2,4})$/.exec(strip);
+  var w = m ? Number(m[1]) : 2000;
+  var h = m ? Number(m[2]) : 400;
+  params.delete('strip');
+  var frame = document.createElement('iframe');
+  frame.className = 'strip-frame';
+  frame.title = 'Office strip ' + w + ' x ' + h;
+  frame.width = String(w);
+  frame.height = String(h);
+  frame.src = location.pathname + '?' + params.toString();
+  var note = document.createElement('div');
+  note.className = 'strip-note';
+  function fit() {
+    var k = Math.min(1, (window.innerWidth - 16) / w);
+    frame.style.transform = 'translate(8px, 8px) scale(' + k + ')';
+    note.textContent = w + ' x ' + h + (k < 1 ? ' shown at ' + Math.round(k * 100) + '%' : '');
+  }
+  window.addEventListener('resize', fit);
+  document.addEventListener('DOMContentLoaded', function () { document.body.append(frame, note); fit(); });
+})();
+</script>
+</body>
+</html>

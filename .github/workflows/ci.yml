@@ -1,0 +1,40 @@
+name: CI
+
+# Typecheck, test and build on Linux and Windows.
+# The Linux leg also packages the .vsix and uploads it as an artifact.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build:prod
+
+      - name: Package .vsix
+        if: runner.os == 'Linux'
+        run: npx vsce package --no-dependencies
+
+      - name: Upload .vsix
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@v7
+        with:
+          name: vsix
+          path: "*.vsix"

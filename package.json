@@ -1,0 +1,156 @@
+{
+  "name": "middle-management",
+  "displayName": "Middle Management",
+  "description": "Shows your Claude Code agents as staff in a pixel-art paper-company office.",
+  "version": "0.5.0",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/Barniclebazil/middle-management.git" },
+  "homepage": "https://github.com/Barniclebazil/middle-management#readme",
+  "bugs": { "url": "https://github.com/Barniclebazil/middle-management/issues" },
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Visualization", "Other"],
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "claudeOfficeLauncher", "title": "Middle Management", "icon": "media/icon.svg" }
+      ],
+      "panel": [
+        { "id": "claudeOffice", "title": "Middle Management", "icon": "media/icon.svg" }
+      ]
+    },
+    "views": {
+      "claudeOfficeLauncher": [
+        { "id": "claudeOffice.launcher", "name": "Office" }
+      ],
+      "claudeOffice": [
+        { "type": "webview", "id": "claudeOffice.office", "name": "Office" }
+      ]
+    },
+    "viewsWelcome": [
+      { "view": "claudeOffice.launcher", "contents": "[Show the office](command:claudeOffice.show)\n[Open in editor tab](command:claudeOffice.openInEditor)" }
+    ],
+    "commands": [
+      { "command": "claudeOffice.show", "title": "Middle Management: Show Office" },
+      { "command": "claudeOffice.openInEditor", "title": "Middle Management: Open in Editor Tab" },
+      { "command": "claudeOffice.toggleDemo", "title": "Middle Management: Toggle Demo" },
+      { "command": "claudeOffice.newTask", "title": "Middle Management: New Task" },
+      { "command": "claudeOffice.createThemeFile", "title": "Middle Management: Create Theme File" },
+      { "command": "claudeOffice.openFrontDesk", "title": "Middle Management: Open Front Desk" },
+      { "command": "claudeOffice.placeOnTop", "title": "Middle Management: Put the office on top" },
+      { "command": "claudeOffice.toggleMode", "title": "Middle Management: Switch Between View and Manager Mode" },
+      { "command": "claudeOffice.checkForUpdates", "title": "Middle Management: Check for Updates" }
+    ],
+    "jsonValidation": [
+      { "fileMatch": "*.theme.json", "url": "./media/theme.schema.json" }
+    ],
+    "configuration": {
+      "title": "Middle Management",
+      "properties": {
+        "claudeOffice.mode": {
+          "type": "string",
+          "enum": ["manager", "view"],
+          "enumDescriptions": [
+            "The full office: hand out tasks, answer knocks, and use the office tools.",
+            "Just watch your Claude Code agents work. Only the Front desk (theme, staff, colours) can be opened, and the office never starts Claude Code except for the usage meter."
+          ],
+          "default": "manager",
+          "description": "What the office is for. \"view\" only shows your agents walking around."
+        },
+        "claudeOffice.scope": {
+          "type": "string",
+          "enum": ["all", "workspace"],
+          "enumDescriptions": [
+            "Show every live Claude Code session on this machine.",
+            "Show only sessions belonging to the current workspace."
+          ],
+          "default": "workspace",
+          "description": "Which Claude Code sessions appear in the office."
+        },
+        "claudeOffice.companyName": {
+          "type": "string",
+          "default": "Middle Management",
+          "description": "Company name on the office wall sign."
+        },
+        "claudeOffice.branchName": {
+          "type": "string",
+          "default": "Riverside Branch",
+          "description": "Second line of the wall sign. Leave empty for a one-line sign."
+        },
+        "claudeOffice.speechBubbles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show speech bubbles above agents."
+        },
+        "claudeOffice.managerName": {
+          "type": "string",
+          "default": "You",
+          "description": "Name shown for the Regional Manager (you)."
+        },
+        "claudeOffice.claudePath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the claude executable used for tasks given from the office. Leave empty to use the Claude Code extension's bundled `claude`, then `~/.local/bin/claude`, then `claude` on PATH."
+        },
+        "claudeOffice.usageChecks": {
+          "type": "string",
+          "enum": ["auto", "off"],
+          "enumDescriptions": [
+            "Check your plan usage every 5 minutes while the office is visible, by briefly starting Claude Code with no prompt. This uses no tokens.",
+            "Never start Claude Code to check usage. The office still shows whatever Claude Code has already cached, and the limits reported by tasks you start from the office."
+          ],
+          "default": "auto",
+          "description": "How the office gets your Claude plan usage (the usage meter). \"auto\" checks every 5 minutes while the office is visible by briefly starting Claude Code with no prompt, using no tokens. \"off\" never does."
+        },
+        "claudeOffice.updateChecks": {
+          "type": "string",
+          "enum": ["auto", "off"],
+          "enumDescriptions": [
+            "Once a day the office asks GitHub whether a newer Middle Management release is out and, if so, shows a memo in the office. It sends no data about you or your projects.",
+            "No automatic checks. You can still check from the Front desk's About tab or with the command \"Middle Management: Check for Updates\"."
+          ],
+          "default": "auto",
+          "description": "Whether the office looks for new Middle Management releases. \"auto\" asks GitHub once a day whether a newer release is out and, if so, shows a memo in the office; it sends no data about you or your projects. \"off\" never checks by itself; you can still check from the Front desk's About tab or the command \"Middle Management: Check for Updates\"."
+        },
+        "claudeOffice.bossQuotes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Let the Regional Manager say occasional quotes."
+        },
+        "claudeOffice.sendHomeAfter": {
+          "type": "number",
+          "default": 8,
+          "minimum": 0,
+          "maximum": 720,
+          "description": "Send idle workers home after this many hours. They walk out of the office and come back when their session has new activity. 0 never sends anyone home automatically."
+        },
+        "claudeOffice.themeFile": {
+          "type": "string",
+          "default": "",
+          "description": "Path to a theme JSON file that names and styles the staff. Leave empty for the built-in office. Run \"Middle Management: Create Theme File\" to make one."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "build:dev": "node dev/build.mjs",
+    "build:prod": "node esbuild.mjs --production",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p webview/tsconfig.json --noEmit",
+    "test": "node --test \"test/**/*.test.ts\"",
+    "package": "npm run build:prod && vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/vscode": "1.90.0",
+    "@vscode/vsce": "^4.0.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.8.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "0.3.302"
+  }
+}

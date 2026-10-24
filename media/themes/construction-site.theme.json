@@ -1,0 +1,409 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "Construction Site",
+  "description": "A hi-vis site crew in the cabins, a gatehouse sign-in, and concrete, plywood and safety-orange colours under a grey sky.",
+  "company": "Hollowmere Builders",
+  "branch": "Quarry Lane Site",
+  "titles": {
+    "manager": "Site Manager",
+    "receptionist": "Gatehouse Clerk",
+    "cleaner": "Cabin Cleaner",
+    "temp": "Labourer",
+    "vendor": "Butty Van",
+    "itSupport": "Site IT"
+  },
+  "manager": {
+    "name": "Rhodri Ashworth",
+    "look": {
+      "head": "boss",
+      "skin": "rosy",
+      "build": "big",
+      "outfit": "vest",
+      "hair": "#3a2a1e",
+      "eye": "#3b4a5a",
+      "shirt": "#f2f1ea",
+      "outer": "#f26b1d",
+      "sleeve": "#f2f1ea",
+      "tie": "#f2f1ea",
+      "collar": "#ffffff",
+      "accent": "#d3d7da",
+      "pants": "#2c3442",
+      "shoes": "#4a3220"
+    },
+    "lines": [
+      "Morning all. Hard hats on, mugs out, permits signed. In that order.",
+      "The crane is not a coat hook. I will not be saying this again.",
+      "Not on the programme? Not happening. Unless it rains.",
+      "Delivery's due at nine. So, realistically, about half past two.",
+      "Measure twice, cut once, and fill in the form three times.",
+      "Toolbox talk at ten. There will be biscuits, and there will be a quiz."
+    ]
+  },
+  "receptionist": {
+    "name": "Joy Adeyemi",
+    "look": {
+      "head": "receptionist",
+      "skin": "deep",
+      "build": "normal",
+      "outfit": "vest",
+      "hair": "#1a1414",
+      "shirt": "#2c3442",
+      "outer": "#d9e021",
+      "sleeve": "#2c3442",
+      "tie": "#2c3442",
+      "collar": "#3d4759",
+      "accent": "#d3d7da",
+      "pants": "#22242a",
+      "shoes": "#1c1c1c"
+    },
+    "lines": [
+      "Morning! Sign in here, hat from the rack, and mind the puddle.",
+      "Visitor badges are orange. Hard hats are white. Don't swap them.",
+      "Boots off the clean mat, if you love me.",
+      "The delivery driver is lost again. I've sent him the pin twice.",
+      "Hollowmere Builders, Quarry Lane gatehouse. Yes, it's muddy."
+    ]
+  },
+  "colors": {
+    "wall": "#d4b483",
+    "trim": "#e06a1c",
+    "ceiling": "#e6e6e0",
+    "carpet": "#70726d",
+    "lobbyFloor": "#8f7046",
+    "kitchenFloor": "#557352",
+    "conferenceFloor": "#50687e",
+    "managerFloor": "#5d6670",
+    "annexFloor": "#595b57",
+    "rug": "#3d4640",
+    "rugBorder": "#e8b923",
+    "deskChairs": "#34495e",
+    "kitchenChairs": "#e07020",
+    "managerChair": "#2b2b2e",
+    "signPlate": "#f2c12e",
+    "signText": "#141414",
+    "signBranch": "#3b2f12",
+    "desks": "#dcc08a",
+    "deskPanels": "#4a5563",
+    "wood": "#c99f62",
+    "darkWood": "#3e2f22",
+    "metal": "#8a9296",
+    "computers": "#e0c46c",
+    "screens": "#12161a",
+    "plants": "#5f8a3a",
+    "plantPots": "#e06a1c",
+    "glass": "#c9dde6",
+    "glassFrames": "#8d9499",
+    "blinds": "#e8e2d2",
+    "windowFrames": "#f2f1ea",
+    "sky": "#a9bccb",
+    "skyline": "#7a858f",
+    "ceilingLights": "#fff6dc",
+    "outside": "#2a2620"
+  },
+  "smallTalk": [
+    [
+      "Whose round is it?",
+      "Yours. It has been yours since Tuesday."
+    ],
+    [
+      "What's the forecast?",
+      "Sunny spells, heavy showers, and a concrete pour booked for both."
+    ],
+    [
+      "Has the steel turned up yet?",
+      "It's on the motorway. It is always on the motorway."
+    ],
+    [
+      "Who's got my tape measure?",
+      "Everyone has got a tape measure. Nobody has got yours."
+    ],
+    [
+      "Is the crane running today?",
+      "Too windy. It's having a lie-in."
+    ],
+    [
+      "Have you seen the new drawings?",
+      "Revision F. Same as E, but the door has moved again."
+    ],
+    [
+      "Why are your boots so clean?",
+      "I've been in the cabin doing timesheets all week."
+    ],
+    [
+      "Did you sign the permit?",
+      "I signed the permit to sign the permit."
+    ]
+  ],
+  "staff": [
+    {
+      "name": "Priya Ramanathan",
+      "role": "Site Engineer",
+      "look": {
+        "head": "ponytail",
+        "skin": "brown",
+        "build": "small",
+        "outfit": "polo",
+        "hair": "#1e1512",
+        "bow": "#f26b1d",
+        "shirt": "#24324a",
+        "collar": "#f26b1d",
+        "accent": "#d3d7da",
+        "pants": "#22242a",
+        "shoes": "#4a3220",
+        "shortSleeves": true
+      },
+      "lines": [
+        "It's two millimetres out. I can feel it in my bones.",
+        "Setting out by nine, as long as the pegs are where I left them.",
+        "My level says it's flat. The concrete has other ideas."
+      ]
+    },
+    {
+      "name": "Colm Brannock",
+      "role": "Quantity Surveyor",
+      "look": {
+        "head": "assistant",
+        "skin": "fair",
+        "build": "tall",
+        "outfit": "shirtTie",
+        "hair": "#7a3b1e",
+        "glasses": "#2a2a2a",
+        "shirt": "#cfe0ef",
+        "collar": "#e8f1f8",
+        "tie": "#1f3550",
+        "pants": "#2f3136",
+        "shoes": "#1c1c1c",
+        "belt": true,
+        "beltColor": "#3b2c22"
+      },
+      "lines": [
+        "That's a variation. That is definitely a variation.",
+        "Every extra brick has a little price tag in my head.",
+        "I've costed the tea. We are slightly over budget on sugar."
+      ]
+    },
+    {
+      "name": "Ffion Gwilt",
+      "role": "Health and Safety Advisor",
+      "look": {
+        "head": "bob",
+        "skin": "fair",
+        "build": "normal",
+        "outfit": "vest",
+        "hair": "#4a2c1c",
+        "hairHighlight": "#6e4630",
+        "shirt": "#3c4a3e",
+        "outer": "#d9e021",
+        "sleeve": "#3c4a3e",
+        "tie": "#3c4a3e",
+        "accent": "#d3d7da",
+        "pants": "#2c3442",
+        "shoes": "#1c1c1c"
+      },
+      "lines": [
+        "Toolbox talk today: ladders, and why they are not shelves.",
+        "Glasses on, gloves on, and yes, the hat goes on your head.",
+        "I've laminated the laminating instructions. Safety first."
+      ]
+    },
+    {
+      "name": "Tariq Haddou",
+      "role": "Radios and Site IT",
+      "look": {
+        "head": "headset",
+        "skin": "olive",
+        "build": "normal",
+        "outfit": "polo",
+        "hair": "#241a14",
+        "shirt": "#2f5d3a",
+        "collar": "#3f7a4d",
+        "accent": "#e8b923",
+        "accent2": "#f2f1ea",
+        "pants": "#22242a",
+        "shoes": "#3a2a1c",
+        "facialHair": "#241a14",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Channel two is for the crane. Channel three is for the chip van.",
+        "Have you tried holding the button down while you talk?",
+        "The cabin Wi-Fi works best if you stand on the step and face south."
+      ]
+    },
+    {
+      "name": "Marek Sobczak",
+      "role": "Lifting Supervisor",
+      "look": {
+        "head": "spiky",
+        "skin": "rosy",
+        "build": "big",
+        "outfit": "vest",
+        "hair": "#8a5a2b",
+        "facialHair": "#7a4e24",
+        "shirt": "#2c3442",
+        "outer": "#f26b1d",
+        "sleeve": "#2c3442",
+        "tie": "#2c3442",
+        "accent": "#d3d7da",
+        "pants": "#22242a",
+        "shoes": "#4a3220"
+      },
+      "lines": [
+        "Lift plan's done. The crane and I have agreed on everything.",
+        "Wind's gusting thirty. The crane says no, so I say no.",
+        "Best view on site is from the cab. Best biscuits are down here."
+      ]
+    },
+    {
+      "name": "Shona McCreadie",
+      "role": "Logistics Coordinator",
+      "look": {
+        "head": "curly",
+        "skin": "fair",
+        "build": "normal",
+        "outfit": "vest",
+        "hair": "#d4703a",
+        "hairHighlight": "#e8925a",
+        "shirt": "#f2f1ea",
+        "outer": "#d9e021",
+        "sleeve": "#f2f1ea",
+        "tie": "#f2f1ea",
+        "accent": "#d3d7da",
+        "pants": "#2c3442",
+        "shoes": "#4a3220",
+        "shortSleeves": true
+      },
+      "lines": [
+        "The blocks are coming. The driver says he can nearly see the site.",
+        "Forty pallets booked, thirty-nine arrived, one is visiting relatives.",
+        "Anything that turns up without a booking goes back to the depot."
+      ]
+    },
+    {
+      "name": "Nkechi Barlow",
+      "role": "Document Controller",
+      "look": {
+        "head": "cat",
+        "skin": "deep",
+        "build": "small",
+        "outfit": "buttonCardigan",
+        "hair": "#141010",
+        "bow": "#f26b1d",
+        "eye": "#2a1d14",
+        "shirt": "#f2f1ea",
+        "outer": "#7a2e3a",
+        "pants": "#22242a",
+        "skirt": true,
+        "legs": "#2b2b30",
+        "shoes": "#1c1c1c"
+      },
+      "lines": [
+        "Please stop building from revision C. It has been retired for months.",
+        "Every drawing has a stamp, a date and a story.",
+        "The plans are in the drawings room. Please don't pin your lunch."
+      ]
+    },
+    {
+      "name": "Derek Fothergill",
+      "role": "Site Administrator and Tea Captain",
+      "look": {
+        "head": "crossword",
+        "skin": "warm",
+        "build": "big",
+        "outfit": "cardigan",
+        "hair": "#5c4a3c",
+        "facialHair": "#5c4a3c",
+        "glasses": "#3a2a1c",
+        "shirt": "#c9d9c2",
+        "outer": "#6b4a2e",
+        "pants": "#2f3136",
+        "shoes": "#3a2a1c"
+      },
+      "lines": [
+        "Tea round: three white, two sugar, one strong, one mysterious herbal.",
+        "Timesheets by Friday, or the tea gets noticeably weaker.",
+        "The mud is not a doormat problem. It is a philosophical one."
+      ]
+    }
+  ],
+  "temps": [
+    {
+      "name": "Kai Brennan",
+      "look": {
+        "head": "short",
+        "skin": "warm",
+        "build": "normal",
+        "outfit": "plain",
+        "hair": "#2a1c14",
+        "shirt": "#f26b1d",
+        "collar": "#d3d7da",
+        "pants": "#2c3442",
+        "shoes": "#4a3220",
+        "shortSleeves": true
+      }
+    },
+    {
+      "name": "Lowri Pask",
+      "look": {
+        "head": "prankster",
+        "skin": "fair",
+        "build": "small",
+        "outfit": "polo",
+        "hair": "#6e3a22",
+        "shirt": "#d9e021",
+        "collar": "#b9bf1a",
+        "pants": "#22242a",
+        "shoes": "#1c1c1c",
+        "shortSleeves": true
+      }
+    },
+    {
+      "name": "Sanjay Mistry",
+      "look": {
+        "head": "hr",
+        "skin": "brown",
+        "build": "big",
+        "outfit": "vest",
+        "hair": "#1e1814",
+        "facialHair": "#1e1814",
+        "shirt": "#2c3442",
+        "outer": "#f26b1d",
+        "sleeve": "#2c3442",
+        "tie": "#2c3442",
+        "accent": "#d3d7da",
+        "pants": "#22242a",
+        "shoes": "#4a3220"
+      }
+    },
+    {
+      "name": "Abena Kusi",
+      "look": {
+        "head": "knitting",
+        "skin": "deep",
+        "build": "tall",
+        "outfit": "floral",
+        "hair": "#1a1414",
+        "shirt": "#2f6f8f",
+        "accent": "#e8b923",
+        "accent2": "#f2f1ea",
+        "pants": "#22242a",
+        "shoes": "#1c1c1c"
+      }
+    },
+    {
+      "name": "Tomasz Wrona",
+      "look": {
+        "head": "chili",
+        "skin": "olive",
+        "build": "tall",
+        "outfit": "looseTie",
+        "hair": "#3a2a1e",
+        "shirt": "#f2f1ea",
+        "outer": "#4a5a3a",
+        "tie": "#e07020",
+        "pants": "#2f3136",
+        "shoes": "#3a2a1c"
+      }
+    }
+  ]
+}

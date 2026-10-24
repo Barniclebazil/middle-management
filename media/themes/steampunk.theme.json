@@ -1,0 +1,430 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "Steampunk",
+  "description": "An airship and clockwork counting house: cog-wrights, a pneumatic post, gaslight and brass, mahogany and baize.",
+  "company": "Thistlewaite & Co.",
+  "branch": "Mooring Mast",
+  "titles": {
+    "manager": "Senior Partner",
+    "receptionist": "Front Parlour Clerk",
+    "cleaner": "Brass Polisher",
+    "temp": "Junior Copyist",
+    "vendor": "Muffin Trolley",
+    "itSupport": "Difference Engineer"
+  },
+  "manager": {
+    "name": "Ambrose Tillingham",
+    "look": {
+      "head": "boss",
+      "skin": "rosy",
+      "build": "big",
+      "outfit": "suit",
+      "hair": "#c4bcae",
+      "hairHighlight": "#e2dccf",
+      "facialHair": "#c4bcae",
+      "eye": "#3a2a20",
+      "shirt": "#f2e8d0",
+      "outer": "#2a2230",
+      "tie": "#7a1f2b",
+      "collar": "#fbf5e6",
+      "accent": "#c9a043",
+      "pants": "#2a2230",
+      "shoes": "#1c1410",
+      "glasses": "#d4a83a",
+      "belt": false
+    },
+    "lines": [
+      "Splendid work. Now polish it until it gleams like the banister.",
+      "The pressure gauge says 'nominal'. I prefer the word 'ambitious'.",
+      "My study door is always open. Do knock on the brass bit, though.",
+      "Let us not call it a delay. Let us call it a scenic holding pattern.",
+      "Monocle adjusted. You may proceed with the quarterly figures.",
+      "Tea is at four, precisely. Strategy is whenever the tea runs out."
+    ]
+  },
+  "receptionist": {
+    "name": "Clementine Ashby",
+    "look": {
+      "head": "receptionist",
+      "skin": "warm",
+      "build": "normal",
+      "outfit": "blouse",
+      "hair": "#3b2216",
+      "hairHighlight": "#5e3a26",
+      "eye": "#2f4a3a",
+      "shirt": "#f3ead6",
+      "collar": "#fffaf0",
+      "accent": "#7a1f2b",
+      "accent2": "#c9a043",
+      "bow": "#7a1f2b",
+      "skirt": true,
+      "legs": "#3a2a24",
+      "shoes": "#2a1a14"
+    },
+    "lines": [
+      "Good morning, Thistlewaite & Co. Your enquiry is in the tube.",
+      "Do take a seat. The settee only hisses when someone sits on it.",
+      "Parcel's gone up the pneumatic post. It may come down eventually.",
+      "The 11:40 to Upper Mooring is eleven minutes fashionable.",
+      "Kindly sign the visitors' book. The pen is chained for its own safety."
+    ]
+  },
+  "colors": {
+    "wall": "#9c4a44",
+    "trim": "#4a2418",
+    "ceiling": "#efe3c4",
+    "carpet": "#5d8a64",
+    "lobbyFloor": "#d6c49c",
+    "kitchenFloor": "#d3dcc3",
+    "conferenceFloor": "#5f7896",
+    "managerFloor": "#b49a6a",
+    "annexFloor": "#6f747a",
+    "rug": "#6e2234",
+    "rugBorder": "#c9a043",
+    "deskChairs": "#8a3a2e",
+    "kitchenChairs": "#a8743c",
+    "managerChair": "#5a2a1e",
+    "signPlate": "#3b1f16",
+    "signText": "#e8c66a",
+    "signBranch": "#efe2c0",
+    "desks": "#e2c28a",
+    "deskPanels": "#5e3426",
+    "wood": "#7c4630",
+    "darkWood": "#4a2418",
+    "metal": "#b8913e",
+    "computers": "#b87a4c",
+    "screens": "#14100c",
+    "plants": "#4f7a3a",
+    "plantPots": "#c9a043",
+    "glass": "#d8e2c4",
+    "glassFrames": "#8a6a2c",
+    "blinds": "#e8d8b0",
+    "windowFrames": "#4a2418",
+    "sky": "#e0b878",
+    "skyline": "#8a6a50",
+    "ceilingLights": "#ffe2a8",
+    "outside": "#1e140e"
+  },
+  "smallTalk": [
+    [
+      "Is the boiler meant to whistle in that key?",
+      "Only on Tuesdays. Today it appears to be improvising."
+    ],
+    [
+      "Have you seen the automaton intern filing?",
+      "Alphabetically, then by weight. Terribly thorough."
+    ],
+    [
+      "Did the two-fifteen airship leave on time?",
+      "The airship did. The timetable left at half past."
+    ],
+    [
+      "Who wound the office clock backwards?",
+      "Nobody will admit it, but the cuckoo looks shifty."
+    ],
+    [
+      "Is it four o'clock yet?",
+      "Three fifty-eight. Hold your saucer steady."
+    ],
+    [
+      "The pneumatic post delivered me a sandwich again.",
+      "I got a memo about ham. I think we swapped lunches."
+    ],
+    [
+      "Who left a compass in the biscuit tin?",
+      "It points to the custard creams. Very reliable instrument."
+    ],
+    [
+      "Is the brass polished for the inspection?",
+      "I can see my own reflection frowning in it, so yes."
+    ]
+  ],
+  "staff": [
+    {
+      "name": "Ottilie Brackenbury",
+      "role": "Chief Cog-Wright",
+      "look": {
+        "head": "ponytail",
+        "skin": "fair",
+        "build": "tall",
+        "outfit": "vest",
+        "hair": "#8e3c1c",
+        "hairHighlight": "#b45a30",
+        "eye": "#3a5a40",
+        "shirt": "#f0e6cf",
+        "outer": "#6e2430",
+        "accent": "#c9a043",
+        "pants": "#3a2c24",
+        "shoes": "#22160f",
+        "glasses": "#d4a83a",
+        "belt": true,
+        "beltColor": "#5a3a1e"
+      },
+      "lines": [
+        "Every cog has a purpose. Except that one. Nobody talks about that one.",
+        "If it ticks, it is working. If it tocks, come and fetch me.",
+        "I oiled the director's door. He is unsettled by the quiet."
+      ]
+    },
+    {
+      "name": "Barnaby Okafor",
+      "role": "Pneumatic-Post Clerk",
+      "look": {
+        "head": "prankster",
+        "skin": "deep",
+        "build": "normal",
+        "outfit": "shirtTie",
+        "hair": "#16110e",
+        "eye": "#2a1a12",
+        "shirt": "#f4ecd8",
+        "tie": "#2e5a3c",
+        "collar": "#fffaf0",
+        "pants": "#4a3a2e",
+        "shoes": "#1c1410",
+        "belt": true,
+        "beltColor": "#c9a043"
+      },
+      "lines": [
+        "Your memo is in the tube. Stand well back from the whoosh.",
+        "The second floor wants a canister of paperclips. At speed, naturally.",
+        "I posted myself a letter to test the line. Lovely to hear from me."
+      ]
+    },
+    {
+      "name": "Hortense Achterberg",
+      "role": "Chronometer Keeper",
+      "look": {
+        "head": "bob",
+        "skin": "rosy",
+        "build": "small",
+        "outfit": "buttonCardigan",
+        "hair": "#2a1c18",
+        "eye": "#4a3a2a",
+        "shirt": "#efe2c8",
+        "outer": "#2e5a3c",
+        "collar": "#fbf5e6",
+        "accent": "#c9a043",
+        "skirt": true,
+        "legs": "#2a2026",
+        "shoes": "#1c1410",
+        "glasses": "#c9a043"
+      },
+      "lines": [
+        "It is fourteen minutes and nine seconds past ten. You are welcome.",
+        "I keep forty clocks. They agree on nothing, like a proper committee.",
+        "Punctuality is a virtue. Arriving early is simply showing off."
+      ]
+    },
+    {
+      "name": "Rajan Mistry",
+      "role": "Ledger Clerk, Triplicate Division",
+      "look": {
+        "head": "crossword",
+        "skin": "brown",
+        "build": "normal",
+        "outfit": "vest",
+        "hair": "#1e1612",
+        "hairHighlight": "#3a2c22",
+        "facialHair": "#1e1612",
+        "eye": "#2a1a12",
+        "shirt": "#f2e8d0",
+        "outer": "#c99e44",
+        "sleeve": "#f2e8d0",
+        "tie": "#6e2234",
+        "pants": "#3a3036",
+        "shoes": "#1c1410",
+        "glasses": "#d4a83a"
+      },
+      "lines": [
+        "One copy for the files, one for the archive, one for the other archive.",
+        "I have balanced the ledger. Kindly do not breathe on it.",
+        "Carbon paper is the nearest thing I have to a hobby."
+      ]
+    },
+    {
+      "name": "Tobias Greenhalgh",
+      "role": "Boiler Warden",
+      "look": {
+        "head": "spiky",
+        "skin": "olive",
+        "build": "big",
+        "outfit": "plain",
+        "hair": "#4a3426",
+        "facialHair": "#4a3426",
+        "eye": "#2a3a2a",
+        "shirt": "#3f4a52",
+        "pants": "#2c2622",
+        "shoes": "#14100c",
+        "glasses": "#b8862e",
+        "belt": true,
+        "beltColor": "#7a4a22"
+      },
+      "lines": [
+        "The needle's in the green. The green is smaller than it was.",
+        "One long whistle means walk calmly. Two means walk rather briskly.",
+        "Do not lean on the valve. The valve has a temper."
+      ]
+    },
+    {
+      "name": "Adaeze Fairbrother",
+      "role": "Aeronaut, First Class",
+      "look": {
+        "head": "curly",
+        "skin": "deep",
+        "build": "tall",
+        "outfit": "suit",
+        "hair": "#120d0b",
+        "eye": "#2a1a12",
+        "shirt": "#f3ead6",
+        "outer": "#7a4a26",
+        "tie": "#c9a043",
+        "accent": "#c9a043",
+        "pants": "#e6d8b8",
+        "shoes": "#3a2216",
+        "glasses": "#d4a83a",
+        "belt": true,
+        "beltColor": "#3a2216"
+      },
+      "lines": [
+        "Cloud at four hundred feet, tea at four o'clock. Both non-negotiable.",
+        "Sixty hours aloft this month, and three in the expenses queue.",
+        "A good landing is any landing you walk away from with your hat."
+      ]
+    },
+    {
+      "name": "Percival Lund",
+      "role": "Tea-Urn Engineer",
+      "look": {
+        "head": "knitting",
+        "skin": "fair",
+        "build": "small",
+        "outfit": "cardigan",
+        "hair": "#d8d2c4",
+        "hairHighlight": "#f0ebe0",
+        "facialHair": "#d8d2c4",
+        "eye": "#3a4a5a",
+        "shirt": "#efe2c8",
+        "outer": "#8a3a2e",
+        "pants": "#4a4038",
+        "shoes": "#22160f",
+        "glasses": "#a8743c"
+      },
+      "lines": [
+        "The urn is at full pressure. Approach with a saucer and respect.",
+        "Milk in first is a matter for the disciplinary committee.",
+        "I have tuned the kettle to a gentle sigh. Any louder means biscuits."
+      ]
+    },
+    {
+      "name": "Mei-Ling Cartwright",
+      "role": "Keeper of the Airship Timetable",
+      "look": {
+        "head": "hr",
+        "skin": "warm",
+        "build": "normal",
+        "outfit": "openCardigan",
+        "hair": "#1a1414",
+        "hairHighlight": "#3a2c2c",
+        "eye": "#2a1a12",
+        "shirt": "#f3ead6",
+        "outer": "#3a3a5a",
+        "sleeve": "#3a3a5a",
+        "collar": "#fffaf0",
+        "accent": "#c9a043",
+        "skirt": true,
+        "legs": "#2a2026",
+        "shoes": "#1c1410",
+        "bow": "#c9a043"
+      },
+      "lines": [
+        "The nine-oh-five is late: wind, ballast and an important pigeon.",
+        "Every timetable is a work of fiction. Mine is merely well bound.",
+        "Platform three is the mast with the flag. The other flag is laundry."
+      ]
+    }
+  ],
+  "temps": [
+    {
+      "name": "Automaton Intern No. 7",
+      "look": {
+        "head": "short",
+        "skin": "fair",
+        "build": "normal",
+        "outfit": "polo",
+        "hair": "#b08a3a",
+        "hairHighlight": "#e0c070",
+        "eye": "#4fb3c9",
+        "shirt": "#bcc4cc",
+        "collar": "#c9a043",
+        "accent": "#c9a043",
+        "accent2": "#6e7680",
+        "pants": "#6e7680",
+        "shoes": "#3a3a40"
+      }
+    },
+    {
+      "name": "Lavinia Gearwell",
+      "look": {
+        "head": "chili",
+        "skin": "olive",
+        "build": "normal",
+        "outfit": "floral",
+        "hair": "#5a1e22",
+        "shirt": "#e8d8b4",
+        "accent": "#6e2234",
+        "accent2": "#2e5a3c",
+        "skirt": true,
+        "legs": "#3a2a24",
+        "shoes": "#2a1a14"
+      }
+    },
+    {
+      "name": "Edmund Pike",
+      "look": {
+        "head": "assistant",
+        "skin": "rosy",
+        "build": "small",
+        "outfit": "looseTie",
+        "hair": "#d8a24a",
+        "shirt": "#f2e8d0",
+        "tie": "#7a1f2b",
+        "pants": "#4a3a2e",
+        "shoes": "#22160f",
+        "glasses": "#c9a043"
+      }
+    },
+    {
+      "name": "Florence Nwosu",
+      "look": {
+        "head": "headset",
+        "skin": "brown",
+        "build": "normal",
+        "outfit": "blouse",
+        "hair": "#1a120e",
+        "shirt": "#b8d0bc",
+        "accent": "#c9a043",
+        "bow": "#c9a043",
+        "skirt": true,
+        "legs": "#2a2026",
+        "shoes": "#1c1410",
+        "shortSleeves": true
+      }
+    },
+    {
+      "name": "Jasper Quint",
+      "look": {
+        "head": "cat",
+        "skin": "warm",
+        "build": "tall",
+        "outfit": "shirtTie",
+        "hair": "#5e3a26",
+        "shirt": "#e6d8b8",
+        "tie": "#2e5a3c",
+        "pants": "#2a2230",
+        "shoes": "#14100c",
+        "belt": true,
+        "beltColor": "#c9a043"
+      }
+    }
+  ]
+}

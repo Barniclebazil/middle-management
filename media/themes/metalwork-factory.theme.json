@@ -1,0 +1,396 @@
+{
+  "$schema": "../theme.schema.json",
+  "name": "Metalwork Factory",
+  "description": "Welders, furnace keepers and a crane driver, a works gate, and a soot, steel and ember colour scheme under sodium lamps.",
+  "company": "Cinderhill Ironworks",
+  "branch": "Furnace Lane Works",
+  "titles": {
+    "manager": "Works Manager",
+    "receptionist": "Timekeeper",
+    "cleaner": "Floor Sweeper",
+    "temp": "Apprentice",
+    "vendor": "Pie Trolley",
+    "itSupport": "Works Electrician"
+  },
+  "manager": {
+    "name": "Gwen Hartshorne",
+    "look": {
+      "head": "boss",
+      "skin": "warm",
+      "build": "normal",
+      "outfit": "looseTie",
+      "hair": "#3b2a20",
+      "eye": "#3a2a1e",
+      "shirt": "#e8e2d4",
+      "outer": "#2f3542",
+      "tie": "#c4561e",
+      "collar": "#e8e2d4",
+      "pants": "#3a332c",
+      "shoes": "#1e1a18"
+    },
+    "lines": [
+      "Whistle goes at eight sharp. I'll be up on the gantry with a mug.",
+      "I can see the whole floor from up here. Yes, Declan, including that.",
+      "Overtime is approved. Gratitude is approved. Pies are pending.",
+      "We don't rush a pour. We plan it, we check it, then we pour it.",
+      "Safety first, tea second, and everything else after the tea.",
+      "Proudest shop floor in the county. Don't tell them I said so."
+    ]
+  },
+  "receptionist": {
+    "name": "Doreen Ashworth",
+    "look": {
+      "head": "receptionist",
+      "skin": "rosy",
+      "build": "small",
+      "outfit": "buttonCardigan",
+      "hair": "#9a9086",
+      "hairHighlight": "#b8b0a6",
+      "shirt": "#efe8d8",
+      "outer": "#2e5a4a",
+      "collar": "#efe8d8",
+      "pants": "#3a3f4a",
+      "shoes": "#2a2220",
+      "glasses": "#6b2a22"
+    },
+    "lines": [
+      "Cinderhill gatehouse. Clock in first, then tell me your troubles.",
+      "Hard hat, goggles, boots. Visitors get a lanyard and a lecture.",
+      "Your card went in upside down again. The clock has made a note.",
+      "Deliveries go round the back. Follow the smell of hot iron.",
+      "I've signed in three lorries, a pigeon and the forklift. Busy morning."
+    ]
+  },
+  "colors": {
+    "wall": "#5c5550",
+    "trim": "#8a4a2b",
+    "ceiling": "#7b7772",
+    "carpet": "#7d8a96",
+    "lobbyFloor": "#a3a8ad",
+    "kitchenFloor": "#b9bea2",
+    "conferenceFloor": "#6b809a",
+    "managerFloor": "#8a6a4c",
+    "annexFloor": "#8f8b82",
+    "rug": "#b5481d",
+    "rugBorder": "#e0a03a",
+    "deskChairs": "#c8641e",
+    "kitchenChairs": "#2e6a5a",
+    "managerChair": "#6b2a22",
+    "signPlate": "#1a1816",
+    "signText": "#f2e3c2",
+    "signBranch": "#e8913e",
+    "desks": "#3b3f45",
+    "deskPanels": "#5a6068",
+    "wood": "#7a5a3e",
+    "darkWood": "#3a2a20",
+    "metal": "#8e959c",
+    "computers": "#bfb59a",
+    "screens": "#101214",
+    "plants": "#5e7a3a",
+    "plantPots": "#45484d",
+    "glass": "#a9b8bf",
+    "glassFrames": "#3b3f45",
+    "blinds": "#c8beaa",
+    "windowFrames": "#2f3238",
+    "sky": "#c7b59a",
+    "skyline": "#6b5f55",
+    "ceilingLights": "#ffd9a0",
+    "outside": "#1a1614"
+  },
+  "smallTalk": [
+    [
+      "Is it pie day in the canteen?",
+      "Every day is pie day if you're brave about the fillings."
+    ],
+    [
+      "Who left the forklift parked across the fire door?",
+      "Nobody. It parked itself. It does that when it's sulking."
+    ],
+    [
+      "Did you hear the shift whistle?",
+      "Hear it? I set my heartbeat by it."
+    ],
+    [
+      "Why are the drawings all blue again?",
+      "The drawing office says black ink lacks ambition."
+    ],
+    [
+      "Is that a rivet in your tea?",
+      "Iron supplement. The canteen calls it a garnish."
+    ],
+    [
+      "Cold out in the stockyard?",
+      "Colder than a quench tank in February."
+    ],
+    [
+      "Anyone seen my safety goggles?",
+      "Top of your head. Same place as yesterday."
+    ],
+    [
+      "Fancy overtime on Saturday?",
+      "Only if the canteen does the bacon rolls again."
+    ]
+  ],
+  "staff": [
+    {
+      "name": "Priya Raghunathan",
+      "role": "Welder",
+      "look": {
+        "head": "ponytail",
+        "skin": "brown",
+        "build": "normal",
+        "outfit": "vest",
+        "hair": "#1c1414",
+        "bow": "#c4561e",
+        "shirt": "#3f5470",
+        "tie": "#3f5470",
+        "outer": "#6b4a2e",
+        "accent": "#c9a040",
+        "accent2": "#c9a040",
+        "pants": "#2e3440",
+        "shoes": "#1e1a18",
+        "glasses": "#2a2a2a"
+      },
+      "lines": [
+        "Don't look at the arc. Look at me. Actually, don't look at me either.",
+        "My bead is smoother than the canteen gravy, and twice as hot.",
+        "Sparks are just the steel saying thank you."
+      ]
+    },
+    {
+      "name": "Declan Furlong",
+      "role": "Furnace Keeper",
+      "look": {
+        "head": "spiky",
+        "skin": "rosy",
+        "build": "big",
+        "outfit": "plain",
+        "hair": "#b8562a",
+        "hairHighlight": "#d47a42",
+        "facialHair": "#a04a24",
+        "shirt": "#8a3a22",
+        "pants": "#3a3430",
+        "shoes": "#201c1a",
+        "glasses": "#3a6a5a"
+      },
+      "lines": [
+        "She's at fourteen hundred and happy. Let's keep it that way.",
+        "No coat in winter for me. I take the furnace home in my eyebrows.",
+        "Nobody opens the furnace without asking me. She's particular."
+      ]
+    },
+    {
+      "name": "Tomasz Wilczek",
+      "role": "Overhead Crane Driver",
+      "look": {
+        "head": "headset",
+        "skin": "fair",
+        "build": "tall",
+        "outfit": "polo",
+        "hair": "#c9a46a",
+        "shirt": "#e07a1f",
+        "collar": "#f2c230",
+        "accent": "#e8e2d4",
+        "pants": "#2f3b52",
+        "shoes": "#1e1a18",
+        "shortSleeves": true
+      },
+      "lines": [
+        "Lifting! Everybody's feet stay where their feet belong.",
+        "Best seat in the works, up here. Worst commute: a very long ladder.",
+        "I can land ten tonnes on a sixpence. Please don't put a sixpence down."
+      ]
+    },
+    {
+      "name": "Abena Mensah-Clarke",
+      "role": "Quality Inspector",
+      "look": {
+        "head": "bob",
+        "skin": "deep",
+        "build": "small",
+        "outfit": "openCardigan",
+        "hair": "#1a1414",
+        "shirt": "#2f5d6e",
+        "outer": "#e8e4da",
+        "collar": "#2f5d6e",
+        "pants": "#3a3f4a",
+        "shoes": "#2a2220",
+        "glasses": "#b04a2a"
+      },
+      "lines": [
+        "Within tolerance. Just. I'll be keeping an eye on that one.",
+        "My callipers don't lie, and they can't be bribed with biscuits.",
+        "Pass, pass, pass, fail. Don't take it personally, it's a flange."
+      ]
+    },
+    {
+      "name": "Hamish Gatenby",
+      "role": "Pattern Maker",
+      "look": {
+        "head": "crossword",
+        "skin": "fair",
+        "build": "normal",
+        "outfit": "cardigan",
+        "hair": "#b0a89a",
+        "facialHair": "#a09888",
+        "shirt": "#d8cbb0",
+        "outer": "#7a5a3a",
+        "pants": "#4a4038",
+        "shoes": "#2a2220",
+        "glasses": "#3a2a20"
+      },
+      "lines": [
+        "Every casting starts as a bit of wood and a lot of patience.",
+        "Always allow for shrinkage. In metal and in compliments.",
+        "Mind the sawdust. It's not mess, it's a byproduct of genius."
+      ]
+    },
+    {
+      "name": "Lucia Ferraro",
+      "role": "Toolroom Fitter",
+      "look": {
+        "head": "curly",
+        "skin": "olive",
+        "build": "normal",
+        "outfit": "polo",
+        "hair": "#3a2216",
+        "hairHighlight": "#5a3a26",
+        "shirt": "#2f3b52",
+        "collar": "#3f4e6a",
+        "accent": "#c9a040",
+        "pants": "#2f3b52",
+        "shoes": "#1e1a18",
+        "belt": true,
+        "beltColor": "#6b4a2e"
+      },
+      "lines": [
+        "Sign the tool out, sign it back in. The book remembers everything.",
+        "That's a spanner, not a hammer. Yes, there's a difference.",
+        "I ground that drill so sharp it makes the other drills nervous."
+      ]
+    },
+    {
+      "name": "Ozzie Pemberton",
+      "role": "Forklift Driver",
+      "look": {
+        "head": "hr",
+        "skin": "warm",
+        "build": "big",
+        "outfit": "vest",
+        "hair": "#2a1e18",
+        "facialHair": "#2a1e18",
+        "shirt": "#3f5470",
+        "tie": "#3f5470",
+        "outer": "#cfd62a",
+        "accent": "#c8c8c0",
+        "accent2": "#c8c8c0",
+        "pants": "#3a3f4a",
+        "shoes": "#1e1a18"
+      },
+      "lines": [
+        "Me and the forklift have an understanding. She goes left, I agree.",
+        "Beep beep. That's not me, that's her. She's very vocal on corners.",
+        "Pallets don't stack themselves. Well, they do, but very badly."
+      ]
+    },
+    {
+      "name": "Mei Lindgard",
+      "role": "Sand Moulder",
+      "look": {
+        "head": "prankster",
+        "skin": "brown",
+        "build": "tall",
+        "outfit": "plain",
+        "hair": "#2a1a14",
+        "shirt": "#5a6b4a",
+        "pants": "#4a443e",
+        "shoes": "#2a2220",
+        "shortSleeves": true,
+        "belt": true,
+        "beltColor": "#4a3426"
+      },
+      "lines": [
+        "Ram the sand firm, vent it well, and the iron will thank you.",
+        "There's an art to sand. There's also a lot of it in my boots.",
+        "Pour's at two. Bring a flask and stand behind the yellow line."
+      ]
+    }
+  ],
+  "temps": [
+    {
+      "name": "Callum Birtwistle",
+      "look": {
+        "head": "short",
+        "skin": "fair",
+        "build": "small",
+        "outfit": "vest",
+        "hair": "#c46a2a",
+        "shirt": "#d8d2c4",
+        "tie": "#d8d2c4",
+        "outer": "#3f5a8a",
+        "accent": "#c9a040",
+        "pants": "#3f5a8a",
+        "shoes": "#1e1a18"
+      }
+    },
+    {
+      "name": "Sunita Bhamra",
+      "look": {
+        "head": "ponytail",
+        "skin": "brown",
+        "build": "normal",
+        "outfit": "polo",
+        "hair": "#1c1414",
+        "bow": "#f2c230",
+        "shirt": "#e07a1f",
+        "collar": "#f2c230",
+        "pants": "#2f3b52",
+        "shoes": "#1e1a18",
+        "glasses": "#2a2a2a",
+        "shortSleeves": true
+      }
+    },
+    {
+      "name": "Rhys Penhaligon",
+      "look": {
+        "head": "spiky",
+        "skin": "olive",
+        "build": "tall",
+        "outfit": "plain",
+        "hair": "#3a2a1e",
+        "shirt": "#6e7a86",
+        "pants": "#3a3430",
+        "shoes": "#201c1a"
+      }
+    },
+    {
+      "name": "Ada Nwachukwu",
+      "look": {
+        "head": "knitting",
+        "skin": "deep",
+        "build": "normal",
+        "outfit": "buttonCardigan",
+        "hair": "#141010",
+        "shirt": "#e8e2d4",
+        "outer": "#8a3a22",
+        "pants": "#3a3f4a",
+        "shoes": "#2a2220"
+      }
+    },
+    {
+      "name": "Billie Strand",
+      "look": {
+        "head": "bob",
+        "skin": "rosy",
+        "build": "big",
+        "outfit": "shirtTie",
+        "hair": "#d6b060",
+        "shirt": "#c9c2b0",
+        "tie": "#8a3a22",
+        "collar": "#e8e2d4",
+        "pants": "#4a443e",
+        "shoes": "#2a2220"
+      }
+    }
+  ]
+}
