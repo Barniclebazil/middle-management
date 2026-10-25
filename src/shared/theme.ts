@@ -31,7 +31,7 @@ export const LINE_POOL_KEYS = [
   'receptionPhone', 'receptionGreeting', 'receptionIdle', 'receptionAttending',
   'cleanerMutters', 'cartCalls',
   'itFix', 'itVerdicts', 'itGiveUps', 'itSneers', 'itComebacks', 'itFixerMutters', 'itCriticMutters', 'itTalkReplies',
-  'itFixerTalk', 'itCriticTalk',
+  'itFixerTalk', 'itCriticTalk', 'bossPlanApproved', 'bossCommandApproved', 'bossEditApproved',
 ] as const;
 
 export type OfficeColorKey = (typeof OFFICE_COLOR_KEYS)[number];
@@ -40,7 +40,7 @@ export type TitleKey = (typeof TITLE_KEYS)[number];
 export type NpcKey = (typeof NPC_KEYS)[number];
 export type LinePoolKey = (typeof LINE_POOL_KEYS)[number];
 /** The pools whose entries are pairs (an opener and a reply). */
-export type PairPoolKey = 'itFixerTalk' | 'itCriticTalk';
+export type PairPoolKey = 'itFixerTalk' | 'itCriticTalk' | 'bossPlanApproved' | 'bossCommandApproved' | 'bossEditApproved';
 /** What a theme holds for one pool: a list of lines, or a list of pairs for the pairs pools. */
 export type LinePoolValue<K extends LinePoolKey> = K extends PairPoolKey ? [string, string][] : string[];
 export type ThemeLines = { [K in LinePoolKey]?: LinePoolValue<K> };
@@ -133,6 +133,7 @@ export const LINE_POOL_KIND: Readonly<Record<LinePoolKey, 'lines' | 'pairs'>> = 
   cleanerMutters: 'lines', cartCalls: 'lines',
   itFix: 'lines', itVerdicts: 'lines', itGiveUps: 'lines', itSneers: 'lines', itComebacks: 'lines', itFixerMutters: 'lines', itCriticMutters: 'lines', itTalkReplies: 'lines',
   itFixerTalk: 'pairs', itCriticTalk: 'pairs',
+  bossPlanApproved: 'pairs', bossCommandApproved: 'pairs', bossEditApproved: 'pairs',
 };
 
 /** Who says each pool and when, in plain English (the guide for Claude is generated from this). */
@@ -162,6 +163,9 @@ export const LINE_POOL_INFO: Readonly<Record<LinePoolKey, { who: string; when: s
   itTalkReplies: { who: 'an idle AI worker, the receptionist or the manager', when: 'a puzzled reply to either IT opener in small talk' },
   itFixerTalk: { who: 'the IT fixer, then the listener', when: 'small talk: an awkward opener, then a reply that doubles down' },
   itCriticTalk: { who: 'the IT critic, then the listener', when: 'small talk: fumbled chat read off a crib card, then a reply that doubles down' },
+  bossPlanApproved: { who: 'the manager, then the manager again', when: 'after you approve a plan: gushing praise, then admitting he did not read it' },
+  bossCommandApproved: { who: 'the manager, then the manager again', when: 'after you approve a shell command: gushing praise, then admitting he did not read it' },
+  bossEditApproved: { who: 'the manager, then the manager again', when: 'after you approve a file edit: gushing praise, then admitting he did not read it' },
 };
 
 type Obj = Record<string, unknown>;

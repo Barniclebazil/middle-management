@@ -74,6 +74,11 @@ export const rec = {
   text: (ms: number, stop: string | null = 'end_turn'): unknown => ({ type: 'assistant', timestamp: iso(ms), message: { role: 'assistant', content: [{ type: 'text', text: 'ok' }], stop_reason: stop } }),
   toolUse: (ms: number, id: string, name: string, input: unknown = {}): unknown => ({ type: 'assistant', timestamp: iso(ms), message: { role: 'assistant', content: [{ type: 'tool_use', id, name, input }], stop_reason: 'tool_use' } }),
   toolResult: (ms: number, id: string): unknown => ({ type: 'user', timestamp: iso(ms), message: { role: 'user', content: [{ type: 'tool_result', tool_use_id: id, content: 'done' }] } }),
+  /** A tool_result carrying a top-level permissionDecision (what Claude Code records for a prompt or an auto-allow). */
+  decided: (ms: number, id: string, decision: Record<string, unknown>, isError = false): unknown => ({
+    type: 'user', timestamp: iso(ms), message: { role: 'user', content: [{ type: 'tool_result', tool_use_id: id, content: 'done', ...(isError ? { is_error: true } : {}) }] },
+    permissionDecision: decision,
+  }),
   turnDuration: (ms: number): unknown => ({ type: 'system', subtype: 'turn_duration', timestamp: iso(ms) }),
   compact: (ms: number): unknown => ({ type: 'system', subtype: 'compact_boundary', timestamp: iso(ms) }),
   interrupt: (ms: number): unknown => ({ type: 'user', timestamp: iso(ms), message: { role: 'user', content: [{ type: 'text', text: '[Request interrupted by user]' }] } }),

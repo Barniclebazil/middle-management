@@ -1,7 +1,7 @@
-import type { Activity, AgentControl, AgentSnapshot, AgentStatus, EffortLevel, PendingKind } from '../shared/protocol.ts';
+import type { Activity, AgentControl, AgentSnapshot, AgentStatus, ApprovalKind, EffortLevel, PendingKind } from '../shared/protocol.ts';
 import { EFFORT_LEVELS, LIMITS } from '../shared/protocol.ts';
 import type { LiveStatus, SessionInfo, SubagentInfo, SubagentMeta, WatchUpdate } from '../claude/types.ts';
-import { basename, classifyTool } from './activity.ts';
+import { basename, classifyTool, EDIT_TOOLS, RUN_TOOLS } from './activity.ts';
 import type { ToolClass } from './activity.ts';
 import { contextPercent, contextWindowFor } from './contextWindow.ts';
 import { PlanIndex, rejectionFeedback } from './planIndex.ts';
@@ -73,6 +73,8 @@ import type { PlanText } from './planIndex.ts';
  *   - lastReport (main only): the final assistant text of a turn, committed when the turn ends: an assistant text with
  *     an end stop_reason, or a `turn_duration` record when a text had been seen since the last tool call. Text
  *     followed by a tool call, prompt, tool result or interrupt is mid-turn and never reported.
+ *   - lastApproval: the newest tool_result carrying a user-sourced accept `permissionDecision`, for ExitPlanMode (plan),
+ *     the run tools (command) or the edit tools (edit). Auto-allowed (`config`) and rejected calls do not count.
  *   - plans: see planIndex.ts.
  * All of them are deterministic functions of the records (and the learned-window map), so the host's change
  * detection (it compares serialised snapshots) posts only when a record or a learned window changed one.
@@ -144,6 +146,7 @@ interface AgentState {
   last: { kind: LastKind; ts: number };
   lastRecordTs: number;
   lastPromptAt?: number;
+  lastApproval?: { at: number; kind: ApprovalKind };
   activity: Activity;
   detail?: string;
   since: number;
@@ -207,6 +210,7 @@ function resetRecordState(s: AgentState): void {
   s.recordCwd = undefined;
   s.recordBranch = undefined;
   s.lastPromptAt = undefined;
+  s.lastApproval = undefined;
   s.handbackAt = undefined;
   s.endTurnAt = undefined;
 }
@@ -591,6 +595,7 @@ export class AgentTracker {
         sawResult = true;
         const id = block['tool_use_id'];
         if (typeof id === 'string') {
+          this.noteApproval(s, id, o, ts);
           this.closeTool(s, id, ts);
           this.closePlan(s, id, block, o, ts);
         }
@@ -610,6 +615,21 @@ export class AgentTracker {
     }
     if (sawInput && (origin === 'human' || (origin === undefined && sidechain))) return prompt(origin === 'human');
     return false;
+  }
+
+  /**
+   * A tool_result whose `permissionDecision` is an accept from the user (`source` `user_...`; `config` and the like
+   * were auto-allowed) is a hand approval of its plan, command or edit. Must run before closeTool drops the open call.
+   */
+  private noteApproval(s: AgentState, id: string, rec: Record<string, unknown>, ts: number): void {
+    const decision = asRecord(rec['permissionDecision']);
+    if (decision?.['decision'] !== 'accept') return;
+    const source = decision['source'];
+    if (typeof source !== 'string' || !source.startsWith('user_')) return;
+    const name = s.open.get(id)?.name;
+    if (name === undefined) return;
+    const kind: ApprovalKind | undefined = name === 'ExitPlanMode' ? 'plan' : RUN_TOOLS.has(name) ? 'command' : EDIT_TOOLS.has(name) ? 'edit' : undefined;
+    if (kind !== undefined) s.lastApproval = { at: ts, kind };
   }
 
   /**
@@ -908,6 +928,7 @@ export class AgentTracker {
     if (s.kind === 'temp') snap.parentId = s.sessionId;
     if (detail !== undefined && activity !== 'idle') snap.detail = detail;
     if (s.lastPromptAt !== undefined) snap.lastPromptAt = s.lastPromptAt;
+    if (s.lastApproval !== undefined) snap.lastApproval = { ...s.lastApproval };
     const agentCwd = s.recordCwd ?? info?.cwd;
     if (agentCwd !== undefined) snap.cwd = agentCwd;
     if (s.recordBranch !== undefined && s.recordBranch !== 'HEAD') snap.gitBranch = s.recordBranch;

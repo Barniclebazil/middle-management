@@ -86,7 +86,7 @@ test('the manager says the themed boss lines, or the built-in ones without a the
   const cases: [string[] | undefined, readonly string[]][] = [[['ONLY-BOSS-LINE'], ['ONLY-BOSS-LINE']], [undefined, BOSS_LINES]];
   for (const [lines, pool] of cases) {
     const o = new Office(world, { seed: 7 });
-    o.setTheme(lines ? themeState({ manager: { lines } }, world.staffSlots, world.tempSlots) : undefined);
+    o.setTheme(lines ? themeState({ lineMode: 'replace', manager: { lines } }, world.staffSlots, world.tempSlots) : undefined);
     o.applySnapshot([agent('a', { lastPromptAt: HOST0 - 50_000 })], 0, HOST0);
     run(o, 0, 500);
     o.applySnapshot([agent('a', { lastPromptAt: HOST0 + 900 })], 500, HOST0 + 500);

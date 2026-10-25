@@ -1267,3 +1267,55 @@ test('change detection: serialised snapshots are stable between polls and change
   const k = key();
   assert.equal(seen.has(k), false);
 });
+
+// ---------------------------------------------------------------- hand approvals
+
+const userOk = { decision: 'accept', source: 'user_temporary' };
+
+test('lastApproval: a Bash accepted by the user is a command approval', () => {
+  const s = run([rec.human(t('12:00:00')), rec.toolUse(t('12:00:01'), 'b', 'Bash', { command: 'npm test' }), rec.decided(t('12:00:05'), 'b', userOk)], t('12:00:06'));
+  assert.deepEqual(s.lastApproval, { at: t('12:00:05'), kind: 'command' });
+});
+
+test('lastApproval: an accepted Edit is an edit approval, with any user_ source and extra fields', () => {
+  const s = run([rec.human(t('12:00:00')), rec.toolUse(t('12:00:01'), 'e', 'Edit', { file_path: '/a.ts' }), rec.decided(t('12:00:05'), 'e', { decision: 'accept', source: 'user_permanent', grantScope: 'session' })], t('12:00:06'));
+  assert.deepEqual(s.lastApproval, { at: t('12:00:05'), kind: 'edit' });
+});
+
+test('lastApproval: an accepted ExitPlanMode is a plan approval and the plan is still approved', () => {
+  const s = run([rec.human(t('12:00:00')), rec.exitPlan(t('12:00:01'), 'p', '# Plan\n\n1. step'), rec.decided(t('12:00:09'), 'p', userOk)], t('12:00:10'));
+  assert.deepEqual(s.lastApproval, { at: t('12:00:09'), kind: 'plan' });
+  assert.equal(s.plans?.[0]?.status, 'approved');
+});
+
+test('lastApproval: config auto-allows, rejections and other tools are not approvals', () => {
+  const call = (name: string, decision: Record<string, unknown>, isError = false) =>
+    run([rec.human(t('12:00:00')), rec.toolUse(t('12:00:01'), 'x', name, {}), rec.decided(t('12:00:05'), 'x', decision, isError)], t('12:00:06'));
+  assert.equal(call('Bash', { decision: 'accept', source: 'config' }).lastApproval, undefined);
+  assert.equal(call('Bash', { decision: 'reject', source: 'user_reject' }, true).lastApproval, undefined);
+  assert.equal(call('Edit', { decision: 'reject', source: 'user_reject' }, true).lastApproval, undefined);
+  assert.equal(call('AskUserQuestion', userOk).lastApproval, undefined);
+  assert.equal(call('Read', userOk).lastApproval, undefined);
+  // A result with no permissionDecision at all, and a rejected plan, leave it unset too.
+  assert.equal(run([rec.human(t('12:00:00')), rec.toolUse(t('12:00:01'), 'x', 'Bash', {}), rec.toolResult(t('12:00:05'), 'x')], t('12:00:06')).lastApproval, undefined);
+  const rejectedPlan = run([rec.human(t('12:00:00')), rec.exitPlan(t('12:00:01'), 'p', '# Plan'), rec.planRejected(t('12:00:05'), 'p')], t('12:00:06'));
+  assert.equal(rejectedPlan.lastApproval, undefined);
+  assert.equal(rejectedPlan.plans?.[0]?.status, 'rejected');
+});
+
+test('lastApproval: a later approval replaces an earlier one, an auto-allow after it does not', () => {
+  const recs: unknown[] = [
+    rec.human(t('12:00:00')),
+    rec.toolUse(t('12:00:01'), 'e', 'Write', { file_path: '/a.ts' }), rec.decided(t('12:00:02'), 'e', userOk),
+    rec.toolUse(t('12:00:03'), 'b', 'Bash', { command: 'ls' }), rec.decided(t('12:00:04'), 'b', userOk),
+  ];
+  assert.deepEqual(run(recs, t('12:00:05')).lastApproval, { at: t('12:00:04'), kind: 'command' });
+  const auto = [...recs, rec.toolUse(t('12:00:06'), 'c', 'Bash', { command: 'pwd' }), rec.decided(t('12:00:07'), 'c', { decision: 'accept', source: 'config' })];
+  assert.deepEqual(run(auto, t('12:00:08')).lastApproval, { at: t('12:00:04'), kind: 'command' });
+});
+
+test('lastApproval: the facts fixture plan approval is recorded', () => {
+  const recs = loadJsonl(join(FACT_FIXTURES, 'facts-main.jsonl'));
+  const s = run(recs, lastTimestamp(recs) + 1000);
+  assert.equal(s.lastApproval?.kind, 'plan');
+});

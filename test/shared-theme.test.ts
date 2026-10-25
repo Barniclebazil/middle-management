@@ -283,11 +283,11 @@ test('the new key lists have the agreed members, and every pool has a kind and a
   assert.deepEqual([...LINE_MODES], ['add', 'replace']);
   assert.deepEqual([...TITLE_KEYS], ['manager', 'receptionist', 'cleaner', 'temp', 'vendor', 'itSupport']);
   assert.deepEqual([...NPC_KEYS], ['cleaner', 'vendor', 'itFixer', 'itCritic']);
-  assert.equal(LINE_POOL_KEYS.length, 25);
+  assert.equal(LINE_POOL_KEYS.length, 28);
   assert.deepEqual(Object.keys(LINE_POOL_KIND), [...LINE_POOL_KEYS]);
   assert.deepEqual(Object.keys(LINE_POOL_INFO), [...LINE_POOL_KEYS]);
-  assert.deepEqual(LINE_POOL_KEYS.filter((k) => LINE_POOL_KIND[k] === 'pairs'), ['itFixerTalk', 'itCriticTalk']);
-  assert.deepEqual(LINE_POOL_KEYS.slice(-2), ['itFixerTalk', 'itCriticTalk'], 'pairs pools come last');
+  assert.deepEqual(LINE_POOL_KEYS.filter((k) => LINE_POOL_KIND[k] === 'pairs'), ['itFixerTalk', 'itCriticTalk', 'bossPlanApproved', 'bossCommandApproved', 'bossEditApproved']);
+  assert.deepEqual(LINE_POOL_KEYS.slice(-5), ['itFixerTalk', 'itCriticTalk', 'bossPlanApproved', 'bossCommandApproved', 'bossEditApproved'], 'pairs pools come last');
   for (const k of LINE_POOL_KEYS) {
     assert.ok(LINE_POOL_INFO[k].who.length > 0 && LINE_POOL_INFO[k].when.length > 0, k);
   }

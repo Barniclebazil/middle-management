@@ -173,6 +173,9 @@ const SAMPLE_LINES = {
   itTalkReplies: ['Sorry?', 'Oh. Right.'],
   itFixerTalk: [['Nice weather. For a server room.', "It's colder in there. I like cold."], ['Busy? Me neither.', "I've been not busy since nine."]],
   itCriticTalk: [['The gaffer has lost the dressing room.', 'Has anyone checked behind the radiator?'], ['They parked the bus again. Shocking.', 'On a double yellow, I assume. Shocking.']],
+  bossPlanApproved: [['Love this plan. Visionary.', "Didn't read it, obviously."], ['Phase three is genius.', 'Is there a phase three?']],
+  bossCommandApproved: [['Run it! I trust you.', 'What does rm do again?'], ['Approved. No notes.', 'No reading either.']],
+  bossEditApproved: [['Edit away! Love the diff.', "Didn't open the diff."], ['Lovely edit. So green.', "Red bits? Didn't look."]],
 };
 
 /** The built-in job titles, as the tooltips show them (looks.ts roles, `vendorTooltip`'s default and `IT_SUPPORT_ROLE`). */

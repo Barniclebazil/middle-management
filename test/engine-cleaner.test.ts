@@ -611,7 +611,7 @@ test('the cleaner is not in the door queue, the roster, the boss\'s snoop or the
   });
   assert.ok(visits > 0, 'the cleaner came in');
   assert.ok(!o.brain.visiting || o.brain.visit?.id !== CLEANER_ID);
-  assert.ok(!o.brain.pending.includes(CLEANER_ID));
+  assert.ok(!o.brain.isQueued(CLEANER_ID));
 });
 
 test('the cleaner never stands on a tile the boss or a worker is on or heading for', () => {

@@ -5,7 +5,7 @@
  * manager's-door queue order and the idle-wander choice. The office
  * (`office.ts`) owns the state and calls these every tick.
  */
-import type { Activity, AgentControl, AgentSnapshot, AgentStatus, EffortLevel, PendingKind, PlanRef, PlanStatus } from '../../src/shared/protocol.ts';
+import type { Activity, AgentControl, AgentSnapshot, AgentStatus, ApprovalKind, EffortLevel, PendingKind, PlanRef, PlanStatus } from '../../src/shared/protocol.ts';
 import { ACTIVITIES, AGENT_CONTROLS, EFFORT_LEVELS, LIMITS, PENDING_KINDS } from '../../src/shared/protocol.ts';
 import type { Dir, FoodId, Pose, SeatDef, SpotDef, Tile, WorldDef } from './types.ts';
 import { pick } from './types.ts';
@@ -154,6 +154,7 @@ export interface AgentView {
   since: number;
   startedAt: number;
   lastPromptAt?: number;
+  lastApproval?: { at: number; kind: ApprovalKind };
   /** Manager Mode fields (all optional; see AgentSnapshot). */
   sessionId?: string;
   cwd?: string;
@@ -173,6 +174,7 @@ const EFFORT_SET: ReadonlySet<string> = new Set(EFFORT_LEVELS);
 const PLAN_STATUS_SET: ReadonlySet<string> = new Set<PlanStatus>(['pending', 'approved', 'rejected', 'superseded']);
 const CONTROL_SET: ReadonlySet<string> = new Set(AGENT_CONTROLS);
 const PENDING_SET: ReadonlySet<string> = new Set(PENDING_KINDS);
+const APPROVAL_SET: ReadonlySet<string> = new Set<ApprovalKind>(['plan', 'command', 'edit']);
 
 const ACTIVITY_SET: ReadonlySet<string> = new Set(ACTIVITIES);
 const STATUS_SET: ReadonlySet<string> = new Set(['working', 'waiting', 'idle', 'done']);
@@ -208,6 +210,12 @@ export function normalizeAgent(raw: unknown, hostNow: number): AgentView | null 
   if (detail && detail.trim()) out.detail = detail.trim();
   const lp = num(r['lastPromptAt']);
   if (lp !== undefined) out.lastPromptAt = lp;
+  const la = r['lastApproval'];
+  if (la && typeof la === 'object') {
+    const lr = la as Record<string, unknown>;
+    const at = num(lr['at']);
+    if (at !== undefined && APPROVAL_SET.has(String(lr['kind']))) out.lastApproval = { at, kind: lr['kind'] as ApprovalKind };
+  }
   const sid = str(r['sessionId']);
   if (sid) out.sessionId = sid;
   const cwd = str(r['cwd']);

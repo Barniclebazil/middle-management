@@ -45,6 +45,22 @@ export const BOSS_LINES: readonly string[] = [
   'My door is always open.',
   'Quick win! My favourite.',
   'Is this agile? Love it.',
+  'Fix it. You know what I mean.',
+  'Same prompt again. Louder.',
+  'Read my mind. Then do that.',
+  'Be concise. Explain everything.',
+  'Small change. Rewrite it all.',
+  "Here's 40 files. Quick one.",
+  'Pasted the error. No context.',
+  "It's broken. Don't ask where.",
+  'Same as before, but different.',
+  'Faster! But change nothing.',
+  "You're a world-class expert now.",
+  'Undo that. No, redo it. Undo.',
+  'Photo of my screen. Fix that.',
+  'Use best practices. All of them.',
+  'One more tweak. Then twelve.',
+  'Like last time. You remember.',
 ];
 
 /** What a worker grumbles when a better-ranked model takes their desk. */
@@ -294,6 +310,57 @@ export const RECEPTION_IDLE_LINES: readonly string[] = [
 /** What she says when the Front desk panel is open (she looks up from her work). */
 export const RECEPTION_ATTENDING_LINE = 'What can I change for you?';
 
+/** The boss approving a worker's plan: lavish praise, then (in a second bubble) the admission that he never read it. */
+export const PLAN_APPROVED_PAIRS: readonly (readonly [string, string])[] = [
+  ['Love this plan. Visionary.', "Didn't read it, obviously."],
+  ['Phase three is genius.', 'Is there a phase three?'],
+  ['Signed off. What a vision.', 'I read the title. Twice.'],
+  ['Fully aligned. Love it.', 'Aligned with what, though?'],
+  ['Approved in record time!', 'Two seconds. A personal best.'],
+  ['I read every line, I did.', 'Well. The first one.'],
+  ['Such a thorough plan!', 'I could tell from the scrollbar.'],
+  ['The detail! The rigour!', 'Scrolled straight to the button.'],
+  ['Bold plan. I back it fully.', 'Is it the one with the database?'],
+  ['Exactly what I would have done.', 'Whatever it says.'],
+  ['Wonderful plan. No questions.', 'Questions mean reading.'],
+  ['Deeply moved by this plan.', 'By the length, mostly.'],
+  ['Strategic! Joined-up thinking!', 'I looked at the headings.'],
+  ['Go! Execute! Make it so!', 'What are we doing, by the way?'],
+  ['Crystal clear. Every word.', 'Lovely font, too.'],
+  ['Read it cover to cover.', 'Just the cover, mind.'],
+];
+
+/** The boss approving a shell command: hearty confidence, then the admission that he has no idea what it does. */
+export const COMMAND_APPROVED_PAIRS: readonly (readonly [string, string])[] = [
+  ['Run it! I trust you.', 'What does rm do again?'],
+  ['Approved. No notes.', 'No reading either.'],
+  ['Yes! Yes to all of it.', 'What did I say yes to?'],
+  ['sudo? Sounds senior.', 'Promote it. Approved.'],
+  ['Great command. Crisp.', "I don't speak terminal."],
+  ['Dash r f? Sounds efficient.', 'Really fast, I assume.'],
+  ['Love the pipes. Very plumbing.', 'I assume it fixes the sink.'],
+  ['Straight to production! Brave.', 'Wait. Which one is production?'],
+  ['What a lovely long command.', 'Longer means better. Right?'],
+  ['Allow always! Saves time.', 'What could possibly go wrong?'],
+  ['Install it all! Growth!', 'Four hundred packages. Wow.'],
+  ['chmod 777? Lucky number!', 'Jackpot. Approved.'],
+  ['Force push? Love the energy.', 'Force is good. Right? Right?'],
+];
+
+/** The boss approving a file edit: glowing code review, then the admission that he never opened the diff. */
+export const EDIT_APPROVED_PAIRS: readonly (readonly [string, string])[] = [
+  ['Edit away! Love the diff.', "Didn't open the diff."],
+  ['Lovely edit. So green.', "Red bits? Didn't look."],
+  ['Code review complete.', 'I reviewed the button.'],
+  ['Yes to all edits.', 'Including the bad ones.'],
+  ['Beautiful change. Elegant.', 'Which file was it, again?'],
+  ['Ship it! Looks perfect.', 'From a distance. Squinting.'],
+  ['Four hundred lines! Wow!', 'More lines, more work. Right?'],
+  ['LGTM, as they say.', 'Looks good. From over here.'],
+  ['Approved! Great indentation.', 'That is all I can judge.'],
+  ['Rewrote the whole file? Bold.', 'Saves me reading the old one.'],
+];
+
 /** What the boss says after peering over a working agent's shoulder for a few seconds. */
 export const SNOOP_LINE = "Don't make mistakes.";
 
@@ -484,4 +551,7 @@ export const LINE_POOLS: { readonly [K in LinePoolKey]: readonly (K extends Pair
   itTalkReplies: IT_SMALL_TALK_REPLIES,
   itFixerTalk: IT_SMALL_TALK,
   itCriticTalk: IT_FOOTBALL_TALK,
+  bossPlanApproved: PLAN_APPROVED_PAIRS,
+  bossCommandApproved: COMMAND_APPROVED_PAIRS,
+  bossEditApproved: EDIT_APPROVED_PAIRS,
 };

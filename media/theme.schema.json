@@ -354,6 +354,60 @@
               "description": "One line."
             }
           }
+        },
+        "bossPlanApproved": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager, then the manager again: after you approve a plan: gushing praise, then admitting he did not read it. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Each pair is an opener and a reply. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "One pair: the opener, then the reply.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[ -~]*$",
+              "description": "One line."
+            }
+          }
+        },
+        "bossCommandApproved": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager, then the manager again: after you approve a shell command: gushing praise, then admitting he did not read it. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Each pair is an opener and a reply. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "One pair: the opener, then the reply.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[ -~]*$",
+              "description": "One line."
+            }
+          }
+        },
+        "bossEditApproved": {
+          "type": "array",
+          "maxItems": 60,
+          "description": "Said by the manager, then the manager again: after you approve a file edit: gushing praise, then admitting he did not read it. With lineMode add these join the built-in lines; with replace they swap them out. No line repeats until the whole pool has been used. Each pair is an opener and a reply. Keep lines to about 70 characters or fewer and plain ASCII (letters, digits and ordinary punctuation); the pixel font draws anything else as ?.",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "One pair: the opener, then the reply.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[ -~]*$",
+              "description": "One line."
+            }
+          }
         }
       }
     },

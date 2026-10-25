@@ -70,7 +70,7 @@ Each pool holds at most 60 entries, and each line at most 80 characters. "Built-
 
 | Pool | Kind | Who says it | When | Built-in | Suggested | Built-in samples |
 | --- | --- | --- | --- | --- | --- | --- |
-| `bossVisit` | lines | the manager | visiting a worker's desk | 40 | 20-40 | "Make it happen!"<br>"Numbers! Love them!"<br>"Great work. What is it?" |
+| `bossVisit` | lines | the manager | visiting a worker's desk | 56 | 20-40 | "Make it happen!"<br>"Bold move. I like it."<br>"My door is always open." |
 | `bossSnack` | lines | the manager | at the food trolley, justifying what he picked | 42 | 8-15 | "Carrot cake is one of my five a day."<br>"Big decisions need big cake."<br>"If I eat it quickly, my body won't notice." |
 | `bossSnoop` | lines | the manager | looking over a working agent's shoulder | 1 | 1-3 | "Don't make mistakes." |
 | `bossSulkStart` | lines | the manager | as a Fable agent takes over his office | 8 | 8-15 | "Oh, by all means, take my office."<br>"Enjoy the chair. It squeaks."<br>"Wipe your feet, at least." |
@@ -95,6 +95,9 @@ Each pool holds at most 60 entries, and each line at most 80 characters. "Built-
 | `itTalkReplies` | lines | an idle AI worker, the receptionist or the manager | a puzzled reply to either IT opener in small talk | 32 | 8-15 | "Sorry?"<br>"Oh! Er. Yes?"<br>"Could you say that again, slower?" |
 | `itFixerTalk` | pairs | the IT fixer, then the listener | small talk: an awkward opener, then a reply that doubles down | 24 | 8-15 | ["Nice weather. For a server room.", "It's colder in there. I like cold."]<br>["Talking to people is a bit much, isn't it?", "Anyway. That was my quota for the week."] |
 | `itCriticTalk` | pairs | the IT critic, then the listener | small talk: fumbled chat read off a crib card, then a reply that doubles down | 20 | 8-15 | ["The gaffer has lost the dressing room.", "Has anyone checked behind the radiator?"]<br>["Lovely weather. For ducks, apparently.", "I do not own ducks. Should I own ducks?"] |
+| `bossPlanApproved` | pairs | the manager, then the manager again | after you approve a plan: gushing praise, then admitting he did not read it | 16 | 8-15 | ["Love this plan. Visionary.", "Didn't read it, obviously."]<br>["Bold plan. I back it fully.", "Is it the one with the database?"] |
+| `bossCommandApproved` | pairs | the manager, then the manager again | after you approve a shell command: gushing praise, then admitting he did not read it | 13 | 8-15 | ["Run it! I trust you.", "What does rm do again?"]<br>["Love the pipes. Very plumbing.", "I assume it fixes the sink."] |
+| `bossEditApproved` | pairs | the manager, then the manager again | after you approve a file edit: gushing praise, then admitting he did not read it | 10 | 8-15 | ["Edit away! Love the diff.", "Didn't open the diff."]<br>["Ship it! Looks perfect.", "From a distance. Squinting."] |
 
 Notes on particular pools:
 

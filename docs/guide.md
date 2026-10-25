@@ -57,6 +57,8 @@ Each Claude Code session is a member of staff, and their pose shows what the age
 
 When you send a prompt, the manager walks out to that worker's desk and says a boss-ism. Speech bubbles show the file, search or command a worker is busy with.
 
+When you approve something Claude Code asked permission for (a plan, a shell command or a file edit), the manager also walks to that worker's desk. He says two lines there: big praise first, then he admits he didn't really read it. Plans always get a visit. For commands and edits he comes at most once every 3 minutes per worker, so a run of approvals doesn't turn into a parade, and approvals that ran automatically under your settings don't count, only the ones you clicked. Like his other lines, this is off when `claudeOffice.bossQuotes` is off.
+
 Hover over a character for details: session title, project and git branch, role, current activity, how long they've been at it and how much of their context is used. A knocking worker also says what it wants. The hover badge has a coloured model chip (Fable amber, Opus violet, Sonnet blue, Haiku green) and an effort meter of five pips (low, medium, high, xhigh, max).
 
 ### Who sits where

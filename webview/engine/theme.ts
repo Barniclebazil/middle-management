@@ -4,7 +4,7 @@
  * (the look overrides come back as plain specs, `main.ts` registers them with the art registry).
  */
 import type { OfficeSettings } from '../../src/shared/protocol.ts';
-import { LINE_POOL_KEYS, NPC_KEYS } from '../../src/shared/theme.ts';
+import { LINE_POOL_KEYS, LINE_POOL_KIND, NPC_KEYS } from '../../src/shared/theme.ts';
 import type { LineMode, LinePoolKey, LookSpec, NpcKey, OfficeTheme, PairPoolKey, TitleKey } from '../../src/shared/theme.ts';
 import { LINE_POOLS, SMALL_TALK } from './lines.ts';
 
@@ -94,7 +94,7 @@ export function themeState(theme: OfficeTheme | undefined, staffSlots: readonly 
   for (const key of LINE_POOL_KEYS) {
     const own = theme.lines?.[key] as readonly unknown[] | undefined;
     if (!own) continue;
-    const folded = key === 'itFixerTalk' || key === 'itCriticTalk' ? foldPairs(own as [string, string][]) : foldLines(own as string[]);
+    const folded = LINE_POOL_KIND[key] === 'pairs' ? foldPairs(own as [string, string][]) : foldLines(own as string[]);
     if (folded.length > 0) pools[key] = folded;
   }
   const join = (keys: readonly LinePoolKey[], legacy: readonly string[]): void => {

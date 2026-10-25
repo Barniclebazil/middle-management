@@ -11,8 +11,8 @@ const DRAWING_EXTENSIONS: ReadonlySet<string> = new Set([
   '.svg', '.png', '.jpg', '.jpeg', '.gif', '.webp', '.css', '.scss', '.sass', '.less', '.html', '.htm', '.drawio', '.excalidraw', '.fig',
 ]);
 
-const EDIT_TOOLS: ReadonlySet<string> = new Set(['Edit', 'MultiEdit', 'Write', 'NotebookEdit']);
-const RUN_TOOLS: ReadonlySet<string> = new Set(['Bash', 'BashOutput', 'KillShell', 'Monitor', 'PowerShell', 'TaskOutput', 'TaskStop']);
+export const EDIT_TOOLS: ReadonlySet<string> = new Set(['Edit', 'MultiEdit', 'Write', 'NotebookEdit']);
+export const RUN_TOOLS: ReadonlySet<string> = new Set(['Bash', 'BashOutput', 'KillShell', 'Monitor', 'PowerShell', 'TaskOutput', 'TaskStop']);
 const PLAN_TOOLS: ReadonlySet<string> = new Set(['EnterPlanMode', 'ExitPlanMode', 'TaskCreate', 'TaskUpdate', 'TaskGet', 'TaskList']);
 
 const MCP_RESEARCH = /browser|fetch|search|web/;

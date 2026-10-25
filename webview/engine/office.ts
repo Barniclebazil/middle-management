@@ -42,6 +42,8 @@ import { LiveDeck, SEATED_POSES, facingToward, makeRng, pairKey, randRange, tile
 export const DETAIL_BUBBLE_MS = 4_000;
 /** A new session whose prompt is at most this old gets a welcome visit. */
 const NEW_PROMPT_VISIT_MS = 30_000;
+/** A command or edit approval earns a joke visit at most this often per agent (plans always do). */
+export const APPROVAL_JOKE_COOLDOWN_MS = 3 * 60_000;
 /** Idle lingering at a spot. */
 const LINGER_MIN_MS = 8_000;
 const LINGER_MAX_MS = 20_000;
@@ -159,6 +161,9 @@ export class Office {
   private readonly sulkFallback: SpotDef;
   private seenSnapshot = false;
   private readonly lastPrompt = new Map<string, number>();
+  /** The newest approval seen per agent, and when each last earned a command or edit joke (office time). */
+  private readonly lastApproval = new Map<string, number>();
+  private readonly lastApprovalJoke = new Map<string, number>();
   private chat: ChatState | null = null;
   private chatCooldownUntil = 0;
   /** Who chatted last (sorted, joined), so the next chat prefers another pair. */
@@ -399,6 +404,20 @@ export class Office {
         }
         if (seen === undefined || a.lastPromptAt > seen) this.lastPrompt.set(a.id, a.lastPromptAt);
       }
+      // Approvals send him too, with a joke (plans always; commands and edits once per cooldown).
+      const ap = a.lastApproval;
+      if (ap) {
+        const seen = this.lastApproval.get(a.id);
+        const fresh = seen !== undefined ? ap.at > seen : isNew && hostNow - ap.at <= NEW_PROMPT_VISIT_MS;
+        if (!first && !c.leaving && this.bossQuotes && fresh) {
+          const last = this.lastApprovalJoke.get(a.id);
+          if (ap.kind === 'plan' || last === undefined || t - last >= APPROVAL_JOKE_COOLDOWN_MS) {
+            this.brain.queueVisit(a.id, ap.kind);
+            if (ap.kind !== 'plan') this.lastApprovalJoke.set(a.id, t);
+          }
+        }
+        if (seen === undefined || ap.at > seen) this.lastApproval.set(a.id, ap.at);
+      }
     }
     for (const c of this.chars.values()) {
       if (!ids.has(c.id) && !c.leaving) {
@@ -407,6 +426,8 @@ export class Office {
       }
     }
     for (const id of [...this.lastPrompt.keys()]) if (!ids.has(id)) this.lastPrompt.delete(id);
+    for (const id of [...this.lastApproval.keys()]) if (!ids.has(id)) this.lastApproval.delete(id);
+    for (const id of [...this.lastApprovalJoke.keys()]) if (!ids.has(id)) this.lastApprovalJoke.delete(id);
     if (first) {
       this.seenSnapshot = true;
       this.settle(t);
@@ -1036,7 +1057,7 @@ export class Office {
         continue;
       }
       const id = holder.id;
-      if (holder.leaving || this.spell?.id === id || this.brain.snooping === id || visit?.id === id || this.brain.pending.includes(id)) continue;
+      if (holder.leaving || this.spell?.id === id || this.brain.snooping === id || visit?.id === id || this.brain.isQueued(id)) continue;
       if (!(holder.arrived && holder.goal?.key === `seat:${seat.id}`)) continue;
       if (holder.agent?.activity === 'needsYou') out.push({ seat, worker: id, state: 'needsYou' });
       else if (this.seatedWorking(holder)) out.push({ seat, worker: id, state: 'working' });
@@ -1106,7 +1127,7 @@ export class Office {
       stillAt: (workerId, seatId) => {
         const c = this.chars.get(workerId);
         return !!c && !c.leaving && c.arrived && c.goal?.key === `seat:${seatId}` && c.agent?.activity !== 'delegating'
-          && this.brain.visit?.id !== workerId && !this.brain.pending.includes(workerId);
+          && this.brain.visit?.id !== workerId && !this.brain.isQueued(workerId);
       },
       canListen: (id) => this.itListeners().some((l) => l.id === id),
       // Free: walkable, nobody but the pair standing or heading there, and the spot not reserved by someone else.
@@ -1164,6 +1185,7 @@ export class Office {
       queueLength: this.queue.length,
       rng: this.rng,
       lines: this.linesHook,
+      pairs: this.pairsHook,
       workers: () => {
         const out: { id: string; seat: SeatDef }[] = [];
         const engaged = this.itBrain.engaged;

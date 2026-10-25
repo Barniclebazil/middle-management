@@ -23,11 +23,12 @@ test('every line pool passes the checker with no errors (warnings are allowed)',
 
 test('pools are at least the planned sizes', () => {
   const min: Record<string, number> = {
-    SMALL_TALK: 800, BOSS_LINES: 40, BUMP_LINES: 12, MOVE_UP_LINES: 12, SULK_START_LINES: 8, SULK_LINES: 12, SULK_END_LINES: 8,
+    SMALL_TALK: 800, BOSS_LINES: 56, BUMP_LINES: 12, MOVE_UP_LINES: 12, SULK_START_LINES: 8, SULK_LINES: 12, SULK_END_LINES: 8,
     RECEPTION_PHONE_LINES: 50, RECEPTION_GREETINGS: 20, RECEPTION_IDLE_LINES: 50, CHAT_REPLIES: 30,
     CLEANER_MUTTERS: 55, CART_CALLS: 34, BOSS_SNACK_LINES: 36,
     IT_VERDICTS: 14, IT_GIVE_UPS: 8, IT_SNEERS: 16, IT_COMEBACKS: 12, IT_DEZ_MUTTERS: 24, IT_FENWICK_MUTTERS: 24,
     IT_SMALL_TALK: 12, IT_FOOTBALL_TALK: 10, IT_SMALL_TALK_REPLIES: 16,
+    PLAN_APPROVED_PAIRS: 12, COMMAND_APPROVED_PAIRS: 10, EDIT_APPROVED_PAIRS: 8,
   };
   const size = new Map(pools.map((p) => [p.name, p.kind === 'pairs' ? p.pairs.length : p.lines.length]));
   for (const [name, n] of Object.entries(min)) assert.ok((size.get(name) ?? 0) >= n, `${name}: ${size.get(name)} < ${n}`);

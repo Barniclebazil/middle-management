@@ -26,6 +26,8 @@ export interface AgentSnapshot {
   startedAt: number;
   /** Time of the last human prompt, if any. */
   lastPromptAt?: number;
+  /** The newest permission prompt the user approved by hand (not auto-allowed by config), and what it was for. */
+  lastApproval?: { at: number; kind: ApprovalKind };
   /** Claude Code session id (main agents; temps carry their parent's). Joins agents to office runs. */
   sessionId?: string;
   /** Absolute working directory of the session. */
@@ -111,6 +113,9 @@ export type AgentControl = 'office' | 'free' | 'elsewhere' | 'none';
 
 /** Every AgentControl value, for iteration and validation. */
 export const AGENT_CONTROLS: readonly AgentControl[] = ['office', 'free', 'elsewhere', 'none'];
+
+/** What a hand-approved permission prompt was for: a plan, a shell command or an edit. */
+export type ApprovalKind = 'plan' | 'command' | 'edit';
 
 /** Kind of request a worker can be blocked on (all come from the SDK's canUseTool). */
 export type PendingKind = 'permission' | 'question' | 'plan';

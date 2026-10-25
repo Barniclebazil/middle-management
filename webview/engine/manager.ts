@@ -1,6 +1,8 @@
 /**
  * The Regional Manager (you): boss idles at the desk, tapping on the glass
- * when someone waits at the door, and desk visits after each prompt.
+ * when someone waits at the door, and desk visits after each prompt or approval.
+ * A prompt visit gets one line; an approval visit gets a praise-then-confession
+ * pair, one beat at a time.
  *
  * Priority: a pending desk visit, then the door (someone queued), then the food
  * cart (once per arrival, while it is parked), then now and then a snoop (stands
@@ -14,13 +16,16 @@
 import type { Char } from './characters.ts';
 import type { Goal, Spots } from './targets.ts';
 import type { Dir, FoodId, Pose, SeatDef, SpotDef, Tile } from './types.ts';
-import { FOOD_IDS, LiveDeck, SEATED_POSES, facingToward, feetTile, makeRng, pick, randRange } from './types.ts';
+import { FOOD_IDS, LiveDeck, SEATED_POSES, facingToward, feetTile, makeRng, pairKey, pick, randRange } from './types.ts';
 import { findPath } from './path.ts';
-import { poolSources } from './theme.ts';
-import type { LinesHook } from './theme.ts';
+import { pairSources, poolSources } from './theme.ts';
+import type { LinesHook, PairsHook } from './theme.ts';
+import type { ApprovalKind } from '../../src/shared/protocol.ts';
 
 /** How long the manager talks at a desk. */
 export const VISIT_TALK_MS = 3_000;
+/** An approval visit says two lines, each shown this long (the talk lasts twice this). */
+export const APPROVAL_BEAT_MS = 2_500;
 /** While sulking, he mutters a line every this often (randomised between the two). */
 export const SULK_LINE_MIN_MS = 20_000;
 export const SULK_LINE_MAX_MS = 40_000;
@@ -55,6 +60,8 @@ export interface ManagerCtx {
   rng: () => number;
   /** The sources of his lines per pool (the theme's, mixed with or replacing the built-in ones); without it he says the built-in lines. */
   lines?: LinesHook;
+  /** The same for the pairs pools (the approval jokes). */
+  pairs?: PairsHook;
   grid: Uint8Array;
   w: number;
   h: number;
@@ -95,16 +102,35 @@ export function visitSpot(ctx: ManagerCtx, target: VisitTarget): { tile: Tile; f
   return { tile: best, facing: facingToward(best, t) };
 }
 
+/** The pairs pool of each kind of approval. */
+const APPROVAL_POOLS = { plan: 'bossPlanApproved', command: 'bossCommandApproved', edit: 'bossEditApproved' } as const;
+
+/** Why he visits: a new prompt, or the user approving a plan, a command or an edit. */
+export type VisitReason = 'prompt' | ApprovalKind;
+
 export class ManagerBrain {
-  /** Agent ids waiting for a desk visit, oldest first. */
-  pending: string[] = [];
-  visit: { id: string; phase: 'out' | 'talk'; until: number; spot?: { tile: Tile; facing: Dir } } | null = null;
+  /** Desk visits waiting, oldest first. */
+  pending: { id: string; reason: VisitReason }[] = [];
+  visit: {
+    id: string;
+    reason: VisitReason;
+    phase: 'out' | 'talk';
+    until: number;
+    spot?: { tile: Tile; facing: Dir };
+    /** An approval visit's second line, and when it starts (null once said). */
+    second?: { at: number; text: string } | null;
+  } | null = null;
   private deskPose: Pose = 'sitIdle';
   private deskUntil = 0;
   private doorStep = 0;
   private doorUntil = 0;
   /** One deck per pool, so no line comes back until the rest have been said. */
   private readonly visitDeck = new LiveDeck<string>();
+  private readonly approvalDecks: Record<ApprovalKind, LiveDeck<readonly [string, string]>> = {
+    plan: new LiveDeck((p) => pairKey([p[0], p[1]])),
+    command: new LiveDeck((p) => pairKey([p[0], p[1]])),
+    edit: new LiveDeck((p) => pairKey([p[0], p[1]])),
+  };
   private readonly sulkStartDeck = new LiveDeck<string>();
   private readonly sulkDeck = new LiveDeck<string>();
   private readonly sulkEndDeck = new LiveDeck<string>();
@@ -135,15 +161,25 @@ export class ManagerBrain {
     this.cartRng = cartRng;
   }
 
-  /** Queues a desk visit (no duplicates). */
-  queueVisit(id: string): void {
-    if (this.visit?.id === id || this.pending.includes(id)) return;
-    this.pending.push(id);
+  /** Queues a desk visit (no duplicates); a queued prompt visit becomes an approval visit if one comes in. */
+  queueVisit(id: string, reason: VisitReason = 'prompt'): void {
+    if (this.visit?.id === id) return;
+    const queued = this.pending.find((p) => p.id === id);
+    if (queued) {
+      if (queued.reason === 'prompt') queued.reason = reason;
+      return;
+    }
+    this.pending.push({ id, reason });
+  }
+
+  /** True while a visit to this agent is waiting. */
+  isQueued(id: string): boolean {
+    return this.pending.some((p) => p.id === id);
   }
 
   /** Forgets visits to an agent that has gone. */
   drop(id: string): void {
-    this.pending = this.pending.filter((p) => p !== id);
+    this.pending = this.pending.filter((p) => p.id !== id);
     if (this.visit?.id === id) this.visit = null;
     if (this.snoop?.id === id) this.snoop = null;
   }
@@ -210,7 +246,7 @@ export class ManagerBrain {
       if (!this.visit) {
         const next = this.pending.shift();
         if (next === undefined) break;
-        this.visit = { id: next, phase: 'out', until: 0 };
+        this.visit = { id: next.id, reason: next.reason, phase: 'out', until: 0 };
       }
       const v = this.visit;
       this.snoop = null;
@@ -225,11 +261,23 @@ export class ManagerBrain {
         const there = ctx.me.arrived && ctx.me.goal?.key === key && ctx.me.goal.tile.x === spot.tile.x && ctx.me.goal.tile.y === spot.tile.y;
         if (there) {
           v.phase = 'talk';
-          v.until = t + VISIT_TALK_MS;
           v.spot = spot;
-          return { goal: this.visitGoal(key, spot, talkPose), say: this.visitDeck.next(ctx.rng, ...poolSources(ctx.lines, 'bossVisit')) };
+          const goal = this.visitGoal(key, spot, talkPose);
+          if (v.reason === 'prompt') {
+            v.until = t + VISIT_TALK_MS;
+            return { goal, say: this.visitDeck.next(ctx.rng, ...poolSources(ctx.lines, 'bossVisit')) };
+          }
+          const [praise, confession] = this.approvalDecks[v.reason].next(ctx.rng, ...pairSources(ctx.pairs, APPROVAL_POOLS[v.reason]));
+          v.until = t + 2 * APPROVAL_BEAT_MS;
+          v.second = { at: t + APPROVAL_BEAT_MS, text: confession };
+          return { goal, say: praise, sayMs: APPROVAL_BEAT_MS };
         }
         return { goal: this.visitGoal(key, spot, 'stand') };
+      }
+      if (v.second && t >= v.second.at) {
+        const text = v.second.text;
+        v.second = null;
+        return { goal: this.visitGoal(key, spot, talkPose), say: text, sayMs: APPROVAL_BEAT_MS };
       }
       if (t < v.until) return { goal: this.visitGoal(key, spot, talkPose) };
       this.visit = null;
